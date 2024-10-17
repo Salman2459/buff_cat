@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Dashboard from "../Dashboard/dashboard";
 import Locktoken from "../MainLockTonkens/locktoken";
+import Leaderboard from "../Leaderboard/Leaderboard";
+import { Coinreward } from "../Coinreward/Coinreward";
 
 const MainBox = () => {
 
@@ -20,16 +22,15 @@ const MainBox = () => {
           <ol className="flex justify-around items-center h-full font-medium cursor-pointer">
             <li className={newroute == 'Dashboard' ? 'font-semibold' : ''} onClick={() => setnewroute('Dashboard')}>Dashboard</li>
             <li className={newroute == 'Localtoken' ? 'font-semibold' : ''} onClick={() => setnewroute('Localtoken')}>Lock Token</li>
-            <li>Coin Reward</li>
-            <li>Leaderboard</li>
+            <li className={newroute == 'CoinReward' ? 'font-semibold' : ''} onClick={() => setnewroute('CoinReward')} >Coin Reward</li>
+            <li className={newroute == 'Localtoken' ? 'font-semibold' : ''} onClick={() => setnewroute('Leaderboard')}>Leaderboard</li>
             <li>Trending Token</li>
           </ol>
       </div>
 
       {
-        newroute == 'Dashboard' ? <Dashboard/> : <Locktoken/>
+        newroute == 'Dashboard' ? <Dashboard/> : newroute == 'Leaderboard' ? <Leaderboard/> : newroute == 'CoinReward' ? <Coinreward/> : <Locktoken/>
       }
-
       </div>
     </div>
   ); 
