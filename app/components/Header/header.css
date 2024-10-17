@@ -1,0 +1,133 @@
+/* Navbar */
+.navbar{
+    background-color: rgba(26, 11, 6, 1);
+    border-radius: 15px;
+}
+
+/* Navbar Section 1  */
+
+.logo-Titel{
+    font-family:  "Jost", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navbar Section 2  */
+.navIteam{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navLink{
+    color: white;
+    font-family:  "Jost", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.active-navLink{
+    color: rgba(239, 203, 151, 1);
+}
+
+/* Navbar section 3  */
+
+.svg-circle{
+    border-radius: 50%;
+    border: 2px solid rgba(239, 203, 151, 1);
+    padding: 5px;
+    color: rgba(239, 203, 151, 1);
+    box-sizing: content-box;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.nav-wallet-btn{
+    width: 150px;
+    height: 60%;
+    background: linear-gradient(90deg, #EFCB97 -26.11%, #F3933F 100%);
+    border-radius: 10px;
+    color: white;
+    margin: 0 20px 0 20px;
+
+}
+
+
+.toggle-button{
+    height: 40px;
+    color: white;
+    display: none;
+    position: absolute;
+    right: 20px;
+}
+
+
+@media screen and (max-width:1024px){
+    .navbar{
+        display: block;
+        border-radius:  20px;
+
+    }
+
+
+    .toggle-button{
+        display: block;
+    }
+
+    .navIteam{
+        width: 100%;
+        height: auto;
+        display: block;
+        background-color: rgba(239, 203, 151, 1) !important;
+        position: absolute;
+        left: 0;
+        top: 60px;
+        border-radius: 0 0 20px 20px;
+        display: none;
+        z-index: 1;
+        padding-bottom: 30px;
+    }
+    
+    .navList{
+        text-align: center;
+        margin-top: 30px;
+        font-size: 1.3em;
+    }
+    
+    .active-navLink{
+        color: rgb(28, 27, 25);
+    }
+
+    .svg-box{
+        width: 150px;
+        margin: auto;
+    }
+
+    .svg-circle{
+        color: white;
+        text-align: center;
+        border: 2px solid white;
+        width: 23px !important;
+        height: 23px !important;
+        margin-top: 40px;
+        margin-left: 30px;
+        
+    }
+
+    .nav-wallet-btn{
+        height: 60px;
+        margin: auto;
+        display: block;
+        margin-top: 40px;
+    }
+    
+    
+    .responsive-nav{
+        display: block;
+    }
+
+    
+}
+
