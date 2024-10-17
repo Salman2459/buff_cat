@@ -91,7 +91,7 @@ const LockToken = () => {
         </div>
 
         <div className="w-[80%] m-auto mt-5]">
-          <h1 className="text-left mt-5 text-[1.1em] ml-3">Token</h1>
+          <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Token</h1>
 
           <div className="flex flex-wrap justify-center md:justify-between">
             {tokenBtn.map((item) => {
@@ -150,7 +150,7 @@ const LockToken = () => {
             </div>
 
             <div className=" w-full">
-              <h1 className="text-left mt-5 text-[1.1em] ml-3">
+              <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white font-semibold">
                 Lock Duration
               </h1>
               <div className="flex w-full mt-4 justify-between items-center relative">
@@ -179,7 +179,7 @@ const LockToken = () => {
                 </div>
                 <p>Days</p>
               </div>
-              <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7">
+              <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold">
                 Lock Tokens
               </button>
             </div>
@@ -216,10 +216,10 @@ const LockToken = () => {
         </div>
 
         <div className="bg-[#F3933F45] w-[80%] m-auto rounded-lg h-[15px] mt-5">
-          <div className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[40%]  rounded-lg h-[15px] mt-5"></div>
+          <div className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[40%]  text-white text-[1.1em] font-semibold  rounded-lg h-[15px] mt-5"></div>
         </div>
 
-        <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] m-auto h-[50px] rounded-md mt-7">
+        <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] m-auto block text-white text-[1.1em] font-semibold h-[50px] rounded-md mt-7">
           Withdrew Tokens
         </button>
       </div>
