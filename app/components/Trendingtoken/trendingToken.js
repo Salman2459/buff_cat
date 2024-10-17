@@ -88,18 +88,18 @@ const TrendingToken = () => {
           TRENDING TOKEN
         </h1>
 
-        <div className="overflow-x-auto mt-10 max-h-[350px] tableScroler">
+        <div className="overflow-x-auto mt-10 max-h-[350px] tableScroler ">
           <table className="min-w-full  bg-brown-800 text-white">
             <thead>
               <tr className="bg-gradient-to-r from-[#F3933F] to-[#F3933F] rounded-s-md  ">
-                <th className="py-2 px-4 rounded-s-lg">ADDED</th>
-                <th className="py-2 px-4">COIN</th>
-                <th className="py-2 px-4">Token Value</th>
-                <th className="py-2 px-4">Token Locked</th>
-                <th className="py-2 px-4">Token Buy</th>
-                <th className="py-2 px-4">Token Sold</th>
-                <th className="py-2 px-4">Graph</th>
-                <th className="py-2 px-4 rounded-e-lg">Locked Duration</th>
+                <th className="py-2 px-4 openSan rounded-s-lg">ADDED</th>
+                <th className="py-2 px-4 openSan">COIN</th>
+                <th className="py-2 px-4 openSan">Token Value</th>
+                <th className="py-2 px-4 openSan">Token Locked</th>
+                <th className="py-2 px-4 openSan">Token Buy</th>
+                <th className="py-2 px-4 openSan">Token Sold</th>
+                <th className="py-2 px-4 openSan">Graph</th>
+                <th className="py-2 px-4 openSan rounded-e-lg">Locked Duration</th>
               </tr>
             </thead>
             <tbody>
@@ -108,8 +108,8 @@ const TrendingToken = () => {
                   key={index}
                   className="border-t border-gray-600 hover:bg-gray-700"
                 >
-                  <td className="py-2 px-4">{item.added}</td>
-                  <td className="py-2 px-4">
+                  <td className="py-2 px-4 openSan">{item.added}</td>
+                  <td className="py-2 px-4 openSan">
                     <span className="flex items-center">
                       <img
                         src={item.coinimg}
@@ -119,11 +119,11 @@ const TrendingToken = () => {
                       {item.coin}
                     </span>
                   </td>
-                  <td className="py-2 px-4">{item.tokenValue}</td>
-                  <td className="py-2 px-4">{item.tokenLocked}</td>
-                  <td className="py-2 px-4">{item.tokenBuy}</td>
-                  <td className="py-2 px-4">{item.tokenSold}</td>
-                  <td className="py-2 px-4">
+                  <td className="py-2 px-4 openSan">{item.tokenValue}</td>
+                  <td className="py-2 px-4 openSan">{item.tokenLocked}</td>
+                  <td className="py-2 px-4 openSan">{item.tokenBuy}</td>
+                  <td className="py-2 px-4 openSan">{item.tokenSold}</td>
+                  <td className="py-2 px-4 openSan">
                     <span className="flex flex-col justify-center items-center">
                       <svg
                         width="79"
@@ -158,7 +158,7 @@ const TrendingToken = () => {
                       {item.graph}
                     </span>
                   </td>
-                  <td className="py-2 px-4">{item.lockedDuration}</td>
+                  <td className="py-2 px-4 openSan">{item.lockedDuration}</td>
                 </tr>
               ))}
             </tbody>
