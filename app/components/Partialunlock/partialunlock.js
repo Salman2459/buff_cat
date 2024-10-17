@@ -65,7 +65,7 @@ const Partialunlock = () => {
               />
             </svg>
 
-            <p className="text-white">
+            <p className="text-white text-[.9em]">
               To unlock the selected amount early, a penalty fee of [penalty
               amount] will apply.
             </p>

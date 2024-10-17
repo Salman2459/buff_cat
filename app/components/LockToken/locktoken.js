@@ -107,7 +107,7 @@ const LockToken = () => {
             <div className="relative">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="mt-4 ml-3 mr-3 flex p-0 justify-around items-center   w-[175px] h-[55px]   bg-gradient-to-r from-[#EFCB97] to-[#F3933F] outline-none rounded-lg px-0 box-border"
+                className="mt-4 ml-3 mr-3 flex p-0 justify-around items-center   w-[175px] h-[55px] text-white   bg-gradient-to-r from-[#EFCB97] to-[#F3933F] outline-none rounded-lg px-0 box-border"
               >
                 <span>{selectedToken}</span>
                 <svg
@@ -142,7 +142,7 @@ const LockToken = () => {
                         alt={token.name}
                         className="w-6 h-6 mr-3"
                       />
-                      <span>{token.name}</span>
+                      <span className="text-white">{token.name}</span>
                     </div>
                   ))}
                 </div>
