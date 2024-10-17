@@ -17,9 +17,9 @@ const MainBox = () => {
         <p className="mt-2 text-base">Lock your token and earn reward</p>
       </div>
 
-      <div className="md:w-[800px] p-5 box-border bg-[#301B00E5] m-auto rounded-lg mt-10">
-      <div className="w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F]  rounded-lg m-auto">
-          <ol className="flex justify-around items-center h-full font-medium cursor-pointer">
+      <div className="lg:w-[800px] py-5 box-border bg-[#301B00E5] m-auto rounded-lg mt-10">
+      <div className="w-full md:w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F]  rounded-lg m-auto ">
+          <ol className="flex justify-around items-center h-full font-medium cursor-pointer text-[.7em] sm:text-[.8em] lg:text-[1em]">
             <li className={newroute == 'Dashboard' ? 'font-semibold' : ''} onClick={() => setnewroute('Dashboard')}>Dashboard</li>
             <li className={newroute == 'Localtoken' ? 'font-semibold' : ''} onClick={() => setnewroute('Localtoken')}>Lock Token</li>
             <li className={newroute == 'CoinReward' ? 'font-semibold' : ''} onClick={() => setnewroute('CoinReward')} >Coin Reward</li>

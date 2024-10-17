@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import LockToken from "../LockToken/locktoken";
+import Partialunlock from "../Partialunlock/partialunlock";
 
 const Locktoken = () => {
   let [localtoken, setlocaltoken] = useState("localtoken");
@@ -21,8 +22,8 @@ const Locktoken = () => {
           </button>
           <button
             className={
-              localtoken === "localtokends"
-                ? "mr-7 mt-7 font-semibold  text-white text-[1.1em]"
+              localtoken === "partialUnlock"
+                ? "mr-0 mt-7 font-semibold  text-white text-[1.1em]"
                 : "ml-7 mt-7 text-white text-[1.1em] "
             }
             onClick={() => setlocaltoken("partialUnlock")}
@@ -30,7 +31,7 @@ const Locktoken = () => {
             Partial Unlock
           </button>
         </div>
-        <div className="w-[255px] bg-[#AAAAAA] h-[5px] m-auto mt-3 rounded-md">
+        <div className="w-[270px] bg-[#AAAAAA] h-[5px] m-auto mt-3 rounded-md">
           {localtoken === "localtoken" ? (
             <div className="w-[40%] h-[5px] bg-[#EFCB97] rounded-md"></div>
           ) : (
@@ -39,7 +40,9 @@ const Locktoken = () => {
         </div>
       </div>
 
-        <LockToken/>
+        {
+          localtoken == 'localtoken' ? <LockToken/> : <Partialunlock/>
+        }
     </div>
   );
 };

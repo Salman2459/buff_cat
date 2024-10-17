@@ -161,23 +161,23 @@ const LockToken = () => {
                   onChange={() => {
                     setlockDur(Number(lockDurInp.current.value));
                   }}
-                  className="w-[80%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em]"
+                  className="text-white w-[80%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em]"
                 />
                 <div className="flex flex-col absolute right-[23%]">
                   <button
-                    className="w-[15px] h-[15px] text-[.9em] flex justify-center items-center rounded-sm bg-gradient-to-r from-[#EFCB97] to-[#F3933F]"
+                    className="text-white w-[15px] h-[15px] text-[.9em] flex justify-center items-center rounded-sm bg-gradient-to-r from-[#EFCB97] to-[#F3933F]"
                     onClick={increaseInp}
                   >
                     ▲
                   </button>
                   <button
-                    className="w-[15px] h-[15px] text-[.9em] flex justify-center items-center rounded-sm bg-gradient-to-r from-[#EFCB97] to-[#F3933F]"
+                    className="text-white w-[15px] h-[15px] text-[.9em] flex justify-center items-center rounded-sm bg-gradient-to-r from-[#EFCB97] to-[#F3933F]"
                     onClick={descinp}
                   >
                     ▼
                   </button>
                 </div>
-                <p>Days</p>
+                <p className="text-white text-[1.1]">Days</p>
               </div>
               <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold">
                 Lock Tokens
