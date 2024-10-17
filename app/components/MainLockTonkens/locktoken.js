@@ -30,11 +30,11 @@ const Locktoken = () => {
             Partial Unlock
           </button>
         </div>
-        <div className="w-[255px] bg-[#AAAAAA] h-[5px] m-auto mt-3">
+        <div className="w-[255px] bg-[#AAAAAA] h-[5px] m-auto mt-3 rounded-md">
           {localtoken === "localtoken" ? (
-            <div className="w-[40%] h-[5px] bg-[#EFCB97]"></div>
+            <div className="w-[40%] h-[5px] bg-[#EFCB97] rounded-md"></div>
           ) : (
-            <div className="w-[40%] h-[5px] bg-[#EFCB97] float-right"></div>
+            <div className="w-[40%] h-[5px] bg-[#EFCB97] float-right rounded-md"></div>
           )}
         </div>
       </div>
