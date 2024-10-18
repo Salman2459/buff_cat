@@ -22,9 +22,7 @@ const ShowDashboardNavbar = () => {
 
   let dispatch = useDispatch()
 
-  let userLogin = useSelector((store) => {
-    return store.userAddresss
-  })
+ 
 
   useEffect(() => {
     if (address) {
