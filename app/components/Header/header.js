@@ -1,16 +1,39 @@
 "use client";
 import { useAppKit } from '@reown/appkit/react';
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import "./header.css";
+import buffCatStore from '@/store/store';
+import { useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
+import { tabChanger, userAddress } from '@/store/storeSlice';
+import { useSelector } from 'react-redux';
+import { useAccount } from 'wagmi';
 
 
 const Header = () => {
+  return <Provider store={buffCatStore}>
+    <ShowHeader/>
+  </Provider>
+}
+
+const ShowHeader = () => {
   const { open } = useAppKit()
-  const pathname = usePathname();
+  let {address} = useAccount()
   let navbar = useRef();
   let [navopen,setnavopen] = useState(false)
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    if (address) {
+      dispatch(userAddress(address))
+    }
+
+  },[])
+
+  let navigationTABS = useSelector((store) => {
+    return store.whichTab
+  })
 
   function respnsiveNavbar() {
     navbar.current.classList.toggle("responsive-nav");
@@ -21,6 +44,8 @@ const Header = () => {
       setnavopen(true)
     }
   }
+
+  
 
   return (
     <div>
@@ -69,11 +94,11 @@ const Header = () => {
         {/* Navbar Section 2  */}
         <section className="flex items-center w-[75%]">
           <ol className="navIteam" ref={navbar}>
-            <li className="navList">
+            <li className="navList" onClick={()=> {dispatch(tabChanger('Dashboard'))}}>
               <Link
                 href={"/"}
                 className={
-                  pathname == "/"
+                  navigationTABS == "Dashboard"
                     ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
                     : "navLink lg:text-[0.78em] xl:text-[1em]"
                 }
@@ -81,35 +106,47 @@ const Header = () => {
                 Dashboard
               </Link>
             </li>
-            <li className="navList">
+            <li className="navList"  onClick={()=> {dispatch(tabChanger('Localtoken'))}}>
               <Link
                 href={"/"}
-                className="navLink lg:text-[0.78em] xl:text-[1em]"
-              >
+                className={
+                  navigationTABS == "Localtoken"
+                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
+                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                }              >
                 Locks Token
               </Link>
             </li>
-            <li className="navList">
+            <li className="navList"  onClick={()=> {dispatch(tabChanger('CoinReward'))}}>
               <Link
                 href={"/"}
-                className="navLink lg:text-[0.78em] xl:text-[1em]"
-              >
+                className={
+                  navigationTABS == "CoinReward"
+                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
+                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                }              >
                 Coin Rewards
               </Link>
             </li>
-            <li className="navList">
+            <li className="navList"  onClick={()=> {dispatch(tabChanger('Leaderboard'))}}>
               <Link
                 href={"/"}
-                className="navLink lg:text-[0.78em] xl:text-[1em]"
-              >
+                className={
+                  navigationTABS == "Leaderboard"
+                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
+                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                }              >
                 Leaderboards
               </Link>
             </li>
-            <li className="navList">
+            <li className="navList"  onClick={()=> {dispatch(tabChanger('trendingtoken'))}}>
               <Link
                 href={"/"}
-                className="navLink lg:text-[0.78em] xl:text-[1em]"
-              >
+                className={
+                  navigationTABS == "trendingtoken"
+                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
+                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                }              >
                 Trending Tokens
               </Link>
             </li>

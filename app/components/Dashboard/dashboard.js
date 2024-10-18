@@ -2,10 +2,10 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='text-[1.2em]'>
         {/* DashBoard Section  */}
-        <div className="w-[95%] !h-[220px]  bg-[#FFFFFF0F] border border-[#FFFFFF29] m-auto rounded-lg mt-8">
-                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.1em] ">TOTAL VALUE LOCKED</h1>
+        <div className="w-[95%] !h-[220px]  bg-[#FFFFFF0F] border border-[#FFFFFF29] m-auto rounded-lg mt-8 ">
+                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] ">TOTAL VALUE LOCKED</h1>
 
                 <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide">
                     <p className="text-white text-[.8em]">Total Value Locked</p>
@@ -26,7 +26,7 @@ const Dashboard = () => {
             {/* you Locks  */}
 
             <div className="w-[95%] h-[200px] bg-[#FFFFFF0F] border border-[#FFFFFF29] m-auto rounded-lg mt-6">
-                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.1em] ">YOUR LOCKS</h1>
+                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] ">YOUR LOCKS</h1>
 
                 <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide">
                     <p className="text-white text-[.8em]">Total Locked</p>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             {/* Rewards Earn  */}
 
             <div className="w-[95%] h-[170px] bg-[#FFFFFF0F] border border-[#FFFFFF29] m-auto rounded-lg mt-6">
-                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.1em] ">REWARDS EARN</h1>
+                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] ">REWARDS EARN</h1>
 
                 <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide">
                     <p className="text-white text-[.8em]">Total Reward Earned</p>
@@ -63,7 +63,7 @@ const Dashboard = () => {
             {/* Point Earn  */}
 
             <div className="w-[95%] h-[120px] bg-[#FFFFFF0F] border border-[#FFFFFF29] m-auto rounded-lg mt-6">
-                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.1em] ">POINTS EARN</h1>
+                <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] ">POINTS EARN</h1>
 
                 <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide">
                     <p className="text-white text-[.8em]">Total POINTS EARNED</p>

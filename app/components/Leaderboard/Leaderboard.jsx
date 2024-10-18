@@ -3,7 +3,7 @@ import React from 'react'
 const Leaderboard = () => {
   return (
     <>
-    <div className="bg-[#4A2F12] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6" >
+    <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6" >
     <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.8em] ">
     Leaderboards
         </h1>
