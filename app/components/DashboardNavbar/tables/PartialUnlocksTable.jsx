@@ -4,20 +4,57 @@ import React from 'react';
 const PartialUnlocksTable = () => {
   const data = {
     partialUnlocks: [
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      { name: 'ETH', amountUnlocked: 500, unlockDate: '15 Oct 2024', remainingLockedAmount: '$34563', penaltyFee: '$45.95' },
-      // ... add more items as needed
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
+
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
+
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
+
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
+
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
+
+
+      {
+        name: 'ETH',
+        amountUnlocked: 500,
+        unlockDate: '15 Oct 2024',
+        remainingLockedAmount: '$34,563',
+        penaltyFee: '$45.95',
+      },
     ],
   };
-  
+
   return (
     <div className="text-white  rounded-lg mt-8 pb-5">
       <h2 className=" md:text-[30px] font-bold mb-4">Partial Unlocks</h2>
@@ -36,8 +73,8 @@ const PartialUnlocksTable = () => {
             {data.partialUnlocks.map((item, index) => (
               <tr key={index} className="border-b border-gray-800">
                 <td className="py-2 px-4 flex items-center">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full mr-2">
-                  <img className="w-[16px] h-[16px] mr-1" src="./eth.png" alt="" />
+                  <div className="w-4 h-4 rounded-full mr-2">
+                    <img className="w-[16px] h-[16px] mr-1" src="./eth.png" alt="ETH" />
                   </div>
                   {item.name}
                 </td>
