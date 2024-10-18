@@ -19,15 +19,10 @@ const PartialUnlocksTable = () => {
   };
   
   return (
-<<<<<<< HEAD
-    <div className="text-white p-6 rounded-lg mt-8">
-      <h2 className="text-[30px] font-bold Jost mb-4">Partial Unlocks</h2>
-=======
-    <div className="text-white  rounded-lg mt-8">
-      <h2 className="text-2xl font-bold mb-4">Partial Unlocks</h2>
->>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
-      <div className="overflow-x-auto">
-        <table className="w-full bg-[#0C0507]">
+    <div className="text-white  rounded-lg mt-8 pb-5">
+      <h2 className=" md:text-[30px] font-bold mb-4">Partial Unlocks</h2>
+      <div className="overflow-x-auto h-[200px]">
+        <table className="w-full  bg-[#0C0507]">
           <thead className='bg-[#31231F] h-[70px]'>
             <tr className="text-left border-b border-gray-700">
               <th className="py-2 px-4 text-[14px] font-bold">Name</th>
