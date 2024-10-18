@@ -5,10 +5,16 @@ import { Provider } from 'react-redux';
 import buffCatStore from '@/store/store';
 import { useAccount } from 'wagmi';
 import { userAddress } from '@/store/storeSlice';
+<<<<<<< HEAD
 import { useSelector } from 'react-redux';
 import LockingHistoryTable from './tables/LockingHistoryTable';
 import PartialUnlocksTable from './tables/PartialUnlocksTable';
   
+=======
+import LockingHistoryTable from './tables/LockingHistoryTable';
+import PartialUnlocksTable from './tables/PartialUnlocksTable';
+
+>>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
 const DashboardNavbar = () => {
   return <Provider store={buffCatStore}>
     <ShowDashboardNavbar />
@@ -22,7 +28,7 @@ const ShowDashboardNavbar = () => {
 
   let dispatch = useDispatch()
 
- 
+
 
   useEffect(() => {
     if (address) {
@@ -34,10 +40,15 @@ const ShowDashboardNavbar = () => {
   }, [address])
 
   return (
+<<<<<<< HEAD
     <>
     <div className="bg-[#170A05] w-[100%]">
       
       <div className="flex flex-col md:flex-row justify-between items-center p-4" onClick={() => console.log(address)}>
+=======
+    <div className='bg-[#170A05] min-h-[100vh] md:ml-[50px] xl:ml-[300px]'>
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]" onClick={() => console.log(address)}>
+>>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
 
         {/* Search Bar */}
         <div className="relative flex items-center w-[80%] m-auto md:m-0 md:w-auto mb-4 md:mb-0 ">
@@ -96,11 +107,21 @@ const ShowDashboardNavbar = () => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <LockingHistoryTable/>
       <PartialUnlocksTable/>
     </div>
     
     </>
+=======
+
+      <div className='pl-20 pr-10 md:px-10'>
+        <LockingHistoryTable />
+        <PartialUnlocksTable />
+      </div>
+
+    </div>
+>>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
   );
 };
 

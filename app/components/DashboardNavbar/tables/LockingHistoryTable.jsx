@@ -1,4 +1,3 @@
-// LockingHistoryTable.js
 import React from 'react';
 
 const LockingHistoryTable = () => {
@@ -17,9 +16,13 @@ const LockingHistoryTable = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="text-white  rounded-lg">
+=======
+    <div className="text-white pl-[50] pr-[0] rounded-lg ">
+>>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
       <h2 className="text-[30px] font-bold Jost mb-4">Locking History</h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-auto max-h-[400px] tableScroler">
         <table className="w-full bg-[#0C0507]">
           <thead className=' bg-[#31231F] h-[70px]'>
             <tr className="text-left border-b border-gray-700">

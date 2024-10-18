@@ -1,3 +1,9 @@
+
+.sideBar{
+    position: fixed;
+
+}
+
 .sideNav{
     display: none;
     color: white;
