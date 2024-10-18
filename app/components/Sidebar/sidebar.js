@@ -22,7 +22,7 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div className='w-[300px] h-[100vh] bg-[#31231F] sideBar' ref={sideBar}>
+            <div className='w-[300px] h-[100vh] bg-[#31231F] sideBar z-[999]' ref={sideBar}>
 
                 {navOpen == true ? <button className='sideNav text-white' onClick={showsideNav}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">

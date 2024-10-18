@@ -20,11 +20,11 @@ const ShowHome = () => {
     return store.userAddresss
   })
 
-  console.log(userLogin)
+
 
   return <div>
     {
-      userLogin == '' ? <WalletDisconnected />
+      userLogin.length < 20 ? <WalletDisconnected />
       : <Userconnected/>
     }
   </div>

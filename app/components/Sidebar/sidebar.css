@@ -12,7 +12,7 @@
     }
 
     .sideBar{
-        position: absolute;
+        position: fixed;
         left: -250px;
         transition: .3s linear;
     }
