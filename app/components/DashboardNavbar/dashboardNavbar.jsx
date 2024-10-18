@@ -1,15 +1,16 @@
 import React from 'react';
 
-const Useractivity = () => {
+const DashboardNavbar
+ = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05]">
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]">
         
         {/* Search Bar */}
         <div className="relative flex items-center w-full md:w-auto mb-4 md:mb-0">
           <input 
             type="text" 
-            className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full md:w-[300px]" 
+            className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full  md:w-[200px] " 
             placeholder="Search here" 
           />
           <svg 
@@ -61,4 +62,5 @@ const Useractivity = () => {
   );
 };
 
-export default Useractivity;
+export default DashboardNavbar
+;

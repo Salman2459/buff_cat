@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from '../Sidebar/sidebar'
+import RightBar from '../rightBar/rightBar'
 
 const Userconnected = () => {
   return (
-    <div>Userconnected</div>
+    <div className='flex w-[100%] '>
+      <Sidebar className='flex text-black'/>
+      <RightBar/>
+    </div>
   )
 }
 
