@@ -6,6 +6,8 @@ import buffCatStore from '@/store/store';
 import { useAccount } from 'wagmi';
 import { userAddress } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
+import LockingHistoryTable from './tables/LockingHistoryTable';
+import PartialUnlocksTable from './tables/PartialUnlocksTable';
   
 const DashboardNavbar = () => {
   return <Provider store={buffCatStore}>
@@ -35,7 +37,9 @@ const ShowDashboardNavbar = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]" onClick={() => console.log(address)}>
+    <div className="bg-[#170A05] w-[100%]">
+      
+      <div className="flex flex-col md:flex-row justify-between items-center p-4" onClick={() => console.log(address)}>
 
         {/* Search Bar */}
         <div className="relative flex items-center w-[80%] m-auto md:m-0 md:w-auto mb-4 md:mb-0 ">
@@ -96,6 +100,7 @@ const ShowDashboardNavbar = () => {
       </div>
       <LockingHistoryTable/>
       <PartialUnlocksTable/>
+    </div>
     
     </>
   );
