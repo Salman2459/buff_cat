@@ -1,4 +1,5 @@
 import React from 'react';
+import LockingHistoryComponent from './LockingHistoryComponent';
 
 const Useractivity = () => {
   return (
@@ -57,6 +58,7 @@ const Useractivity = () => {
           </div>
         </div>
       </div>
+      <LockingHistoryComponent/>
     </>
   );
 };
