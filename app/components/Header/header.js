@@ -29,7 +29,7 @@ const ShowHeader = () => {
       dispatch(userAddress(address))
     }
 
-  },[])
+  },[address])
 
   let navigationTABS = useSelector((store) => {
     return store.whichTab

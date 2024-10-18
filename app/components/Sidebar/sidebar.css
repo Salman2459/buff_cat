@@ -1,0 +1,31 @@
+.sideNav{
+    display: none;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 25px;
+}
+
+@media screen and (max-width:1280px) {
+    .sideNav{
+        display: block;
+    }
+
+    .sideBar{
+        position: absolute;
+        left: -250px;
+        transition: .3s linear;
+    }
+
+    .sideBarNavs{
+        display: none;
+    }
+
+    .responsiveSideBar{
+        left: 0;
+    }
+
+    .responsiveSideBarNav{
+        display: block;
+    }
+}
