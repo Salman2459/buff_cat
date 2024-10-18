@@ -62,11 +62,11 @@ const PartialUnlocksTable = () => {
         <table className="w-full  bg-[#0C0507]">
           <thead className='bg-[#31231F] h-[70px]'>
             <tr className="text-left border-b border-gray-700">
-              <th className="py-2 px-4 text-[14px] font-bold">Name</th>
+              <th className="py-2 px-4 text-[14px] font-bold rounded-tl-[10px] rounded-tr-[0px]">Name</th>
               <th className="py-2 px-4 text-[14px] font-bold">Amount Unlocked</th>
               <th className="py-2 px-4 text-[14px] font-bold">Unlock Date</th>
               <th className="py-2 px-4 text-[14px] font-bold">Remaining Locked Amount</th>
-              <th className="py-2 px-4 text-[14px] font-bold">Penalty Fee (if early unlock)</th>
+              <th className="py-2 px-4 text-[14px] font-bold rounded-tl-[0px] rounded-tr-[10px]">Penalty Fee (if early unlock)</th>
             </tr>
           </thead>
           <tbody>
