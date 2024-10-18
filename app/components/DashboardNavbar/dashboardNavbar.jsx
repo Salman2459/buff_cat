@@ -1,57 +1,43 @@
 import React, { useEffect } from 'react';
 import { useAppKit } from '@reown/appkit/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Provider } from 'react-redux';
 import buffCatStore from '@/store/store';
 import { useAccount } from 'wagmi';
 import { userAddress } from '@/store/storeSlice';
-<<<<<<< HEAD
-import { useSelector } from 'react-redux';
 import LockingHistoryTable from './tables/LockingHistoryTable';
 import PartialUnlocksTable from './tables/PartialUnlocksTable';
-  
-=======
-import LockingHistoryTable from './tables/LockingHistoryTable';
-import PartialUnlocksTable from './tables/PartialUnlocksTable';
+import Link from 'next/link';
 
->>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
 const DashboardNavbar = () => {
-  return <Provider store={buffCatStore}>
-    <ShowDashboardNavbar />
-  </Provider>
-}
-
+  return (
+    <Provider store={buffCatStore}>
+      <ShowDashboardNavbar />
+    </Provider>
+  );
+};
 
 const ShowDashboardNavbar = () => {
-  const { open } = useAppKit()
-  let { address } = useAccount()
+  const { open } = useAppKit();
+  const { address } = useAccount();
 
-  let dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (address) {
-      dispatch(userAddress(address))
+      dispatch(userAddress(address));
     } else {
-      dispatch(userAddress('some'))
+      dispatch(userAddress('some'));
     }
-
-  }, [address])
+  }, [address, dispatch]);
 
   return (
-<<<<<<< HEAD
-    <>
-    <div className="bg-[#170A05] w-[100%]">
-      
-      <div className="flex flex-col md:flex-row justify-between items-center p-4" onClick={() => console.log(address)}>
-=======
-    <div className='bg-[#170A05] min-h-[100vh] md:ml-[50px] xl:ml-[300px]'>
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]" onClick={() => console.log(address)}>
->>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
+    <div className="bg-[#170A05] min-h-[100vh] md:ml-[50px] xl:ml-[300px]">
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-full" onClick={() => console.log(address)}>
+      <Link href={'./some'} className='text-white'>Some</Link>
 
         {/* Search Bar */}
-        <div className="relative flex items-center w-[80%] m-auto md:m-0 md:w-auto mb-4 md:mb-0 ">
+        <div className="relative flex items-center w-[80%] m-auto md:m-0 md:w-auto mb-4 md:mb-0">
           <input
             type="text"
             className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full md:w-[300px] ml-[60px]"
@@ -76,15 +62,14 @@ const ShowDashboardNavbar = () => {
         <div className="w-full md:w-[430px] md:flex items-center space-x-4 flex-col md:flex-row">
           {/* Social Media Icons */}
           <div className="flex space-x-2 justify-center w-[70%] m-auto md:w-full">
-            <img src="./facebook.png" alt="Facebook" className="w-[40px] h-[40] cursor-pointer ml-5" />
-            <img src="./youtube.png" alt="YouTube" className="w-[40] h-[40] cursor-pointer ml-5 mr-5" />
-            <img src="./x.png" alt="X" className="w-[40] h-[40] cursor-pointer ml-5 mr-5" />
-            <img src="./teligran.png" alt="Telegram" className="w-[40] h-[40] cursor-pointer ml-5 mr-5" />
+            <img src="./facebook.png" alt="Facebook" className="w-[40px] h-[40px] cursor-pointer ml-5" />
+            <img src="./youtube.png" alt="YouTube" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
+            <img src="./x.png" alt="X" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
+            <img src="./teligran.png" alt="Telegram" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
           </div>
 
           {/* Notification, Help, and Logout Button */}
           <div className='flex '>
-            {/* ======== */}
             <div className="flex items-center space-x-4  w-full justify-center md:justify-normal">
               <div className="relative p-3 flex ">
                 <img className="w-[30px] h-[30px] min-w-[30px]" src="./notificaation.png" alt="Notification" />
@@ -94,9 +79,6 @@ const ShowDashboardNavbar = () => {
                   99+
                 </div>
               </div>
-
-
-
               <img className="w-[30px] h-[30px]" src="./question.png" alt="Help" />
             </div>
           </div>
@@ -107,23 +89,13 @@ const ShowDashboardNavbar = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      <LockingHistoryTable/>
-      <PartialUnlocksTable/>
-    </div>
-    
-    </>
-=======
-
+      
       <div className='pl-20 pr-10 md:px-10'>
         <LockingHistoryTable />
         <PartialUnlocksTable />
       </div>
-
     </div>
->>>>>>> 9ae24886e48addbff54281402663bf3262c288b6
   );
 };
 
-export default DashboardNavbar
-  ;
+export default DashboardNavbar;
