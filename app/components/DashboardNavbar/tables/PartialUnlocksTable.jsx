@@ -10,7 +10,7 @@ const PartialUnlocksTable = () => {
   };
 
   return (
-    <div className="text-white p-6 rounded-lg mt-8">
+    <div className="text-white  rounded-lg mt-8">
       <h2 className="text-2xl font-bold mb-4">Partial Unlocks</h2>
       <div className="overflow-x-auto">
         <table className="w-full">
