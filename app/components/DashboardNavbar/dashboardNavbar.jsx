@@ -6,7 +6,7 @@ import buffCatStore from '@/store/store';
 import { useAccount } from 'wagmi';
 import { userAddress } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
-
+  
 const DashboardNavbar = () => {
   return <Provider store={buffCatStore}>
     <ShowDashboardNavbar />
