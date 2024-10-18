@@ -67,9 +67,9 @@ const LockingHistoryTable = () => {
   };
 
   return (
-    <div className="text-white pr-0 rounded-lg">
+    <div className="text-white pr-0 rounded-lg mt-8">
       <h2 className="text-[30px] font-bold Jost mb-4">Locking History</h2>
-      <div className="overflow-auto max-h-[400px] tableScroler">
+      <div className="overflow-auto max-h-[400px] tableScroler2">
         <table className="w-full bg-[#0C0507]">
           <thead className="bg-[#31231F] h-[70px]">
             <tr className="text-left border-b border-gray-700">
