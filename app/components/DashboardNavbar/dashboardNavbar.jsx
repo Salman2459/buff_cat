@@ -7,7 +7,7 @@ import { useAccount } from 'wagmi';
 import { userAddress } from '@/store/storeSlice';
 import LockingHistoryTable from './tables/LockingHistoryTable';
 import PartialUnlocksTable from './tables/PartialUnlocksTable';
-import Link from 'next/link';
+
 
 const DashboardNavbar = () => {
   return (
@@ -32,9 +32,8 @@ const ShowDashboardNavbar = () => {
   }, [address, dispatch]);
 
   return (
-    <div className="bg-[#170A05] min-h-[100vh] md:ml-[50px] xl:ml-[300px]">
-      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-full" onClick={() => console.log(address)}>
-      <Link href={'./some'} className='text-white'>Some</Link>
+    <div className='bg-[#170A05] min-h-[100vh] md:ml-[50px] xl:ml-[300px]'>
+      <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]" onClick={() => console.log(address)}>
 
         {/* Search Bar */}
         <div className="relative flex items-center w-[80%] m-auto md:m-0 md:w-auto mb-4 md:mb-0">
@@ -89,7 +88,6 @@ const ShowDashboardNavbar = () => {
           </div>
         </div>
       </div>
-      
       <div className='pl-20 pr-10 md:px-10'>
         <LockingHistoryTable />
         <PartialUnlocksTable />
