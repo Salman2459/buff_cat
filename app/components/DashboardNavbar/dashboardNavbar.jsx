@@ -1,16 +1,20 @@
 import React from 'react';
-import LockingHistoryComponent from './LockingHistoryComponent';
+import LockingHistoryTable from './tables/LockingHistoryTable';
+import PartialUnlocksTable from './tables/PartialUnlocksTable';
 
-const Useractivity = () => {
+const DashboardNavbar
+ = () => {
   return (
     <>
+    <div className=' bg-[#170A05] w-[100%] h-[auto]'>
+
       <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#170A05]">
         
         {/* Search Bar */}
         <div className="relative flex items-center w-full md:w-auto mb-4 md:mb-0">
           <input 
             type="text" 
-            className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full md:w-[300px]" 
+            className="pl-10 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full   md:w-[300px] " 
             placeholder="Search here" 
           />
           <svg 
@@ -58,9 +62,12 @@ const Useractivity = () => {
           </div>
         </div>
       </div>
-      <LockingHistoryComponent/>
+      <LockingHistoryTable/>
+      <PartialUnlocksTable/>
+    </div>
     </>
   );
 };
 
-export default Useractivity;
+export default DashboardNavbar
+;

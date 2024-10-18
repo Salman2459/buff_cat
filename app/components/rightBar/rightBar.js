@@ -1,8 +1,11 @@
 import React from 'react'
+import DashboardNavbar from '../DashboardNavbar/dashboardNavbar'
 
 const RightBar = () => {
   return (
-    <div>RightBar</div>
+    <div className='w-full'>
+      <DashboardNavbar/>
+    </div>
   )
 }
 
