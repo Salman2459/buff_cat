@@ -92,6 +92,9 @@ const ShowDashboardNavbar = () => {
           </div>
         </div>
       </div>
+      <LockingHistoryTable/>
+      <PartialUnlocksTable/>
+    
     </>
   );
 };
