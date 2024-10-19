@@ -61,12 +61,21 @@ const PartialUnlocksTable = () => {
       <div className="overflow-auto max-h-[400px] tableScroler2">
         <table className="w-full bg-[#0C0507]">
           <thead className="bg-[#31231F] h-[70px]">
+<<<<<<< HEAD
             <tr className="text-center border-b border-gray-700">
               <th className="py-2 px-4 text-[19px] font-bold">Name</th>
               <th className="py-2 px-4 text-[19px] font-bold">Amount Unlocked</th>
               <th className="py-2 px-4 text-[19px] font-bold">Unlock Date</th>
               <th className="py-2 px-4 text-[19px] font-bold">Remaining Locked Amount</th>
               <th className="py-2 px-4 text-[19px] font-bold">Penalty Fee (if early unlock)</th>
+=======
+            <tr className="text-left border-b border-gray-700">
+              <th className="py-2 px-4 text-[14px] font-bold rounded-tl-[10px] rounded-tr-[0px]">Name</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Amount Unlocked</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Unlock Date</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Remaining Locked Amount</th>
+              <th className="py-2 px-4 text-[14px] font-bold rounded-tl-[0px] rounded-tr-[10px]">Penalty Fee (if early unlock)</th>
+>>>>>>> 17a503cc4e0f1178ccfb9c29959c286746afe87d
             </tr>
           </thead>
           <tbody>

@@ -72,6 +72,7 @@ const LockingHistoryTable = () => {
       <div className="overflow-auto max-h-[400px] tableScroler2">
         <table className="w-full bg-[#0C0507]">
           <thead className="bg-[#31231F] h-[70px]">
+<<<<<<< HEAD
             <tr className=" border-b border-gray-700 text-center">
               <th className="py-2 px-4 text-[19px] font-bold">Name</th>
               <th className="py-2 px-4 text-[19px] font-bold">Amount Locked</th>
@@ -81,6 +82,17 @@ const LockingHistoryTable = () => {
               <th className="py-2 px-4 text-[19px] font-bold">Duration</th>
               <th className="py-2 px-4 text-[19px] font-bold">Hash ID</th>
               <th className="py-2 px-4 text-[19px] font-bold">Auto Compound</th>
+=======
+            <tr className="text-left border-b border-gray-700 ">
+              <th className="py-2 px-4 text-[14px] font-bold  rounded-tl-[10px] rounded-tr-[0px]">Name</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Amount Locked</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Start Date</th>
+              <th className="py-2 px-4 text-[14px] font-bold">End Date</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Status</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Duration</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Hash ID</th>
+              <th className="py-2 px-4 text-[14px] font-bold  rounded-tl-[0px] rounded-tr-[10px]">Auto Compound</th>
+>>>>>>> 17a503cc4e0f1178ccfb9c29959c286746afe87d
             </tr>
           </thead>
           <tbody>
