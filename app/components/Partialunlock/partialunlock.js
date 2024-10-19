@@ -30,7 +30,7 @@ const Partialunlock = () => {
               onChange={() => {
                 setlockDur(Number(lockDurInp.current.value));
               }}
-              className="text-white m-auto  w-[100%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md  box-border text-[1.3em] px-4"
+              className="number-stepper text-white m-auto  w-[100%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md  box-border text-[1.3em] px-4"
             />
 
             <div className="flex flex-col absolute right-[3%]">

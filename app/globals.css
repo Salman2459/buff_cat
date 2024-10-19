@@ -37,7 +37,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.number-stepper input::placeholder {
+input::placeholder {
   color: rgb(255, 255, 255);
   opacity: 1; 
 }

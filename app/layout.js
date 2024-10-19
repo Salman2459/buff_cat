@@ -1,7 +1,9 @@
+import { headers } from "next/headers";
 import localFont from "next/font/local";
 import "./globals.css";
 import ContextProvider from "./context/wagmiProvider";
-import { headers } from "next/headers";
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,9 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <ContextProvider cookies={cookies}>
-            {children}
-          </ContextProvider>
+        <ContextProvider cookies={cookies}>
+
+          {children}
+
+        </ContextProvider>
       </body>
     </html>
   );

@@ -161,7 +161,7 @@ const LockToken = () => {
                   onChange={() => {
                     setlockDur(Number(lockDurInp.current.value));
                   }}
-                  className="text-white w-[80%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em]"
+                  className="number-stepper text-white w-[80%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em]"
                 />
                 <div className="flex flex-col absolute right-[23%]">
                   <button

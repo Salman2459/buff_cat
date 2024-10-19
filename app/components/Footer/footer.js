@@ -66,7 +66,7 @@ const Footer = () => {
 
           {/* Social Media Icons */}
           <div className="">
-            <h3 className="text-xl  font-semibold mb-5">Follow us on</h3>
+            <h3 className="text-xl text-center  font-semibold mb-5">Follow us on</h3>
             <div className="flex space-x-4">
               <svg
                 width="30"

@@ -4,7 +4,7 @@ import Dashboard from "../Dashboard/dashboard";
 import Locktoken from "../MainLockTonkens/locktoken";
 import TrendingToken from "../Trendingtoken/trendingToken";
 import Footer from "../Footer/footer";
-import Header from "../Header/header";
+import Header from "../UserDisconnectedNavbar/header";
 import Leaderboard from "../Leaderboard/Leaderboard";
 import { Coinreward } from "../Coinreward/Coinreward";
 import { useSelector } from "react-redux";
@@ -29,7 +29,7 @@ const ShowWalletDisconnected = () => {
   return (
     <div>
       <div className="main-Bg">
-        <Header />
+        <Header/>
         <div className="w-full text-center text-white mt-4 h-auto">
           <h1 className="font-bold text-4xl mt-16">Buff OP_CAT</h1>
           <p className="mt-2 text-base">Lock your token and earn reward</p>

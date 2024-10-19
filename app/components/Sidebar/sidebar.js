@@ -1,10 +1,11 @@
 'use client'
 import React, { useState, useRef } from 'react'
 import './sidebar.css'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Sidebar = () => {
-
-    let [activeSection, setactiveSection] = useState('userActivity')
+    const activePage = usePathname()
     let [navOpen, setnavOpen] = useState(true)
     let sideBar = useRef()
     let sideBarNavs = useRef()
@@ -22,13 +23,13 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div className='w-[300px] h-full bg-[#31231F] sideBar z-[999]' ref={sideBar}>
+            <div className='h-full bg-[#31231F] sideBar z-[999]' ref={sideBar}>
 
-                {navOpen == true ? <button className='sideNav text-white' onClick={showsideNav}>
+                {navOpen == true ? <button className='sideNavbtn text-white' onClick={showsideNav}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                     </svg>
-                </button> : <button className='sideNav text-white' onClick={showsideNav}>
+                </button> : <button className='sideNavbtn text-white' onClick={showsideNav}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
                     </svg>
@@ -40,8 +41,8 @@ const Sidebar = () => {
                 </div>
 
                 <ol className='text-white flex flex-col justify-center font-medium text-[1.2em] mt-10 sideBarNavs  cursor-pointer' ref={sideBarNavs}>
-                    <li className={activeSection == 'userActivity' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'}>User Activity</li>
-                    <li className='py-3 pl-12'>Point System</li>
+                    <li className={activePage == '/' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'}><Link href='/'>User Activity</Link></li>
+                    <li className={activePage == '/Pointsystem' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'}><Link href={'./Pointsystem'}>Point System</Link></li>
                     <li className='py-3 pl-12'>Fee Structure</li>
                     <li className='py-3 pl-12'>CEXS</li>
                     <li className='py-3 pl-12'>Educational Resources</li>

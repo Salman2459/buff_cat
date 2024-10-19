@@ -1,10 +1,10 @@
 
 .sideBar{
     position: fixed;
-
+    width: 310px;
 }
 
-.sideNav{
+.sideNavbtn{
     display: none;
     color: white;
     position: absolute;
@@ -12,8 +12,8 @@
     top: 25px;
 }
 
-@media screen and (max-width:1280px) {
-    .sideNav{
+@media screen and (min-width:400px) and (max-width:1280px) {
+    .sideNavbtn{
         display: block;
     }
 
@@ -31,6 +31,28 @@
         left: 0;
     }
 
+    .responsiveSideBarNav{
+        display: block;
+    }
+}
+
+@media screen and (max-width:400px)  {
+    
+    .sideNavbtn{
+        display: block;
+        right: 0px;
+    }
+    .sideBar{
+        left: -270px;
+        transition: .3s linear;
+    }
+
+    .sideBarNavs{
+        display: none;
+    }
+    .responsiveSideBar{
+        left: 0;
+    }
     .responsiveSideBarNav{
         display: block;
     }

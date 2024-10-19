@@ -1,13 +1,10 @@
 import React from 'react'
-import Sidebar from '../Sidebar/sidebar'
-import RightBar from '../rightBar/rightBar'
+// import Sidebar from '../Sidebar/sidebar'
+import Rightbar from '../DashboardNavbar/rightbar'
 
 const Userconnected = () => {
   return (
-    <div className='flex w-[100%] '>
-      <Sidebar className='flex text-black'/>
-      <RightBar/>
-    </div>
+      <Rightbar/>
   )
 }
 
