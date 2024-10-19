@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Dashboard from "../Dashboard/dashboard";
+import Dashboard from "../DashboardSection/dashboard";
 import Locktoken from "../MainLockTonkens/locktoken";
 import TrendingToken from "../Trendingtoken/trendingToken";
 import Footer from "../Footer/footer";

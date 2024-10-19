@@ -37,7 +37,7 @@ const ShowNavbar = () => {
             <div className="flex flex-col lg:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]">
 
                 {/* Search Bar */}
-                <div className="relative flex items-center w-[80%] m-auto lg:m-0 lg:w-auto mb-4 lg:mb-0 bg-blue-600">
+                <div className="relative flex items-center w-[80%] m-auto lg:m-0 lg:w-auto mb-4 lg:mb-0 bg-blue-600 ">
                     <input
                         type="text"
                         className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] ml-[60px] bg-[#1A0B06] text-white"
