@@ -1,55 +1,71 @@
 'use client'
 import React, { useState, useRef } from 'react'
 import './sidebar.css'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 const Sidebar = () => {
     const activePage = usePathname()
     let [navOpen, setnavOpen] = useState(true)
     let sideBar = useRef()
-    let sideBarNavs = useRef()
+    let sideBarData = useRef()
+    let respBtn = useRef()
 
     function showsideNav() {
-        sideBar.current.classList.toggle('responsiveSideBar')
-        sideBarNavs.current.classList.toggle('responsiveSideBarNav')
-
-        if (navOpen) {
-            setnavOpen(false)
+        sideBar?.current?.classList.toggle('responsiveSideBar')
+        if (respBtn?.current?.classList.contains('sideNavbtn')) {
+            respBtn?.current?.classList.add('openSideNavbtn')
+            respBtn?.current?.classList.remove('sideNavbtn')
         } else {
-            setnavOpen(true)
+            setTimeout(() => {
+                respBtn?.current?.classList.remove('openSideNavbtn')
+                respBtn?.current?.classList.add('sideNavbtn')
+            }, 200);
         }
+        if (!navOpen) {
+            setnavOpen(true)
+            sideBarData?.current?.classList.toggle('responsiveSideBarNav')
+            return;
+        }
+        setnavOpen(false)
+        setTimeout(() => {
+            sideBarData?.current?.classList.toggle('responsiveSideBarNav')
+        }, 200);
     }
-
     return (
-        <div>
-            <div className='h-full bg-[#31231F] sideBar z-[999]' ref={sideBar}>
+        <>
+            <div className='h-full bg-[#31231F] sideBar z-[999] relative' ref={sideBar}>
+                {navOpen === true ? (
+                    <button className='sideNavbtn text-white' ref={respBtn} onClick={showsideNav}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </button>
+                ) : (
+                    <button className='sideNavbtn text-white' ref={respBtn} onClick={showsideNav}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                        </svg>
+                    </button>
+                )}
 
-                {navOpen == true ? <button className='sideNavbtn text-white' onClick={showsideNav}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                </button> : <button className='sideNavbtn text-white' onClick={showsideNav}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                    </svg>
-                </button>}
+                <div className='smallSidebar' ref={sideBarData}>
+                    <div className='flex items-center pr-5'>
+                        <img src='/mainLogo.png' className='w-[50px] h-[50px] ml-12  mt-5' />
+                        <h1 className='text-white ml-2 mt-5 font-bold text-[1.1em]'>Buff OP_CAT</h1>
+                    </div>
 
-                <div className='flex items-center pr-5'>
-                    <img src='./mainLogo.png' className='w-[50px] h-[50px] ml-12  mt-5' />
-                    <h1 className='text-white ml-2 mt-5 font-bold text-[1.1em]'>Buff OP_CAT</h1>
+                    <div className='text-white flex flex-col justify-center font-medium text-[1.2em] mt-10 sideBarNavs cursor-pointer'>
+                        <Link className={activePage === '/' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/">User Activity</Link>
+                        <Link className={activePage === '/Pointsystem' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Pointsystem">Point System</Link>
+                        <Link className={activePage === '/FeeStructure' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/FeeStructure">Fee Structure</Link>
+                        <Link className={activePage.includes('/CEXS') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/CEXS">CEXS</Link>
+                        <Link className={activePage === '/EducationResorces' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/EducationResorces">Educational Resources</Link>
+                        <Link className={activePage.includes('/VSTab') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/VSTab">VS Tab</Link>
+                    </div>
                 </div>
-
-                <ol className='text-white flex flex-col justify-center font-medium text-[1.2em] mt-10 sideBarNavs  cursor-pointer' ref={sideBarNavs}>
-                    <li className={activePage == '/' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'}><Link href='/'>User Activity</Link></li>
-                    <li className={activePage == '/Pointsystem' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'}><Link href={'./Pointsystem'}>Point System</Link></li>
-                    <li className='py-3 pl-12'>Fee Structure</li>
-                    <li className='py-3 pl-12'>CEXS</li>
-                    <li className='py-3 pl-12'>Educational Resources</li>
-                    <li className='py-3 pl-12'>VS Tab</li>
-                </ol>
             </div>
-        </div>
+        </>
     )
 }
 

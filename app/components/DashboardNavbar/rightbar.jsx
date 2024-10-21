@@ -5,16 +5,16 @@ import Navbar from '../UserConnectedNavbar/Navbar';
 
 
 
-const Rightbar = () => {
+const DashBoardPage = () => {
 
 
   return (
     <div>
       <div className='flex w-[100%] '>
         <Sidebar className='flex text-black' />
-        <div className="w-full xl:w-[82%] absolute right-0">
+        <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
           <Navbar />
-          <div className='bg-[#170A05] min-h-[100vh] w-full pt-6'>
+          <div className='bg-[#170A05] min-h-[100vh] w-full pt-6 '>
             <UserActivityNavigation />
           </div>
         </div>
@@ -23,4 +23,4 @@ const Rightbar = () => {
   );
 };
 
-export default Rightbar;
+export default DashBoardPage;

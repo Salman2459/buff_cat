@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import LockToken from "../LockToken/locktoken";
-import Partialunlock from "../Partialunlock/partialunlock";
+import LockToken from "../LockToken Section/locktoken";
+import Partialunlock from "../Partialunlock Section/partialunlock";
 
 const Locktoken = () => {
   let [localtoken, setlocaltoken] = useState("localtoken");

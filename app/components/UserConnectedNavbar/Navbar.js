@@ -34,13 +34,13 @@ const ShowNavbar = () => {
 
     return (
         <div className='  w-full'>
-            <div className="flex flex-col lg:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%]">
+            <div className="flex flex-col lg:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%] border-b-[2px] border-[#AEAEAE]">
 
                 {/* Search Bar */}
-                <div className="relative flex items-center w-[80%] m-auto lg:m-0 lg:w-auto mb-4 lg:mb-0 bg-blue-600 ">
+                <div className="relative flex items-center w-[80%] m-auto lg:m-0 lg:w-auto mb-4 lg:mb-0  ">
                     <input
                         type="text"
-                        className="grow pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] ml-[60px] bg-[#1A0B06] text-white"
+                        className="grow pl-4 pr-10 py-2 m-auto border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] bg-[#1A0B06] text-white lg:ml-[30px] xl:ml-[60px]"
                         placeholder="Search here"
                     />
                     <svg
@@ -62,28 +62,28 @@ const ShowNavbar = () => {
                 <div className="w-full lg:w-[430px] lg:flex items-center space-x-4 flex-col lg:flex-row">
                     {/* Social Media Icons */}
                     <div className="flex space-x-2 justify-center w-[70%] m-auto lg:w-full">
-                        <img src="./facebook.png" alt="Facebook" className="w-[40px] h-[40px] cursor-pointer ml-5" />
-                        <img src="./youtube.png" alt="YouTube" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
-                        <img src="./x.png" alt="X" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
-                        <img src="./teligran.png" alt="Telegram" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
+                        <img src="/facebook.png" alt="Facebook" className="w-[40px] h-[40px] cursor-pointer ml-5" />
+                        <img src="/youtube.png" alt="YouTube" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
+                        <img src="/x.png" alt="X" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
+                        <img src="/teligran.png" alt="Telegram" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
                     </div>
 
                     {/* Notification, Help, and Logout Button */}
                     <div className='flex '>
                         <div className="flex items-center space-x-4  w-full justify-center lg:justify-normal">
                             <div className="relative p-3 flex ">
-                                <img className="w-[30px] h-[30px] min-w-[30px]" src="./notificaation.png" alt="Notification" />
+                                <img className="w-[30px] h-[30px] min-w-[30px]" src="/notificaation.png" alt="Notification" />
 
                                 {/* Notification Badge */}
                                 <div className="absolute top-0 right-0 bg-[#D9D9D9] text-[#000] text-xs rounded-full w-6 h-6 flex items-center justify-center">
                                     99+
                                 </div>
                             </div>
-                            <img className="w-[30px] h-[30px]" src="./question.png" alt="Help" />
+                            <img className="w-[30px] h-[30px]" src="/question.png" alt="Help" />
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button onClick={() => open()} className="ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[130px] lg:h-[50px] rounded-lg text-white text-lg font-semibold px-4 py-2">
+                        <button onClick={() => open()} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[130px] lg:h-[50px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
                             Logout
                         </button>
                     </div>

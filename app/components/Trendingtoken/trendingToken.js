@@ -88,7 +88,7 @@ const TrendingToken = () => {
           TRENDING TOKEN
         </h1>
 
-        <div className="overflow-x-auto mt-10 max-h-[350px] tableScroler ">
+        <div className="overflow-auto mt-10 max-h-[350px] tableScroler ">
           <table className="min-w-full  bg-brown-800 text-white">
             <thead>
               <tr className="bg-gradient-to-r from-[#F3933F] to-[#F3933F] rounded-s-md  ">

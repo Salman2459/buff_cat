@@ -62,11 +62,11 @@ const PartialUnlocksTable = () => {
         <table className="w-full bg-[#0C0507]">
           <thead className="bg-[#31231F] h-[70px]">
             <tr className="text-center border-b border-gray-700">
-              <th className="py-2 px-4 text-[19px] font-bold">Name</th>
-              <th className="py-2 px-4 text-[19px] font-bold">Amount Unlocked</th>
-              <th className="py-2 px-4 text-[19px] font-bold">Unlock Date</th>
-              <th className="py-2 px-4 text-[19px] font-bold">Remaining Locked Amount</th>
-              <th className="py-2 px-4 text-[19px] font-bold">Penalty Fee (if early unlock)</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Name</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Amount Unlocked</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Unlock Date</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Remaining Locked Amount</th>
+              <th className="py-2 px-4 text-[14px] font-bold">Penalty Fee (if early unlock)</th>
             </tr>
           </thead>
           <tbody>
@@ -74,14 +74,14 @@ const PartialUnlocksTable = () => {
               <tr key={index} className="border-b border-gray-800 text-center">
                 <td className="py-2 px-4 flex items-center">
                   <div className="w-4 h-4 rounded-full mr-2">
-                    <img className="w-[25px] h-[25px] " src="./eth.png" alt="ETH" />
+                    <img className="w-[20px] h-[20px] " src="./eth.png" alt="ETH" />
                   </div>
                   {item.name}
                 </td>
-                <td className="py-2 px-4 Jost text-[19px] font-medium">{item.amountUnlocked}</td>
-                <td className="py-2 px-4 Jost text-[19px] font-medium">{item.unlockDate}</td>
-                <td className="py-2 px-4 Jost text-[19px] font-medium">{item.remainingLockedAmount}</td>
-                <td className="py-2 px-4 Jost text-[19px] font-medium">{item.penaltyFee}</td>
+                <td className="py-2 px-4 Jost text-[14px] font-medium">{item.amountUnlocked}</td>
+                <td className="py-2 px-4 Jost text-[14px] font-medium">{item.unlockDate}</td>
+                <td className="py-2 px-4 Jost text-[14px] font-medium">{item.remainingLockedAmount}</td>
+                <td className="py-2 px-4 Jost text-[14px] font-medium">{item.penaltyFee}</td>
               </tr>
             ))}
           </tbody>

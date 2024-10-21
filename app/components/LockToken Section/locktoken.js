@@ -62,7 +62,7 @@ const LockToken = () => {
   return (
     <div>
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
-        <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.8em] ">
+        <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
           LOCK TOKEN
         </h1>
 
@@ -70,7 +70,7 @@ const LockToken = () => {
           <div className="relative flex ">
             <input
               type="text"
-              className="w-full bg-[#F3933F30] rounded-3xl h-[50px] px-4"
+              className="w-full bg-[#F3933F30] rounded-3xl h-[50px] px-4 text-[.7em] sm:text-[1em]"
               placeholder="Enter Smart Contract Address"
             />
             <button className="absolute right-5 top-3 text-white text-[1.1em]">
@@ -94,9 +94,9 @@ const LockToken = () => {
           <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Token</h1>
 
           <div className="flex flex-wrap justify-center md:justify-between">
-            {tokenBtn.map((item) => {
+            {tokenBtn.map((item ,index) => {
               return (
-                <button className="text-white text-[1.1em] w-[175px] h-[55px] bg-[#F3933F45] rounded-lg font-semibold flex items-center justify-center mt-4 ml-3 mr-3">
+                <button key={index} className="text-white text-[1.1em] w-[175px] h-[55px] bg-[#F3933F45] rounded-lg font-semibold flex items-center justify-center mt-4 ml-3 mr-3">
                   <img src={item.img} alt="" width={30} height={30} />
                   <p className="ml-3">{item.name}</p>
                 </button>
@@ -188,11 +188,12 @@ const LockToken = () => {
       </div>
 
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
-        <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.8em] ">
+        <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
           WITHDRAW TOKEN
         </h1>
-        <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide">
-          <p className="text-white text-[.8em]">Token</p>
+        <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide items-center">
+
+          <p className="text-white text-[1em]">Token</p>
           <div className="absolute right-0 text-white text-[1.1em] font-bold">
             <div className="flex items-center  py-3 cursor-pointer hover:bg-black hover:text-white transition-colors">
               <img src="./eth.png" alt="ETH" className="w-6 h-6 mr-3 " />
@@ -201,15 +202,15 @@ const LockToken = () => {
           </div>
         </div>
 
-        <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide">
-          <p className="text-white text-[.8em]">Lock Duration</p>
+        <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide items-center">
+          <p className="text-white text-[1em]">Lock Duration</p>
           <p className="absolute right-0 text-white text-[1.1em] font-bold">
             $345.67
           </p>
         </div>
 
-        <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide">
-          <p className="text-white text-[.8em]">Withdraw Fee</p>
+        <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide items-center">
+          <p className="text-white text-[1em]">Withdraw Fee</p>
           <p className="absolute right-0 text-white text-[1.1em] font-bold">
             2% to 10% fee
           </p>

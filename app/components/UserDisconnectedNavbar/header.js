@@ -25,10 +25,8 @@ const ShowHeader = () => {
   let dispatch = useDispatch()
 
   useEffect(()=>{
-    if (address) {
-      dispatch(userAddress(address))
-    }
-
+      dispatch(userAddress(address || ""))
+      
   },[address])
 
   let navigationTABS = useSelector((store) => {
@@ -68,7 +66,7 @@ const ShowHeader = () => {
               width="35"
               height="35"
               fill="currentColor"
-              class="bi bi-list"
+              className="bi bi-list"
               viewBox="0 0 16 16"
             >
               <path
@@ -82,7 +80,7 @@ const ShowHeader = () => {
               width="35"
               height="35"
               fill="currentColor"
-              class="bi bi-x-lg"
+              className="bi bi-x-lg"
               viewBox="0 0 16 16"
             >
               <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
@@ -150,7 +148,7 @@ const ShowHeader = () => {
                 Trending Tokens
               </Link>
             </li>
-            <li className=" lg:flex h-full items-center justify-center">
+            <li className=" xl:flex h-full items-center justify-center">
               <div className="flex svg-box">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

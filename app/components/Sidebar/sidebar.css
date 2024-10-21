@@ -1,59 +1,77 @@
-
-.sideBar{
+.sideBar {
     position: fixed;
-    width: 310px;
+    width: 25%;
 }
 
-.sideNavbtn{
+.sideNavbtn {
     display: none;
     color: white;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+
+.openSideNavbtn {
+    display: block;
+    color: white;
+    position: absolute;
     right: 10px;
-    top: 25px;
+    top: 10px;
 }
 
-@media screen and (min-width:400px) and (max-width:1280px) {
-    .sideNavbtn{
+
+
+@media screen and (min-width:640px) and (max-width:1280px) {
+    .sideNavbtn {
         display: block;
     }
 
-    .sideBar{
-        position: fixed;
-        left: -250px;
+    .openSideNavbtn{
+        display: block;
+    }
+
+    .sideBar {
+        width: 5%;
         transition: .3s linear;
     }
 
-    .sideBarNavs{
+    .smallSidebar {
         display: none;
     }
 
-    .responsiveSideBar{
-        left: 0;
+    .responsiveSideBar {
+        width: 50%;
     }
 
-    .responsiveSideBarNav{
+    .responsiveSideBarNav {
         display: block;
     }
 }
 
-@media screen and (max-width:400px)  {
-    
-    .sideNavbtn{
+@media screen and (max-width:640px) {
+    .sideNavbtn {
         display: block;
-        right: 0px;
     }
-    .sideBar{
-        left: -270px;
+
+    .openSideNavbtn{
+        display: block;
+    }
+
+    .sideBar {
+        width: 10%;
         transition: .3s linear;
     }
 
-    .sideBarNavs{
+    .smallSidebar {
         display: none;
     }
-    .responsiveSideBar{
-        left: 0;
+
+    .responsiveSideBar {
+        width: 100%;
     }
-    .responsiveSideBarNav{
+
+    .responsiveSideBarNav {
         display: block;
     }
 }
