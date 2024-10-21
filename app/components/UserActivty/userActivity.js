@@ -25,7 +25,7 @@ const UserActivityNavigation = () => {
 
 
     useEffect(()=>{
-      if (address.length < 20) {
+      if (address) {
         route.push('/')
       }
     },[address])
