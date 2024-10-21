@@ -26,7 +26,7 @@ const ShowHeader = () => {
 
   useEffect(()=>{
       dispatch(userAddress(address || ""))
-      
+
   },[address])
 
   let navigationTABS = useSelector((store) => {
@@ -51,7 +51,7 @@ const ShowHeader = () => {
         {/* Navbar Section 1  */}
         <section className="flex items-center w-full h-full lg:w-[25%] ">
           <img
-            src="./mainlogo.png"
+            src="/mainlogo.png"
             alt="Logo"
             className="w-8 h-8 ml-4 md:w-12 md:h-12 md:ml-7"
           />
