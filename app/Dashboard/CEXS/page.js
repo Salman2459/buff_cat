@@ -1,6 +1,4 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar/sidebar'
-import Navbar from '../components/UserConnectedNavbar/Navbar'
 import Link from 'next/link'
 
 
@@ -35,7 +33,7 @@ let tokenDetail = [
 const CEXSCoin = ({ name, img, desc }) => {
 
     return <div>
-        <Link href={'/CEXSdata'}>
+        <Link href={'/Dashboard/CEXSdata'}>
             <div className='cursor-pointer  w-full sm:w-[450px] min-h-[70px] bg-[#251914] sm:ml-5 sm:mr-5 sm:flex items-center text-white px-3 relative mt-5 sm:mt-10 py-4 sm:py-0 border-l-2 border-[#F3933F]'>
                 <div className='flex items-center justify-center sm:justify-normal'>
                     <img src={img} alt="" className='w-[30px] h-[30px] ' />
@@ -49,22 +47,14 @@ const CEXSCoin = ({ name, img, desc }) => {
 
 const CEXS = () => {
     return (
-        <div>
-            <div className='flex w-[100%] '>
-                <Sidebar className='flex text-black' />
-                <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
-                    <Navbar />
-                    <div className='bg-[#170A05] min-h-[100vh] w-full pt-6 '>
-                        <div>
-                            <div className='flex flex-wrap justify-around xl:justify-normal'>
-                                {
-                                    tokenDetail.map((data,index) => {
-                                        return <CEXSCoin key={index} name={data.name} img={data.img} desc={data.desc} />
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </div>
+        <div className='bg-[#170A05] min-h-[100vh] w-full pt-6 '>
+            <div>
+                <div className='flex flex-wrap justify-around xl:justify-normal'>
+                    {
+                        tokenDetail.map((data, index) => {
+                            return <CEXSCoin key={index} name={data.name} img={data.img} desc={data.desc} />
+                        })
+                    }
                 </div>
             </div>
         </div>

@@ -34,7 +34,7 @@ const Sidebar = () => {
     }
     return (
         <>
-            <div className='h-full bg-[#31231F] sideBar z-[999] relative' ref={sideBar}>
+            <div className='h-[100vh] fixed  bg-[#31231F] sideBar z-[999]' ref={sideBar}>
                 {navOpen === true ? (
                     <button className='sideNavbtn text-white' ref={respBtn} onClick={showsideNav}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
@@ -55,13 +55,13 @@ const Sidebar = () => {
                         <h1 className='text-white ml-2 mt-5 font-bold text-[1.1em]'>Buff OP_CAT</h1>
                     </div>
 
-                    <div className='text-white flex flex-col justify-center font-medium text-[1.2em] mt-10 sideBarNavs cursor-pointer'>
-                        <Link className={activePage === '/' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/">User Activity</Link>
-                        <Link className={activePage === '/Pointsystem' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Pointsystem">Point System</Link>
-                        <Link className={activePage === '/FeeStructure' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/FeeStructure">Fee Structure</Link>
-                        <Link className={activePage.includes('/CEXS') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/CEXS">CEXS</Link>
-                        <Link className={activePage === '/EducationResorces' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/EducationResorces">Educational Resources</Link>
-                        <Link className={activePage.includes('/VSTab') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/VSTab">VS Tab</Link>
+                    <div className='text-white flex flex-col justify-center font-medium text-[1em] mt-10 sideBarNavs cursor-pointer'>
+                        <Link className={activePage === '/Dashboard' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard">User Activity</Link>
+                        <Link className={activePage === '/Dashboard/Pointsystem' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard/Pointsystem">Point System</Link>
+                        <Link className={activePage === '/Dashboard/FeeStructure' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard/FeeStructure">Fee Structure</Link>
+                        <Link className={activePage.includes('/Dashboard/CEXS') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard/CEXS">CEXS</Link>
+                        <Link className={activePage === '/Dashboard/EducationResorces' ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard/EducationResorces">Educational Resources</Link>
+                        <Link className={activePage.includes('/Dashboard/VSTab') ? 'py-3 pl-12 border-r-[6px] border-[#F3933F]  bg-[#1A0B06]' : 'py-3 pl-12'} href="/Dashboard/VSTab">VS Tab</Link>
                     </div>
                 </div>
             </div>

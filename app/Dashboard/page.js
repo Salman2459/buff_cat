@@ -1,11 +1,10 @@
-'use client'
 import React from 'react'
-import DashBoardPage from '../components/DashboardNavbar/rightbar'
+import UserActivityNavigation from '../components/UserActivty/userActivity'
 
-const Dashboard = () => {
+const Home = () => {
   return (
-      <DashBoardPage/>
+      <UserActivityNavigation/>
   )
 }
 
-export default Dashboard
+export default Home

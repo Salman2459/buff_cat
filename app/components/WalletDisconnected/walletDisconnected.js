@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+'use client'
+import React,{useEffect} from "react";
 import Dashboard from "../Dashboard Section/dashboard";
 import Locktoken from "../MainLockTonkens/locktoken";
 import TrendingToken from "../Trendingtoken/trendingToken";
@@ -11,6 +12,8 @@ import { Provider } from "react-redux";
 import buffCatStore from "@/store/store";
 import { tabChanger } from "@/store/storeSlice";
 import { useDispatch } from "react-redux";
+import { useAccount } from "wagmi";
+import { useRouter } from "next/navigation";
 
 
 const WalletDisconnected = () => {
@@ -21,9 +24,20 @@ const WalletDisconnected = () => {
 
 const ShowWalletDisconnected = () => {
   let dispatch = useDispatch()
+  let {address} = useAccount()
   let navigationTABS = useSelector((store) => {
     return store.whichTab
   })
+  let route = useRouter()
+
+  useEffect(()=>{
+    if (address.length > 20) {
+      route.push('/Dashboard')
+    }else{
+      route.push('/')
+    }
+  },[address])
+
 
   return (
     <div>

@@ -1,6 +1,5 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar/sidebar'
-import Navbar from '../components/UserConnectedNavbar/Navbar'
+
 
 const CexData = () => {
     const data = {
@@ -41,10 +40,6 @@ const CexData = () => {
         ],
       };
     return (
-        <div className='flex w-[100%] '>
-            <Sidebar className='flex text-black' />
-            <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
-                <Navbar />
                 <div className='bg-[#170A05] min-h-[100vh] w-full'>
                     <div className='w-[280px] sm:w-[450px] m-auto relative pt-10 flex justify-center items-center'>
                         {/* =============================== */}
@@ -103,21 +98,21 @@ const CexData = () => {
                             <table className="w-full md:w-[700px] bg-[#0C0507] m-auto">
                                 <thead className="bg-[#31231F] h-[70px]">
                                     <tr className=" border-b border-gray-700 text-center">
-                                        <th className="py-2 px-4 text-[16px] sm:text-[19px] font-bold rounded-tl-[10px] rounded-tr-[0px]">Exchanges</th>
-                                        <th className="py-2 px-4 text-[16px] sm:text-[19px] font-bold">Liquidity Locked (in token)</th>
-                                        <th className="py-2 px-4 text-[16px] sm:text-[19px] font-bold rounded-tl-[0px] rounded-tr-[10px]">Percentage of Total Supply</th>
+                                        <th className="py-2 px-4 text-[14px] sm:text-[19px] font-bold rounded-tl-[10px] rounded-tr-[0px]">Exchanges</th>
+                                        <th className="py-2 px-4 text-[14px] sm:text-[19px] font-bold">Liquidity Locked (in token)</th>
+                                        <th className="py-2 px-4 text-[14px] sm:text-[19px] font-bold rounded-tl-[0px] rounded-tr-[10px]">Percentage of Total Supply</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {data.partialUnlocks.map((item, index) => (
                                         <tr key={index} className="border-b border-gray-800 h-[60px] text-center">
-                                            <td className="py-2 px-4 flex items-center ">
+                                            <td className="py-2 px-4 flex items-center  text-[12px] sm:text-[17px]">
                                                 <img src={item.img} alt="" />
                                                 <p className='ml-2'>{item.DepositAmount}</p>
                                             </td>
-                                            <td className="py-2 px-4 Jost text-[17px] font-medium text-center">{item.Fee}</td>
-                                            <td className="py-2 px-4 Jost text-[17px] font-medium text-center">{item.MinimumFee}</td>
+                                            <td className="py-2 px-4 Jost text-[12px] sm:text-[17px] font-medium text-center">{item.Fee}</td>
+                                            <td className="py-2 px-4 Jost text-[12px] sm:text-[17px] font-medium text-center">{item.MinimumFee}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -126,8 +121,7 @@ const CexData = () => {
                     </div>
                     
                 </div>
-            </div>
-        </div>
+
     )
 }
 

@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { Provider } from 'react-redux';
 import { tabChanger, userAddress } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
-import { useAccount } from 'wagmi';
 
 
 const Header = () => {
@@ -19,15 +18,10 @@ const Header = () => {
 
 const ShowHeader = () => {
   const { open } = useAppKit()
-  let {address} = useAccount()
   let navbar = useRef();
   let [navopen,setnavopen] = useState(false)
   let dispatch = useDispatch()
 
-  useEffect(()=>{
-      dispatch(userAddress(address || ""))
-
-  },[address])
 
   let navigationTABS = useSelector((store) => {
     return store.whichTab
@@ -97,8 +91,8 @@ const ShowHeader = () => {
                 href={"/"}
                 className={
                   navigationTABS == "Dashboard"
-                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
-                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                    ? "active-navLink  lg:text-[.8em] xl:text-[1em]"
+                    : "navLink lg:text-[.8em] xl:text-[1em]"
                 }
               >
                 Dashboard
@@ -109,8 +103,8 @@ const ShowHeader = () => {
                 href={"/"}
                 className={
                   navigationTABS == "Localtoken"
-                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
-                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                    ? "active-navLink lg:text-[.8em] xl:text-[1em]"
+                    : "navLink lg:text-[.8em] xl:text-[1em]"
                 }              >
                 Locks Token
               </Link>
@@ -120,8 +114,8 @@ const ShowHeader = () => {
                 href={"/"}
                 className={
                   navigationTABS == "CoinReward"
-                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
-                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                    ? "active-navLink lg:text-[.8em] xl:text-[1em]"
+                    : "navLink lg:text-[.8em] xl:text-[1em]"
                 }              >
                 Coin Rewards
               </Link>
@@ -131,8 +125,8 @@ const ShowHeader = () => {
                 href={"/"}
                 className={
                   navigationTABS == "Leaderboard"
-                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
-                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                    ? "active-navLink lg:text-[.8em] xl:text-[1em]"
+                    : "navLink lg:text-[.8em] xl:text-[1em]"
                 }              >
                 Leaderboards
               </Link>
@@ -142,8 +136,8 @@ const ShowHeader = () => {
                 href={"/"}
                 className={
                   navigationTABS == "trendingtoken"
-                    ? "active-navLink lg:text-[0.78em] xl:text-[1em]"
-                    : "navLink lg:text-[0.78em] xl:text-[1em]"
+                    ? "active-navLink lg:text-[.8em] xl:text-[1em]"
+                    : "navLink lg:text-[.8em] xl:text-[1em]"
                 }              >
                 Trending Tokens
               </Link>

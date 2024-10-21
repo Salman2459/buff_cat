@@ -189,20 +189,16 @@ const VsTAbTAble = () => {
     };
 
     return (
-        <div className='flex w-[100%] '>
-            <Sidebar className='flex text-black' />
-            <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
-                <Navbar />
                 <div className='bg-[#170A05] min-h-[100vh] w-full pt-6 px-5 '>
-                    <div className="text-white rounded-lg mt-14 relative">
+                    <div className="text-white rounded-lg  relative">
 
-                        <h1 className='text-white font-semibold text:[28px] sm:text-[34px] Jost text-left lg:ml-10 mt-5'>Institutional Vesting Schedules</h1>
+                        <h1 className='text-white font-semibold text:[30px] sm:text-[34px] Jost text-left lg:ml-10 mt-5'>Institutional Vesting Schedules</h1>
 
                         <div className='flex flex-col lg::flex-row pt-10 pb-16'>
                             <div className="relative flex items-center w-[80%]  lg:w-80 m-auto lg:m-0">
                                 <input
                                     type="text"
-                                    className=" pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full lg::w-[300px] bg-[#1A0B06] text-white m-auto lg:ml-10 "
+                                    className=" pl-4 pr-10 py-2 border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] bg-[#1A0B06] text-white m-auto lg:ml-10 "
                                     placeholder="Search for institutional investors or tokens."
                                 />
                                 <svg
@@ -219,7 +215,7 @@ const VsTAbTAble = () => {
                                     />
                                 </svg>
                             </div>
-                            <div className=' flex flex-col sm:flex-row  items-center sm:justify-around lg:justify-normal lg:absolute right-10 mt-10 lg:mt-0'>
+                            <div className=' flex flex-wrap flex-row  items-center justify-around lg:justify-normal lg:absolute right-10 mt-10 lg:mt-0'>
                                 <select className='w-[130px] h-[45px] bg-[#31231F] rounded-full px-3 border border-[#FFFFFF59] outline-none lg:mr-8 mt-5 sm:mt-0'>
                                     <option disabled selected>Date</option>
                                     <option>1 Nov</option>
@@ -280,8 +276,6 @@ const VsTAbTAble = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     )
 }
 

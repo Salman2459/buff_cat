@@ -1,21 +1,35 @@
-import React, { useState } from 'react'
-import LockingHistoryTable from '../DashboardNavbar/tables/LockingHistoryTable'
-import PartialUnlocksTable from '../DashboardNavbar/tables/PartialUnlocksTable'
-import DepositHistory from '../DashboardNavbar/tables/DepositHistory'
-import WithdrawalHistory from '../DashboardNavbar/tables/Withdrawhistory'
-import ClaimedRewards from '../DashboardNavbar/tables/Claimreward'
-import UnclaimedRewards from '../DashboardNavbar/tables/UnclaimReward'
+'use client'
+import React, { useState,useEffect } from 'react'
+import LockingHistoryTable from '../tables/LockingHistoryTable'
+import PartialUnlocksTable from '../tables/PartialUnlocksTable'
+import DepositHistory from '../tables/DepositHistory'
+import WithdrawalHistory from '../tables/Withdrawhistory'
+import ClaimedRewards from '../tables/Claimreward'
+import UnclaimedRewards from '../tables/UnclaimReward'
+import { useRouter } from 'next/navigation'
+import { useAccount } from 'wagmi'
 
 const ToatalDataBox = ({ values, data }) => {
-    return <div className='m-4 sm:mt-9 py-3  md:py-10 sm:pl-10'>
-        <div className='w-[180px] h-[80px] md:w-[250px] md:h-[120px] bg-[#FFFFFF0F] rounded-lg '>
-            <h1 className='text-center text-[#F3933F] text-[1.3em] md:text-[1.7em] font-semibold relative top-3 md:top-5 '>{values}</h1>
-            <h1 className='text-center mt-4 text-[1em] md:text-[1.6em] font-bold text-white'>{data}</h1>
+    return <div className='m-4 sm:mt-9 py-3  md:py-7 sm:pl-10'>
+        <div className='w-[180px] h-[80px] md:w-[200px] md:h-[90px] bg-[#FFFFFF0F] rounded-lg '>
+            <h1 className='text-center text-[#F3933F] text-[1.2em] md:text-[1.3em] font-semibold relative top-3 '>{values}</h1>
+            <h1 className='text-center mt-4 text-[1em] md:text-[1.qem] font-bold text-white'>{data}</h1>
         </div>
     </div>
 }
 
 const UserActivityNavigation = () => {
+
+    let route = useRouter()
+    let {address} = useAccount()
+
+
+    useEffect(()=>{
+      if (address.length < 20) {
+        route.push('/')
+      }
+    },[address])
+
     let [activatedTab, setactivatedTab] = useState('lockingActivity')
 
     return (

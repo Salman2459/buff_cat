@@ -40,7 +40,7 @@ const ShowNavbar = () => {
                 <div className="relative flex items-center w-[80%] m-auto lg:m-0 lg:w-auto mb-4 lg:mb-0  ">
                     <input
                         type="text"
-                        className="grow pl-4 pr-10 py-2 m-auto border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] bg-[#1A0B06] text-white lg:ml-[30px] xl:ml-[60px]"
+                        className="grow pl-4 pr-10 py-2 m-auto border border-[#7E7E7E] rounded-full focus:outline-none w-full lg:w-[300px] bg-[#1A0B06] text-white lg:ml-[10px] xl:ml-[20px]"
                         placeholder="Search here"
                     />
                     <svg
@@ -83,7 +83,7 @@ const ShowNavbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button onClick={() => open()} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[130px] lg:h-[50px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
+                        <button onClick={() => open()} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
                             Logout
                         </button>
                     </div>

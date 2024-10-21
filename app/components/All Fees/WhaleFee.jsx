@@ -57,8 +57,8 @@ const WhaleFees = () => {
         </table>
       </div>
     </div>
-    <div className="flex font-[16px] gap-2 mt-8 jost">
-        <img className='w-[24px] h-[24px]' src="./info.png" alt=""  />
+    <div className="flex text-[13px] sm:font-[16px] gap-2 mt-8 jost">
+        <img className='w-[24px] h-[24px]' src="/info.png" alt=""  />
         <p className='text-white'>
         Only up to 1% of the total liquidity can be unlocked daily.
          </p>

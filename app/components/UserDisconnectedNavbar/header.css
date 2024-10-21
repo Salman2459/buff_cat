@@ -25,8 +25,10 @@
     color: white;
     font-family:  "Jost", sans-serif;
     font-weight: 500;
-    font-size: 1em;
+    font-size: .8em;
 }
+
+
 
 .active-navLink{
     color: rgba(239, 203, 151, 1);
