@@ -31,7 +31,7 @@ const ShowWalletDisconnected = () => {
   let route = useRouter()
 
   useEffect(()=>{
-    if (address.length > 20) {
+    if (address ) {
       route.push('/Dashboard')
     }else{
       route.push('/')
