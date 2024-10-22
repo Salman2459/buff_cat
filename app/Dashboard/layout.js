@@ -1,6 +1,4 @@
-import { headers } from "next/headers";
 import '../../app/globals.css'
-import ContextProvider from "../context/wagmiProvider";
 import Sidebar from "../components/Sidebar/sidebar";
 import Navbar from "../components/UserConnectedNavbar/Navbar";
 
@@ -13,12 +11,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-    const cookies = headers().get("cookie");
 
     return (
         <html lang="en">
             <body>
-                <ContextProvider cookies={cookies}>
                     <div className='flex w-[100%] '>
                         <Sidebar className='flex text-black' />
                         <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
@@ -29,7 +25,6 @@ export default function RootLayout({ children }) {
                         </div>
                     </div>
 
-                </ContextProvider>
             </body>
         </html>
     );
