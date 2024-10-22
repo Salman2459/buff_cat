@@ -41,7 +41,7 @@ const ShowHeader = () => {
 
   return (
     <div>
-      <nav className="navbar w-[80%] lg:w-[95%] xl:w-[85%] h-[70px] m-auto flex relative mt-[40px] " onClick={()=>console.log(address)}>
+      <nav className="navbar w-[80%] lg:w-[95%] xl:w-[85%] h-[70px] m-auto flex relative mt-[40px] ">
         {/* Navbar Section 1  */}
         <section className="flex items-center w-full h-full lg:w-[25%] ">
           <img

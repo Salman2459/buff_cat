@@ -1,36 +1,31 @@
 'use client'
-import React from 'react'
-import { useEffect } from 'react';
+import React,{useEffect} from 'react'
+
 import { useAppKit } from '@reown/appkit/react';
-import { useDispatch } from 'react-redux';
 import { useAccount } from 'wagmi';
-import { userAddress } from '@/store/storeSlice';
-import { Provider } from 'react-redux';
-import buffCatStore from '@/store/store';
+import { useRouter } from 'next/navigation';
+
+
 
 const Navbar = () => {
-    return (
-      <Provider store={buffCatStore}>
-        <ShowNavbar/>
-      </Provider>
-    );
-  };
 
-const ShowNavbar = () => {
-
+    
 
     const { open } = useAppKit();
-    const { address } = useAccount();
-
-    const dispatch = useDispatch();
+    const { isConnected } = useAccount();
+    const router = useRouter();
 
     useEffect(() => {
-        if (address) {
-            dispatch(userAddress(address));
+        if (!isConnected) {
+          router.push('/');
+          return
         } else {
-            dispatch(userAddress('some'));
+          return
         }
-    }, [address]);
+      }, [isConnected, router]);
+    
+
+
 
     return (
         <div className='  w-full'>
@@ -83,7 +78,10 @@ const ShowNavbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button onClick={() => open()} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
+                        <button onClick={() => {
+                            console.log('some')
+                            open()
+                        }} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
                             Logout
                         </button>
                     </div>
