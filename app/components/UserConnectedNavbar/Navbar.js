@@ -28,13 +28,11 @@ const ShowNavbar = () => {
     let dispatch = useDispatch()
     
     useEffect(()=>{
-        console.log(address)
-        dispatch(userAddress(address))
         if(!address){
             router.push('/')
         }
-      },[address])
-
+    },[address])
+    
     function handellogout() {
         open()
     }
