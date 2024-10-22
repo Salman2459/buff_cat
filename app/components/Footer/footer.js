@@ -1,7 +1,21 @@
+'use client'
+import buffCatStore from "@/store/store";
+import { tabChanger } from "@/store/storeSlice";
 import Link from "next/link";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 
-const Footer = () => {
+
+const Footer = () =>{
+  return <Provider store={buffCatStore}>
+    <ShowFooter/>
+  </Provider>
+}
+
+const ShowFooter = () => {
+  let dispatch = useDispatch()
+
   return (
     <div>
       <footer className="bg-gradient-to-b from-[#301B00] to-[#000000] py-8 text-white mt-10  w-full min-h-[400px] pt-[100px] pb-[50px] box-border">
@@ -24,24 +38,29 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-xl  font-semibold mb-3">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
+              <li onClick={()=> {dispatch(tabChanger('Dashboard'))}}>
                 <Link href="#" className="text-[.9em]">
                   Dashboard
                 </Link>
               </li>
-              <li>
+              <li  onClick={()=> {dispatch(tabChanger('Localtoken'))}}>
                 <Link href="#" className="text-[.9em]">
                   Lock Tokens
                 </Link>
               </li>
-              <li>
+              <li onClick={()=> {dispatch(tabChanger('CoinReward'))}}>
                 <Link href="#" className="text-[.9em]">
                   Coin Rewards
                 </Link>
               </li>
-              <li>
+              <li onClick={()=> {dispatch(tabChanger('Leaderboard'))}}>
                 <Link href="#" className="text-[.9em]">
                   Leaderboards
+                </Link>
+              </li>
+              <li onClick={()=> {dispatch(tabChanger('trendingtoken'))}}>
+                <Link href="#" className="text-[.9em]">
+                  Trending Token
                 </Link>
               </li>
             </ul>

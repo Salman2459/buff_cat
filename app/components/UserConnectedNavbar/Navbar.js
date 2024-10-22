@@ -1,9 +1,8 @@
 'use client'
-import React,{useEffect} from 'react'
+import React from 'react'
 
 import { useAppKit } from '@reown/appkit/react';
-import { useAccount } from 'wagmi';
-import { useRouter } from 'next/navigation';
+
 
 
 
@@ -12,21 +11,7 @@ const Navbar = () => {
     
 
     const { open } = useAppKit();
-    const { isConnected } = useAccount();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!isConnected) {
-          router.push('/');
-          return
-        } else {
-          return
-        }
-      }, [isConnected, router]);
-    
-
-
-
+  
     return (
         <div className='  w-full'>
             <div className="flex flex-col lg:flex-row justify-between items-center p-4 bg-[#170A05] w-[100%] border-b-[2px] border-[#AEAEAE]">
@@ -78,11 +63,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button onClick={() => {
-                            open()
-                        }} className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0">
-                            Logout
-                        </button>
+                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={() => open()}>Logout</button>
                     </div>
                 </div>
             </div>

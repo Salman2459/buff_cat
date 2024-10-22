@@ -1,12 +1,12 @@
 "use client";
 import { useAppKit } from '@reown/appkit/react';
 import Link from "next/link";
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, } from "react";
 import "./header.css";
 import buffCatStore from '@/store/store';
 import { useDispatch } from 'react-redux';
 import { Provider } from 'react-redux';
-import { tabChanger, userAddress } from '@/store/storeSlice';
+import { tabChanger,  } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
 
 

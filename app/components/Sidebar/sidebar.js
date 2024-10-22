@@ -1,8 +1,10 @@
 'use client'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef,useEffect } from 'react'
 import './sidebar.css'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useAccount } from 'wagmi'
 
 const Sidebar = () => {
     const activePage = usePathname()
@@ -32,6 +34,18 @@ const Sidebar = () => {
             sideBarData?.current?.classList.toggle('responsiveSideBarNav')
         }, 200);
     }
+
+    const { isConnected } = useAccount();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!isConnected) {
+          router.push('/');
+          return
+        } else {
+          return
+        }
+      }, [isConnected, router]);
     return (
         <>
             <div className='h-[100vh] fixed  bg-[#31231F] sideBar z-[999]' ref={sideBar}>

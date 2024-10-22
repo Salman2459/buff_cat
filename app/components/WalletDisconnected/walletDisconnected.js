@@ -11,8 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 import buffCatStore from "@/store/store";
 import { tabChanger } from "@/store/storeSlice";
-import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
+import { useAccount } from "wagmi";
 
 const WalletDisconnected = () => {
   return (

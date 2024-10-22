@@ -1,13 +1,11 @@
 'use client'
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import LockingHistoryTable from '../tables/LockingHistoryTable'
 import PartialUnlocksTable from '../tables/PartialUnlocksTable'
 import DepositHistory from '../tables/DepositHistory'
 import WithdrawalHistory from '../tables/Withdrawhistory'
 import ClaimedRewards from '../tables/Claimreward'
 import UnclaimedRewards from '../tables/UnclaimReward'
-import { useRouter } from 'next/navigation'
-import { useAccount } from 'wagmi'
 
 const ToatalDataBox = ({ values, data }) => {
     return <div className='m-4 sm:mt-9 py-3  md:py-7 sm:pl-10'>
@@ -20,15 +18,6 @@ const ToatalDataBox = ({ values, data }) => {
 
 const UserActivityNavigation = () => {
 
-    let route = useRouter()
-    let {address} = useAccount()
-
-
-    useEffect(()=>{
-      if (!address) {
-        route.push('/')
-      }
-    },[address])
 
     let [activatedTab, setactivatedTab] = useState('lockingActivity')
 
