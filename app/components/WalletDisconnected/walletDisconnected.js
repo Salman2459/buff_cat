@@ -46,7 +46,7 @@ const ShowWalletDisconnected = () => {
           <p className="mt-2 text-base">Lock your token and earn reward</p>
         </div>
         <div className="lg:w-[900px] py-5 box-border bg-[#301B00E5] m-auto rounded-lg mt-10 tableScroler2">
-          <div className="overflow-x-auto w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto">
+          <div className="overflow-x-auto w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto tableScroler2">
             <ol className="flex justify-between min-w-[500px] items-center h-full font-medium cursor-pointer text-[.8em] lg:text-[1em]">
               <li
                 className={navigationTABS === 'Dashboard' ? 'font-bold  ml-5' : ' ml-5'}
