@@ -2,34 +2,42 @@
 import React,{useEffect} from 'react'
 
 import { useAppKit } from '@reown/appkit/react';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useAccount, } from 'wagmi';
 import { useRouter } from 'next/navigation';
-
-
+import { Provider } from 'react-redux';
+import buffCatStore from '@/store/store';
+import { useSelector } from 'react-redux';
+import { userAddress } from '@/store/storeSlice';
+import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
+    return <Provider store={buffCatStore}>
+        <ShowNavbar/>
+    </Provider>
+}
 
+
+const ShowNavbar = () => {
+
+    let router = useRouter()
+    let {address} = useAccount()
+    const { open,close } = useAppKit();
+    let userAddresss = useSelector((store)=>{
+        return store.userAddresss
+    })
+    let dispatch = useDispatch()
     
-
-    const { open } = useAppKit();
-    const { isConnected } = useAccount();
-    const router = useRouter();
-    const { disconnect } = useDisconnect();
-
-    useEffect(() => {
-        if (!isConnected) {
-          router.push('/');
-          return
-        } else {
-          return
+    useEffect(()=>{
+        console.log(address)
+        dispatch(userAddress(address))
+        if(!address){
+            router.push('/')
         }
-      }, [isConnected, router]);
+      },[address])
 
-      const handleLogout = () => {
-        disconnect();       
-        // router.push('/'); 
-      };
-    
+    function handellogout() {
+        open()
+    }
 
 
 
@@ -84,7 +92,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={handleLogout}>Logout</button>
+                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={handellogout}>Logout</button>
                     </div>
                 </div>
             </div>

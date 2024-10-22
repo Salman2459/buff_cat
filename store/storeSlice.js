@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
     name:'navigationTab',
     initialState:{
         whichTab:"Dashboard",
-        userAddresss:''
+        userAddresss:'address'
     },
 
     reducers:{
@@ -14,6 +14,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
         userAddress:(oldData,newData) => {
             oldData.userAddresss = newData.payload
+            console.log(newData.payload)
         }
     }
 })

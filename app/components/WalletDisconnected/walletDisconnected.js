@@ -10,7 +10,7 @@ import { Coinreward } from "../Coinreward Section/Coinreward";
 import { useSelector, useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 import buffCatStore from "@/store/store";
-import { tabChanger } from "@/store/storeSlice";
+import { tabChanger, userAddress } from "@/store/storeSlice";
 import { useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 
@@ -23,19 +23,23 @@ const WalletDisconnected = () => {
 };
 
 const ShowWalletDisconnected = () => {
-  const { isConnected } = useAccount();
   const router = useRouter();
+  let {address} = useAccount()
   const dispatch = useDispatch();
   const navigationTABS = useSelector((store) => store.whichTab);
+  const userAddresss = useSelector((store) => store.userAddresss);
 
-  useEffect(() => {
-    if (!isConnected) {
-      router.push('/');
-      return
-    } else {
-      router.push('/Dashboard');
+
+  useEffect(()=>{
+    console.log(address)
+    dispatch(userAddress(address))
+    if(address){
+      router.push('/Dashboard')
+    }else{
+      router.push('/')
     }
-  }, [isConnected, router]);
+  },[address])
+
 
   return (
     <div>
