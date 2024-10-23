@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 
 import { useAppKit } from '@reown/appkit/react';
-import { useAccount, useDisconnect } from 'wagmi';
+import { useAccount,useDisconnect } from 'wagmi';
 import { useRouter } from 'next/navigation';
 import { Provider } from 'react-redux';
 import buffCatStore from '@/store/store';
@@ -33,9 +33,12 @@ const ShowNavbar = () => {
         }
     }, [address])
 
-
+   
     const handeLogout = () => {
-        open()
+        disconnect()
+        setTimeout(() => {
+            location.reload()
+        }, 1000);
     }
 
 
