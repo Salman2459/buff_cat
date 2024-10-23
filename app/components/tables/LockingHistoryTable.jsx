@@ -85,10 +85,10 @@ const LockingHistoryTable = () => {
           </thead>
           <tbody>
             {data.lockingHistory.map((item, index) => (
-              <tr key={index} className="border-b border-[#6A6A6A] text-center h-[45px] ">
-                <td className="py-2 px-4 flex items-center">
+              <tr key={index} className="border-b border-[#6A6A6A] text-center h-[45px] relative ">
+                <td className=" px-4 flex items-center absolute inset-0 m-auto">
                   <img className="w-[20px] h-[20px] mr-1" src="./eth.png" alt="ETH Logo" />
-                  <p className="Jost text-[14px] font-medium ml-3">{item.name}</p>
+                  <p className="Jost text-[14px] font-medium">{item.name}</p>
                 </td>
                 <td className="py-2 px-4 Jost text-[14px] font-medium">{item.amountLocked}</td>
                 <td className="py-2 px-4 Jost text-[14px] font-medium">{item.startDate}</td>

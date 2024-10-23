@@ -35,9 +35,9 @@ const WithdrawalHistory = () => {
           </thead>
           <tbody>
             {data.lockingHistory.map((item, index) => (
-              <tr key={index} className="border-b border-[#6A6A6A]">
-                <td className="py-2 px-4 flex items-center">
-                  <img className="w-[16px] h-[16px] mr-1" src="./eth.png" alt="ETH Logo" />
+              <tr key={index} className="border-b border-[#6A6A6A] relative">
+                <td className=" px-4 flex items-center absolute inset-0 m-auto">
+                  <img className="w-[20px] h-[20px] mr-1" src="./eth.png" alt="ETH Logo" />
                   <p className="Jost text-[14px] font-medium">{item.name}</p>
                 </td>
                 <td className="py-2 px-4 Jost text-[14px] font-medium ">{item.AmountWithdrawn}</td>

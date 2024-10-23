@@ -120,7 +120,7 @@ const LockToken = () => {
                 >
                   <path
                     strokeLinecap="round"
-                    strokeLinejoin="round"
+                    className="round"
                     d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                   />
                 </svg>

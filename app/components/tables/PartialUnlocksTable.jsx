@@ -71,12 +71,10 @@ const PartialUnlocksTable = () => {
           </thead>
           <tbody>
             {data.partialUnlocks.map((item, index) => (
-              <tr key={index} className="border-b border-gray-800 text-center">
-                <td className="py-2 px-4 flex items-center">
-                  <div className="w-4 h-4 rounded-full mr-2">
-                    <img className="w-[20px] h-[20px] " src="./eth.png" alt="ETH" />
-                  </div>
-                  {item.name}
+              <tr key={index} className="border-b border-gray-800 text-center relative">
+                <td className="py-2 px-4 flex items-center absolute inset-0 m-auto h-[45px]">
+                  <img className="w-[20px] h-[20px] mr-1" src="/eth.png" alt="ETH Logo" />
+                  <p className="Jost text-[14px] font-medium">{item.name}</p>
                 </td>
                 <td className="py-2 px-4 Jost text-[14px] font-medium">{item.amountUnlocked}</td>
                 <td className="py-2 px-4 Jost text-[14px] font-medium">{item.unlockDate}</td>

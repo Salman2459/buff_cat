@@ -1,8 +1,8 @@
 'use client'
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 import { useAppKit } from '@reown/appkit/react';
-import { useAccount, } from 'wagmi';
+import { useAccount,useDisconnect } from 'wagmi';
 import { useRouter } from 'next/navigation';
 import { Provider } from 'react-redux';
 import buffCatStore from '@/store/store';
@@ -12,29 +12,33 @@ import { useDispatch } from 'react-redux';
 
 const Navbar = () => {
     return <Provider store={buffCatStore}>
-        <ShowNavbar/>
+        <ShowNavbar />
     </Provider>
 }
 
 
 const ShowNavbar = () => {
-
+    const { disconnect } = useDisconnect()
     let router = useRouter()
-    let {address} = useAccount()
-    const { open,close } = useAppKit();
-    let userAddresss = useSelector((store)=>{
+    let { address } = useAccount()
+    const { open, close } = useAppKit();
+    let userAddresss = useSelector((store) => {
         return store.userAddresss
     })
     let dispatch = useDispatch()
-    
-    useEffect(()=>{
-        if(!address){
+
+    useEffect(() => {
+        if (!address) {
             router.push('/')
         }
-    },[address])
-    
-    function handellogout() {
-        open()
+    }, [address])
+
+   
+    const handeLogout = () => {
+        disconnect()
+        setInterval(() => {
+            location.reload()
+        }, 300);
     }
 
 
@@ -90,7 +94,7 @@ const ShowNavbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={handellogout}>Logout</button>
+                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={handeLogout}>Logout</button>
                     </div>
                 </div>
             </div>

@@ -24,21 +24,17 @@ const WalletDisconnected = () => {
 
 const ShowWalletDisconnected = () => {
   const router = useRouter();
-  let {address} = useAccount()
+  let { address } = useAccount()
   const dispatch = useDispatch();
   const navigationTABS = useSelector((store) => store.whichTab);
   const userAddresss = useSelector((store) => store.userAddresss);
 
 
-  useEffect(()=>{
-    console.log(address)
-    dispatch(userAddress(address))
-    if(address){
+  useEffect(() => {
+    if (address) {
       router.push('/Dashboard')
-    }else{
-      router.push('/')
     }
-  },[address])
+  }, [address])
 
 
   return (

@@ -97,16 +97,16 @@ const ShowFooter = () => {
                 <path
                   d="M19.4082 8.07031L4.66891 13.1724L9.77098 14.8731M19.4082 8.07031L9.77098 14.8731M19.4082 8.07031L14.873 19.9751L9.77098 14.8731"
                   stroke="white"
-                  stroke-width="2.04882"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.04882"
+                  strokeLinecap="round"
+                  className="round"
                 />
                 <path
                   d="M12.6055 23.9434C18.8674 23.9434 23.9434 18.8674 23.9434 12.6055C23.9434 6.34356 18.8674 1.26758 12.6055 1.26758C6.34356 1.26758 1.26758 6.34356 1.26758 12.6055C1.26758 18.8674 6.34356 23.9434 12.6055 23.9434Z"
                   stroke="white"
-                  stroke-width="2.04882"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.04882"
+                  strokeLinecap="round"
+                  className="round"
                 />
               </svg>
 
