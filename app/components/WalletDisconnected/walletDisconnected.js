@@ -33,6 +33,9 @@ const ShowWalletDisconnected = () => {
   useEffect(() => {
     if (address) {
       router.push('/Dashboard')
+      setTimeout(() => {
+        location.reload()
+      }, 1000);
     }
   }, [address])
 

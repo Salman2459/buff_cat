@@ -35,8 +35,7 @@ const ShowNavbar = () => {
 
 
     const handeLogout = () => {
-        disconnect()
-        location.reload()
+        open()
     }
 
 
