@@ -1,12 +1,19 @@
 import '../../app/globals.css';
 import Sidebar from "../components/Sidebar/sidebar";
 import Navbar from "../components/UserConnectedNavbar/Navbar";
+import ContextProvider from "../../app/context/wagmiProvider";
+import { headers } from "next/headers";
+
+
 
 
 export default async function DashboarLayout({ children }) {
+  const headersList = await headers();
+  const cookies =  headersList?.get("cookie") ?? "";
   return (
     <html lang="en">
       <body>
+      <ContextProvider cookies={cookies}>
         <div className='flex w-[100%]'>
           <Sidebar className='flex text-black' />
           <div className="rightbar w-[90%] sm:w-[95%] xl:w-[75%] absolute right-0">
@@ -16,6 +23,7 @@ export default async function DashboarLayout({ children }) {
             </div>
           </div>
         </div>
+        </ContextProvider>
       </body>
     </html>
   );
