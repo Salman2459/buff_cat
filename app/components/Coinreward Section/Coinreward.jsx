@@ -21,7 +21,7 @@ export const Coinreward = () => {
         <div className=' mt-6 text-center'>
         <input
               type="text"
-              className="w-[70%] bg-[#F3933F30] rounded-xl h-[50px] px-4 text-[.8em] sm:text-[1em]"
+              className="w-[70%] bg-[#F3933F30] rounded-xl h-[50px] px-4 text-[.8em] sm:text-[1em] text-white"
               placeholder="Enter Smart Contract Address"
             />
 <div className="w-[70%] mt-10 p-[2px] rounded-[8px] bg-gradient-to-r from-[#EFCB97] via-[#F3933F] to-[#F3933F] mx-auto">

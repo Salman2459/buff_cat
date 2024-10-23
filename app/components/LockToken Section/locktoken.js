@@ -70,7 +70,7 @@ const LockToken = () => {
           <div className="relative flex ">
             <input
               type="text"
-              className="w-full bg-[#F3933F30] rounded-3xl h-[50px] px-4 text-[.7em] sm:text-[1em]"
+              className="w-full bg-[#F3933F30] rounded-3xl h-[50px] px-4 text-[.7em] sm:text-[1em] text-white"
               placeholder="Enter Smart Contract Address"
             />
             <button className="absolute right-5 top-3 text-white text-[1.1em]">
