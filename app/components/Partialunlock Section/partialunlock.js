@@ -54,8 +54,7 @@ const Partialunlock = () => {
             <img src="./info.png" className="w-[24px] h-[24px] mr-3"/>
 
             <p className="text-white text-[.9em]">
-              To unlock the selected amount early, a penalty fee of [penalty
-              amount] will apply.
+              To unlock the selected amount early, a penalty fee of 15% will apply.
             </p>
           </div>
           <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold">

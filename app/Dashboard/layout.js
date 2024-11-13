@@ -9,7 +9,7 @@ import Navbar from "../components/UserConnectedNavbar/Navbar";
 export default async function DashboarLayout({ children }) {
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <div className='flex w-[100%]'>
           <Sidebar className='flex text-black' />

@@ -94,14 +94,14 @@ const LockToken = () => {
           <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Token</h1>
 
           <div className="flex flex-wrap justify-center md:justify-between">
-            {tokenBtn.map((item ,index) => {
+            {/* {tokenBtn.map((item ,index) => {
               return (
                 <button key={index} className="text-white text-[1.1em] w-[175px] h-[55px] bg-[#F3933F45] rounded-lg font-semibold flex items-center justify-center mt-4 ml-3 mr-3">
                   <img src={item.img} alt="" width={30} height={30} />
                   <p className="ml-3">{item.name}</p>
                 </button>
               );
-            })}
+            })} */}
 
             {/* slector =============>>>>>>>>>> */}
             <div className="relative">
@@ -221,7 +221,7 @@ const LockToken = () => {
         </div>
 
         <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] m-auto block text-white text-[1.1em] font-semibold h-[50px] rounded-md mt-7">
-          Withdrew Tokens
+          Withdraw Tokens
         </button>
       </div>
     </div>

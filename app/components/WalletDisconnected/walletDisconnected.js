@@ -93,7 +93,7 @@ const ShowWalletDisconnected = () => {
             <TrendingToken />
           ) : null}
         </div>
-        <Footer />
+      <Footer />
       </div>
     </div>
   );

@@ -145,11 +145,11 @@ const TrendingToken = () => {
                             y2="22.0986"
                             gradientUnits="userSpaceOnUse"
                           >
-                            <stop stop-color="#10C717" />
+                            <stop stopColor="#10C717" />
                             <stop
                               offset="1"
-                              stop-color="#0C7510"
-                              stop-opacity="0"
+                              stopColor="#0C7510"
+                              stopOpacity="0"
                             />
                           </linearGradient>
                         </defs>
