@@ -27,7 +27,6 @@ const ShowWalletDisconnected = () => {
   let { address } = useAccount()
   const dispatch = useDispatch();
   const navigationTABS = useSelector((store) => store.whichTab);
-  const userAddresss = useSelector((store) => store.userAddresss);
 
 
   useEffect(() => {

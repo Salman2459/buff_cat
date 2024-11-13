@@ -24,12 +24,14 @@ const LockToken = () => {
     },
   ]);
 
-  const [selectedToken, setSelectedToken] = useState("Select Token");
+  const [selectedToken, setSelectedToken] = useState("Select Chians");
+  let [imgSrc, setimgSrc] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   let lockDurInp = useRef();
   let [lockDur, setlockDur] = useState(0);
+  const [locketChanis, setlocketChanis] = useState([])
 
-  const tokens = [
+  const Chains = [
     {
       name: "Ethereum (ETH)",
       img: "./eth.png",
@@ -47,6 +49,13 @@ const LockToken = () => {
       img: "./solana.png",
     },
   ];
+
+
+  function LocketChain() {
+    if(selectedToken != "Select Chians"){
+      setlocketChanis([...locketChanis, { name: selectedToken }]);
+    }
+  }
 
   function increaseInp() {
     setlockDur((lockDur += 1));
@@ -91,7 +100,7 @@ const LockToken = () => {
         </div>
 
         <div className="w-[80%] m-auto mt-5]">
-          <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Token</h1>
+          <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Chains</h1>
 
           <div className="flex flex-wrap justify-center md:justify-between">
             {/* {tokenBtn.map((item ,index) => {
@@ -107,9 +116,9 @@ const LockToken = () => {
             <div className="relative">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="mt-4 ml-3 mr-3 flex p-0 justify-around items-center   w-[175px] h-[55px] text-white   bg-gradient-to-r from-[#EFCB97] to-[#F3933F] outline-none rounded-lg px-0 box-border"
+                className="mt-4 ml-3 mr-3 flex p-0 justify-around items-center   min-w-[175px] h-[55px] text-white   bg-gradient-to-r from-[#EFCB97] to-[#F3933F] outline-none rounded-lg px-0 box-border"
               >
-                <span>{selectedToken}</span>
+                <div className="flex justify-center items-center px-2 pr-3">{imgSrc ? <img src={imgSrc} width={30} height={30} className="pr-2" /> : null}{selectedToken}</div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -129,11 +138,13 @@ const LockToken = () => {
               {/* Dropdown menu */}
               {isOpen && (
                 <div className="absolute w-full mt-2  border border-[#1A0B06] bg-[#1A0B06] rounded-md shadow-lg z-10">
-                  {tokens.map((token, index) => (
+                  {Chains.map((token, index) => (
                     <div
                       key={index}
                       onClick={() => {
-                        handleSelect(token);
+                        setSelectedToken(token.name)
+                        setimgSrc(token.img)
+                        setIsOpen(!isOpen)
                       }}
                       className="flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors"
                     >
@@ -179,14 +190,44 @@ const LockToken = () => {
                 </div>
                 <p className="text-white text-[1.1]">Days</p>
               </div>
-              <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold">
-                Lock Tokens
+              <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold" onClick={LocketChain}>
+                Lock Chains
               </button>
             </div>
           </div>
         </div>
       </div>
 
+      {/* section 2  */}
+      {locketChanis.length > 0 ?<div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
+        <div>
+          <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
+            Currently Locked Chians
+          </h1>
+          <div className="flex justify-around flex-wrap">
+            {locketChanis.map((data, index) => {
+              return <div key={index} className="w-[250px] h-[230px] bg-[#5e3916] rounded-md mx-3 mt-3">
+                <h1 className="text-center mt-3 font-semibold text-2xl text-[white]">{data.name}</h1>
+                <p className="text-center mt-2 font-medium text-md text-[white]">Amount:5,000,000</p>
+                <div className="flex justify-between mt-4 items-center">
+                <span className=" ml-2 p-3 bg-[#F39745] rounded-xl text-white text-[.5em]">LOCK PROGRESS</span>
+                <p className="text-white mr-2">60%</p>
+                </div>
+                <div className="px-2 mt-3">
+                  <div className="bg-[#AAAAAA] h-3 rounded-xl">
+                    <div className="bg-[#F39745] h-full w-[40%] rounded-xl"></div>
+                  </div>
+                </div>
+                <div className="flex justify-center mt-5">
+                  <button className="p-3 px-5 m-auto d-block rounded-md bg-[#F39745] text-white">UNLOCK</button>
+                </div>
+              </div>
+            })}
+          </div>
+        </div>
+      </div>:null}
+
+      {/* section 3  */}
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
           WITHDRAW TOKEN
