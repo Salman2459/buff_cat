@@ -28,9 +28,9 @@ const ShowFooter = () => {
                 alt="Logo"
                 className="w-16 h-16 rounded-full"
               />
-              <h2 className="text-[1.2em] font-bold mt-5 ml-3 ">Buff OP_CAT</h2>
+              <h2 className="text-[1.2em] font-bold mt-5 ml-3 ">BUFF CAT</h2>
             </div>
-            <p className="mt-10 mb-1 ml-1">© 2024 Buff OP_CAT</p>
+            <p className="mt-10 mb-1 ml-1">© 2024 BUFF CAT</p>
             <p className="ml-1">All rights reserved</p>
           </div>
 

@@ -52,7 +52,7 @@ const LockToken = () => {
 
 
   function LocketChain() {
-    if(selectedToken != "Select Chians"){
+    if (selectedToken != "Select Chians") {
       setlocketChanis([...locketChanis, { name: selectedToken }]);
     }
   }
@@ -199,7 +199,7 @@ const LockToken = () => {
       </div>
 
       {/* section 2  */}
-      {locketChanis.length > 0 ?<div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
+      {locketChanis.length > 0 ? <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <div>
           <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
             Currently Locked Chians
@@ -210,8 +210,8 @@ const LockToken = () => {
                 <h1 className="text-center mt-3 font-semibold text-2xl text-[white]">{data.name}</h1>
                 <p className="text-center mt-2 font-medium text-md text-[white]">Amount:5,000,000</p>
                 <div className="flex justify-between mt-4 items-center">
-                <span className=" ml-2 p-3 bg-[#F39745] rounded-xl text-white text-[.5em]">LOCK PROGRESS</span>
-                <p className="text-white mr-2">60%</p>
+                  <span className=" ml-2 p-3 bg-[#F39745] rounded-xl text-white text-[.5em]">LOCK PROGRESS</span>
+                  <p className="text-white mr-2">60%</p>
                 </div>
                 <div className="px-2 mt-3">
                   <div className="bg-[#AAAAAA] h-3 rounded-xl">
@@ -225,12 +225,12 @@ const LockToken = () => {
             })}
           </div>
         </div>
-      </div>:null}
+      </div> : null}
 
       {/* section 3  */}
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
-          WITHDRAW TOKEN
+          WITHDRAWAL TOKEN
         </h1>
         <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide items-center">
 
@@ -251,7 +251,7 @@ const LockToken = () => {
         </div>
 
         <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide items-center">
-          <p className="text-white text-[1em]">Withdraw Fee</p>
+          <p className="text-white text-[1em]">Withdrawal Fee</p>
           <p className="absolute right-0 text-white text-[1.1em] font-bold">
             2% to 10% fee
           </p>
@@ -262,7 +262,7 @@ const LockToken = () => {
         </div>
 
         <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] m-auto block text-white text-[1.1em] font-semibold h-[50px] rounded-md mt-7">
-          Withdraw Tokens
+          withdrawal Tokens
         </button>
       </div>
     </div>

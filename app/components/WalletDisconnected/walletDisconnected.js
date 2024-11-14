@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import Dashboard from "../Dashboard Section/dashboard";
-import Locktoken from "../MainLockTonkens/locktoken";
 import TrendingToken from "../Trendingtoken/trendingToken";
 import Footer from "../Footer/footer";
 import Header from "../UserDisconnectedNavbar/header";
@@ -13,6 +12,7 @@ import buffCatStore from "@/store/store";
 import { tabChanger, userAddress } from "@/store/storeSlice";
 import { useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
+import LockToken from "../LockToken Section/locktoken";
 
 const WalletDisconnected = () => {
   return (
@@ -41,7 +41,7 @@ const ShowWalletDisconnected = () => {
       <div className="main-Bg">
         <Header />
         <div className="w-full text-center text-white mt-4 h-auto">
-          <h1 className="font-bold text-4xl mt-16">Buff OP_CAT</h1>
+          <h1 className="font-bold text-4xl mt-16">BUFF CAT</h1>
           <p className="mt-2 text-base">Lock your token and earn reward</p>
         </div>
         <div className="lg:w-[900px] py-5 box-border bg-[#301B00E5] m-auto rounded-lg mt-10 tableScroler2">
@@ -83,7 +83,7 @@ const ShowWalletDisconnected = () => {
           {navigationTABS === 'Dashboard' ? (
             <Dashboard />
           ) : navigationTABS === 'Localtoken' ? (
-            <Locktoken />
+            <LockToken />
           ) : navigationTABS === 'CoinReward' ? (
             <Coinreward />
           ) : navigationTABS === 'Leaderboard' ? (

@@ -55,7 +55,7 @@ const Sidebar = () => {
                 <div className='smallSidebar' ref={sideBarData}>
                     <div className='flex items-center pr-5'>
                         <img src='/mainLogo.png' className='w-[50px] h-[50px] ml-12  mt-5' />
-                        <h1 className='text-white ml-2 mt-5 font-bold text-[1.1em]'>Buff OP_CAT</h1>
+                        <h1 className='text-white ml-2 mt-5 font-bold text-[1.1em]'>BUFF CAT</h1>
                     </div>
 
                     <div className='text-white flex flex-col justify-center font-medium text-[1em] mt-10 sideBarNavs cursor-pointer'>
