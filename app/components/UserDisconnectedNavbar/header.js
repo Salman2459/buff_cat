@@ -50,7 +50,7 @@ const ShowHeader = () => {
             className="w-8 h-8 ml-4 md:w-12 md:h-12 md:ml-7"
           />
           <h1 className="logo-Titel ml-[10px] text-[0.7em] sm:text-[0.8em]  xl:text-[1.2em] md:ml-[20px]">
-            BUFF CAT
+            Buff CAT
           </h1>
           <button className="toggle-button" onClick={respnsiveNavbar}>
             {
