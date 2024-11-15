@@ -18,7 +18,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide items-center">
-                    <p className="text-white text-[.7em] sm:text-[.8em]">Avrage Lock Duration</p>
+                    <p className="text-white text-[.7em] sm:text-[.8em]">Average Lock Duration</p>
                     <p className="absolute right-0 text-white  text-[.9em] sm:text-[1.1em] font-bold">90 days</p>
                 </div>
             </div>
@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1em] sm:text-[1.3em] ">POINTS EARN</h1>
 
                 <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide items-center">
-                    <p className="text-white text-[.7em] sm:text-[.8em]">Total POINTS EARNED</p>
+                    <p className="text-white text-[.8em]">Total Points Earned</p>
                     <p className="absolute right-0 text-white text-[1em]  sm:text-[1.1em] font-bold">5000</p>
                 </div>
             </div>

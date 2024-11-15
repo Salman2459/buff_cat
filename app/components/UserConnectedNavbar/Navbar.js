@@ -73,7 +73,7 @@ const ShowNavbar = () => {
                 <div className="w-full lg:w-[430px] lg:flex items-center space-x-4 flex-col lg:flex-row">
                     {/* Social Media Icons */}
                     <div className="flex space-x-2 justify-center w-[70%] m-auto lg:w-full">
-                        <img src="/facebook.png" alt="Facebook" className="w-[40px] h-[40px] cursor-pointer ml-5" />
+                        <img src="/facebook.png" alt="Facebook" className="w-[40px] h-[40px] cursor-pointer ml-5 " />
                         <img src="/youtube.png" alt="YouTube" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
                         <img src="/x.png" alt="X" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />
                         <img src="/teligran.png" alt="Telegram" className="w-[40px] h-[40px] cursor-pointer ml-5 mr-5" />

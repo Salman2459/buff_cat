@@ -12,29 +12,7 @@
     color: white;
 }
 
-/* Navbar Section 2  */
-.navIteam{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
 
-.navLink{
-    color: white;
-    font-family:  "Jost", sans-serif;
-    font-weight: 500;
-    font-size: .8em;
-}
-
-
-
-.active-navLink{
-    color: rgba(239, 203, 151, 1);
-}
-
-/* Navbar section 3  */
 
 .svg-circle{
     border-radius: 50%;
@@ -43,7 +21,13 @@
     color: rgba(239, 203, 151, 1);
     box-sizing: content-box;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right:10px ;
+}
+
+.NavSVG svg{
+    border: 2px solid white;
+    color: white;
 }
 
 .nav-wallet-btn{
@@ -60,76 +44,35 @@
 .toggle-button{
     height: 40px;
     color: white;
+    display: block;
+}
+
+.responsiveNAVWallet2{
     display: none;
-    position: absolute;
-    right: 20px;
+}
+
+.responsiveNAVWallet{
+    display: block;
 }
 
 
-@media screen and (max-width:1280px){
-    .navbar{
-        display: block;
-        border-radius:  20px;
 
-    }
+@media screen and (max-width:768px){
 
-
-    .toggle-button{
-        display: block;
-    }
-
-    .navIteam{
-        width: 100%;
-        height: auto;
-        display: block;
-        background-color: rgba(239, 203, 151, 1) !important;
+    .toggleBtn{
         position: absolute;
-        left: 0;
-        top: 60px;
-        border-radius: 0 0 20px 20px;
+        right: 20px;
+    }
+    
+    .responsiveNAVWallet{
         display: none;
-        z-index: 1;
-        padding-bottom: 30px;
-    }
-    
-    .navList{
-        text-align: center;
-        margin-top: 30px;
-        font-size: 1.3em;
-    }
-    
-    .active-navLink{
-        color: rgb(28, 27, 25);
     }
 
-    .svg-box{
-        width: 150px;
-        margin: auto;
+    .responsiveNAVWallet2{
+        display: flex;
     }
 
-    .svg-circle{
-        color: white;
-        text-align: center;
-        border: 2px solid white;
-        width: 23px !important;
-        height: 23px !important;
-        margin-top: 40px;
-        margin-left: 30px;
-        
-    }
-
-    .nav-wallet-btn{
-        height: 60px;
-        margin: auto;
-        display: block;
-        margin-top: 40px;
-    }
-    
-    
-    .responsive-nav{
-        display: block;
-    }
-
-    
 }
+
+
 

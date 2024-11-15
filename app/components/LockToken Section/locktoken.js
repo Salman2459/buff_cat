@@ -34,19 +34,23 @@ const LockToken = () => {
   const Chains = [
     {
       name: "Ethereum (ETH)",
-      img: "./eth.png",
+      img: "/eth.png",
     },
     {
-      name: "Binance Coin (BNB)",
-      img: "./ton.png",
+      name: "Base (BASE)",
+      img: "/base.png",
     },
     {
       name: "Bitcoin (BTC)",
-      img: "./base.png",
+      img: "/btc.png",
     },
     {
-      name: "Cardano (ADA)",
-      img: "./solana.png",
+      name: "Ton (TON)",
+      img: "/ton.png",
+    },
+    {
+      name: "Solana (SOL)",
+      img: "/solana.png",
     },
   ];
 
@@ -230,7 +234,7 @@ const LockToken = () => {
       {/* section 3  */}
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
-          WITHDRAWAL TOKEN
+          WITHDRAWAL
         </h1>
         <div className="flex w-[80%] m-auto  relative mt-4 tracking-wide items-center">
 
@@ -262,7 +266,7 @@ const LockToken = () => {
         </div>
 
         <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] m-auto block text-white text-[1.1em] font-semibold h-[50px] rounded-md mt-7">
-          withdrawal Tokens
+          Withdrawal
         </button>
       </div>
     </div>

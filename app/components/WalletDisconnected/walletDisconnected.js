@@ -40,11 +40,7 @@ const ShowWalletDisconnected = () => {
     <div>
       <div className="main-Bg">
         <Header />
-        <div className="w-full text-center text-white mt-4 h-auto">
-          <h1 className="font-bold text-4xl mt-16">BUFF CAT</h1>
-          <p className="mt-2 text-base">Lock your token and earn reward</p>
-        </div>
-        <div className="lg:w-[900px] py-5 box-border bg-[#301B00E5] m-auto rounded-lg mt-10 tableScroler2">
+        <div className="md:w-[700px] py-5 box-border bg-gradient-to-r from-[#301B00E5] to-[#000000E5] m-auto rounded-lg mt-24 tableScroler2">
           <div className="overflow-x-auto w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto tableScroler2">
             <ol className="flex justify-between min-w-[500px] items-center h-full font-medium cursor-pointer text-[.8em] lg:text-[1em]">
               <li
@@ -63,13 +59,13 @@ const ShowWalletDisconnected = () => {
                 className={navigationTABS === 'CoinReward' ? 'font-bold ' : ''}
                 onClick={() => dispatch(tabChanger('CoinReward'))}
               >
-                Coin Reward
+                Claim
               </li>
               <li
                 className={navigationTABS === 'Leaderboard' ? 'font-bold ' : ''}
                 onClick={() => dispatch(tabChanger('Leaderboard'))}
               >
-                Leaderboard
+                Public
               </li>
               <li
                 className={navigationTABS === 'trendingtoken' ? 'font-bold mr-5' : 'mr-5'}
@@ -92,8 +88,8 @@ const ShowWalletDisconnected = () => {
             <TrendingToken />
           ) : null}
         </div>
-      <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
