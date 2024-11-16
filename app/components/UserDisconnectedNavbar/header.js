@@ -112,7 +112,7 @@ const ShowHeader = () => {
 
   return (
     <div className=''>
-      <nav className="navbar w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg">
+      <nav className="navbar w-[90%] md:w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg">
         <section className="flex items-center  h-full w-full ">
           <div className='flex items-center'>
             <img
