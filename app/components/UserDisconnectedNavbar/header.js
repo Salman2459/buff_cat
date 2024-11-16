@@ -1,13 +1,15 @@
 "use client";
 import { useAppKit } from '@reown/appkit/react';
-import Link from "next/link";
-import React, { useRef, useState, } from "react";
+import React, { useEffect, useRef, useState, } from "react";
 import "./header.css";
 import buffCatStore from '@/store/store';
 import { useDispatch } from 'react-redux';
 import { Provider } from 'react-redux';
-import { tabChanger, } from '@/store/storeSlice';
+import { tabChanger, userAddress, } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
+import { connectWallet, disconnectWallet, useBitcoinWallet } from '@/app/bitcoinWallet';
+import { useAccount } from 'wagmi';
+import { useRouter } from 'next/navigation';
 
 
 const Header = () => {
@@ -16,13 +18,67 @@ const Header = () => {
   </Provider>
 }
 
-const ShowHeader = () => {
+
+const Modal = ({ onClose }) => {
   const { open } = useAppKit()
-  let [navopen, setnavopen] = useState(false)
-  let dispatch = useDispatch()
+  const modalRef = useRef(null);
+  let [error,setError] = useState('')
+  const dispatch = useDispatch()
 
 
-  let navigationTABS = useSelector((store) => {
+  const handleConnect = async () => {
+    try {
+      const walletInfo = await connectWallet();
+      dispatch(userAddress(walletInfo?.address))
+    } catch (err) {
+      setError(err?.message);
+    }
+  };
+
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-around items-center z-50 w-full flex-wrap"
+      onMouseDown={handleClickOutside}
+    >
+      <div
+        ref={modalRef}
+        className="bg-[#1A0B06]  !md:w-[500px] min-h-[250px] p-6 pt-3  rounded-lg shadow-lg relative "
+      >
+        <button className='absolute right-4 text-[1.8em] text-white' onClick={onClose}>&times;</button>
+        <h1 className='Jost text-center text-[#EFCB97] text-[1.5em] sm:text-[1.8em] font-semibold mt-[40px] pointer' onClick={handleClickOutside}>Connect Your Wallet</h1>
+        <div className='flex justify-around items-center flex-wrap mt-[30px]'>
+          <button className="w-[180px] h-[60px] bg-white rounded-md ml-10 mr-10 mt-5 text-white text-[1.1em] bg-gradient-to-r from-[#F0BD81] to-[#F39644]" onClick={() => open()}>Eherium Wallet</button>
+          <button className="w-[180px] h-[60px] bg-white rounded-md ml-10 mr-10 mt-5 text-white text-[1.1em] bg-gradient-to-r from-[#F0BD81] to-[#F39644]" onClick={handleConnect}>{"Bitcoin Wallet"}</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ShowHeader = () => {
+  const [navopen, setnavopen] = useState(false)
+  const dispatch = useDispatch()
+  const { address } = useAccount()
+  const router = useRouter();
+  const userLogin = useSelector(store => store.userAddresss)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const navigationTABS = useSelector((store) => {
     return store.whichTab
   })
 
@@ -41,10 +97,22 @@ const ShowHeader = () => {
 
   }
 
+  useEffect(() => {
+    if (address) {
+      dispatch(userAddress(address))
+    }
+  }, [address])
+
+  useEffect(() => {
+    if (userLogin) {
+      router.push('/Dashboard');
+      return
+    }
+  }, [userLogin]);
 
   return (
     <div className=''>
-      <nav className="navbar w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20">
+      <nav className="navbar w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg">
         <section className="flex items-center  h-full w-full ">
           <div className='flex items-center'>
             <img
@@ -113,19 +181,20 @@ const ShowHeader = () => {
                   />
                 </svg>
               </div>
-              <button className="nav-wallet-btn" onClick={() => open()}>Connect Wallet</button>
+              <button onClick={openModal} className="nav-wallet-btn">Connect Wallet</button>
+              {isModalOpen && <Modal onClose={closeModal} />}
             </div>
           </div>
         </section>
 
       </nav>
-     {navopen ? <div className='w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] min-h-[390px] absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
+      {navopen ? <div className='w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] min-h-[390px] absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
         <ol className='cursor-pointer'>
-          <li className={navigationTABS == 'Dashboard' ?'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={()=>ChangeTab('Dashboard')}>Dashboard</li>
-          <li className={navigationTABS == 'Localtoken' ?'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={()=>ChangeTab('Localtoken')}>Lock Token</li>
-          <li className={navigationTABS == 'CoinReward' ?'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={()=>ChangeTab('CoinReward')}>Claim</li>
-          <li className={navigationTABS == 'Leaderboard' ?'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={()=>ChangeTab('Leaderboard')}>Public</li>
-          <li className={navigationTABS == 'trendingtoken' ?'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={()=>ChangeTab('trendingtoken')}>Trending Token</li>
+          <li className={navigationTABS == 'Dashboard' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Dashboard')}>Dashboard</li>
+          <li className={navigationTABS == 'Localtoken' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Localtoken')}>Lock Token</li>
+          <li className={navigationTABS == 'CoinReward' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('CoinReward')}>Claim</li>
+          <li className={navigationTABS == 'Leaderboard' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Leaderboard')}>Public</li>
+          <li className={navigationTABS == 'trendingtoken' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('trendingtoken')}>Trending Token</li>
           <li className='text-center mt-10 font-medium text-[1.2em] text-white'>
             <div className="flex flex-col h-full items-center justify-center responsiveNAVWallet2">
               <div className="flex svg-box text-white NavSVG">
@@ -153,12 +222,14 @@ const ShowHeader = () => {
                   />
                 </svg>
               </div>
-              <button className="nav-wallet-btn !mt-5 py-4 !mb-5" onClick={() => open()}>Connect Wallet</button>
+              <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
             </div>
           </li>
 
         </ol>
-      </div> : null }
+      </div> : null}
+      {isModalOpen && <Modal onClose={closeModal} />}
+
     </div>
   );
 };

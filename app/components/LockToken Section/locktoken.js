@@ -41,8 +41,8 @@ const LockToken = () => {
       img: "/base.png",
     },
     {
-      name: "Bitcoin (BTC)",
-      img: "/btc.png",
+      name: "Fractal (FRACTAL)",
+      img: "/fb.png",
     },
     {
       name: "Ton (TON)",
@@ -195,7 +195,7 @@ const LockToken = () => {
                 <p className="text-white text-[1.1]">Days</p>
               </div>
               <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold" onClick={LocketChain}>
-                Lock Chains
+                Locking Tokens
               </button>
             </div>
           </div>

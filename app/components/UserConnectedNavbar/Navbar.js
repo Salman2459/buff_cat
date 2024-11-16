@@ -1,14 +1,13 @@
 'use client'
-import React, { useEffect } from 'react'
-
-import { useAppKit } from '@reown/appkit/react';
-import { useAccount,useDisconnect } from 'wagmi';
+import React, { useEffect, useState } from 'react'
+import { useAccount, useDisconnect } from 'wagmi';
 import { useRouter } from 'next/navigation';
 import { Provider } from 'react-redux';
 import buffCatStore from '@/store/store';
 import { useSelector } from 'react-redux';
 import { userAddress } from '@/store/storeSlice';
 import { useDispatch } from 'react-redux';
+import { disconnectWallet, isWalletConnected } from '@/app/bitcoinWallet';
 
 const Navbar = () => {
     return <Provider store={buffCatStore}>
@@ -20,22 +19,27 @@ const Navbar = () => {
 const ShowNavbar = () => {
     const { disconnect } = useDisconnect()
     let router = useRouter()
-    let { address } = useAccount()
-    const { open, close } = useAppKit();
-    let userAddresss = useSelector((store) => {
-        return store.userAddresss
-    })
-    let dispatch = useDispatch()
+    const dispatch = useDispatch();
+    let userLogininfo = useSelector(store => store.userAddresss)
 
     useEffect(() => {
-        if (!address) {
+        if (!userLogininfo) {
             router.push('/')
         }
-    }, [address])
+    }, [userLogininfo])
 
-   
-    const handeLogout = () => {
-        disconnect()
+
+    const handeLogout = async () => {
+        dispatch(userAddress(''))
+        let WalletConnection = await isWalletConnected()
+        if (WalletConnection) {
+
+            await disconnectWallet()
+        } else {
+            disconnect()
+        }
+
+
         setTimeout(() => {
             location.reload()
         }, 1000);

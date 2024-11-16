@@ -13,6 +13,7 @@ import { tabChanger, userAddress } from "@/store/storeSlice";
 import { useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 import LockToken from "../LockToken Section/locktoken";
+import { useBitcoinWallet } from "@/app/bitcoinWallet";
 
 const WalletDisconnected = () => {
   return (
@@ -23,18 +24,10 @@ const WalletDisconnected = () => {
 };
 
 const ShowWalletDisconnected = () => {
-  const router = useRouter();
-  let { address } = useAccount()
+
   const dispatch = useDispatch();
   const navigationTABS = useSelector((store) => store.whichTab);
-
-
-  useEffect(() => {
-    if (address) {
-      router.push('/Dashboard')
-    }
-  }, [address])
-
+  
 
   return (
     <div>
