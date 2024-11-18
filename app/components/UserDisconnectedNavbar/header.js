@@ -54,7 +54,7 @@ const Modal = ({ onClose }) => {
         <button className='absolute right-4 text-[1.8em] text-white' onClick={onClose}>&times;</button>
         <h1 className='Jost text-center text-[#EFCB97] text-[1.5em] sm:text-[1.8em] font-semibold mt-[40px] pointer' onClick={handleClickOutside}>Connect Your Wallet</h1>
         <div className='flex justify-around items-center flex-wrap mt-[30px]'>
-          <button className="w-[180px] h-[60px] bg-white rounded-md ml-10 mr-10 mt-5 text-white text-[1.1em] bg-gradient-to-r from-[#F0BD81] to-[#F39644]" onClick={() => open()}>Eherium Wallet</button>
+          <button className="w-[180px] h-[60px] bg-white rounded-md ml-10 mr-10 mt-5 text-white text-[1.1em] bg-gradient-to-r from-[#F0BD81] to-[#F39644]" onClick={() => open()}>Ethereum Wallet</button>
           <button className="w-[180px] h-[60px] bg-white rounded-md ml-10 mr-10 mt-5 text-white text-[1.1em] bg-gradient-to-r from-[#F0BD81] to-[#F39644]" onClick={handleConnect}>{"Bitcoin Wallet"}</button>
         </div>
       </div>

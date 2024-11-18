@@ -33,7 +33,7 @@ const ShowWalletDisconnected = () => {
     <div>
       <div className="main-Bg">
         <Header />
-        <div className="md:w-[700px] py-5 box-border bg-gradient-to-r from-[#301B00E5] to-[#000000E5] m-auto rounded-lg mt-24 tableScroler2">
+        <div className="md:w-[700px] py-5 box-border bg-gradient-to-r from-[#301b00e5] to-[#000000E5] m-auto rounded-lg mt-24 tableScroler2">
           <div className="overflow-x-auto w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto tableScroler2">
             <ol className="flex justify-between min-w-[500px] items-center h-full font-medium cursor-pointer text-[.8em] lg:text-[1em]">
               <li
