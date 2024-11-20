@@ -85,7 +85,7 @@ const TrendingToken = () => {
 
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6 px-7">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.8em]">
-          TRENDING TOKEN
+          TRENDING
         </h1>
 
         <div className="overflow-auto mt-10 max-h-[350px] tableScroler ">
