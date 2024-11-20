@@ -68,7 +68,7 @@ const ShowWalletDisconnected = () => {
                 }
                 onClick={() => TabHAndler('Localtoken')}
               >
-                Lock Token
+                Lock
               </li>
               <li
                 className={
@@ -97,7 +97,7 @@ const ShowWalletDisconnected = () => {
                   } `}
                 onClick={() => TabHAndler('trendingtoken')}
               >
-                Trending Token
+                Trending
               </li>
             </ol>
           </div>

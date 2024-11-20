@@ -3,7 +3,7 @@ import Modal from "../TokenModel/tokenModel";
 
 const LockToken = () => {
 
-  const [selectedChain, setSelectedChain] = useState("Select Chians");
+  const [selectedChain, setSelectedChain] = useState("Select Chains");
   let [imgSrc, setimgSrc] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   let lockDurInp = useRef();
@@ -65,7 +65,7 @@ const LockToken = () => {
     <div>
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5">
-          LOCK TOKEN
+          LOCK
         </h1>
 
         {/* Slect Chians  */}
@@ -161,7 +161,7 @@ const LockToken = () => {
                 <p className="text-white text-[1.1]">Days</p>
               </div>
               <button className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold" onClick={LocketChain}>
-                Locking Tokens
+                Lock
               </button>
             </div>
           </div>
