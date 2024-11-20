@@ -188,14 +188,14 @@ const ShowHeader = () => {
         </section>
 
       </nav>
-      {navopen ? <div className='w-[90%] md:w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] min-h-[390px] absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
+      {navopen ? <div className='w-[90%] md:w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] h-auto absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
         <ol className='cursor-pointer'>
-          <li className={navigationTABS == 'Dashboard' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Dashboard')}>Dashboard</li>
-          <li className={navigationTABS == 'Localtoken' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Localtoken')}>Lock Token</li>
-          <li className={navigationTABS == 'CoinReward' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('CoinReward')}>Claim</li>
-          <li className={navigationTABS == 'Leaderboard' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Leaderboard')}>Public</li>
-          <li className={navigationTABS == 'trendingtoken' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('trendingtoken')}>Trending Token</li>
-          <li className='text-center mt-10 font-medium text-[1.2em] text-white'>
+          <li className={navigationTABS == 'Dashboard' ? 'text-center mt-5 font-medium text-[1.2em] text-black' : 'text-center mt-5 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Dashboard')}>Dashboard</li>
+          <li className={navigationTABS == 'Localtoken' ? 'text-center mt-5 font-medium text-[1.2em] text-black' : 'text-center mt-5 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Localtoken')}>Lock Token</li>
+          <li className={navigationTABS == 'CoinReward' ? 'text-center mt-5 font-medium text-[1.2em] text-black' : 'text-center mt-5 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('CoinReward')}>Claim</li>
+          <li className={navigationTABS == 'Leaderboard' ? 'text-center mt-5 font-medium text-[1.2em] text-black' : 'text-center mt-5 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Leaderboard')}>Public</li>
+          <li className={navigationTABS == 'trendingtoken' ? 'text-center mt-5 font-medium text-[1.2em] text-black' : 'text-center mt-5 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('trendingtoken')}>Trending Token</li>
+          <li className='text-center mt-5 font-medium text-[1.2em] text-white'>
             <div className="flex flex-col h-full items-center justify-center responsiveNAVWallet2">
               <div className="flex svg-box text-white NavSVG">
                 <svg
