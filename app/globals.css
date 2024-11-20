@@ -106,3 +106,24 @@ input::placeholder {
 .modelOverFlow::-webkit-scrollbar-thumb:hover {
   background-color: #F1B371;
 }
+
+
+.overflowNone::-webkit-scrollbar {
+  width: 0px; 
+  height: 0px; 
+}
+
+.overflowNone::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px; 
+}
+
+.overflowNone::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  border: 0px solid transparent;
+}
+
+.overflowNone::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}

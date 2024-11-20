@@ -1,12 +1,9 @@
-import React, { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import Modal from "../TokenModel/tokenModel";
 
 const LockToken = () => {
 
-
-  const [selectedToken, setSelectedToken] = useState("Select Token");
   const [selectedChain, setSelectedChain] = useState("Select Chians");
-
   let [imgSrc, setimgSrc] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   let lockDurInp = useRef();
@@ -63,6 +60,7 @@ const LockToken = () => {
     lockDurInp.current.value = lockDur;
     console.log(lockDurInp.current.value);
   }
+  
   return (
     <div>
       <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
