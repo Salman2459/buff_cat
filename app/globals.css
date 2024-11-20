@@ -109,21 +109,19 @@ input::placeholder {
 
 
 .overflowNone::-webkit-scrollbar {
-  width: 0px; 
-  height: 0px; 
+  width: 0px; /* Completely hides the scrollbar */
+  height: 0px; /* For horizontal scrollbars */
 }
 
 .overflowNone::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px; 
+  background: transparent; /* Ensure the track is invisible */
 }
 
 .overflowNone::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 10px;
-  border: 0px solid transparent;
+  background: transparent; /* Ensure the thumb is invisible */
 }
 
-.overflowNone::-webkit-scrollbar-thumb:hover {
-  background-color: transparent;
+.overflowNone {
+  scrollbar-width: none; /* For Firefox, completely hides the scrollbar */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }

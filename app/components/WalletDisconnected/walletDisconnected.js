@@ -49,11 +49,12 @@ const ShowWalletDisconnected = () => {
       <div className="main-Bg">
         <Header />
         <div className=" w-[80%] md:w-[700px] py-5 box-border bg-gradient-to-r from-[#301b00e5] to-[#000000E5] m-auto rounded-lg mt-24 tableScroler2">
-          <div className="w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto relative overflow-auto md:overflow-none">
+          <div className="w-[95%] h-[60px] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] rounded-lg m-auto relative overflow-auto md:overflow-none overflowNone">
             {/* Menu Items */}
-            <ol className="flex justify-between items-center h-full font-medium text-[1em] cursor-pointer bg-transparent min-w-[600px] z-0 text-white space-x-4 md:overflow-x-auto md:whitespace-nowrap px-5 overflowNone">
+            <ol className="flex justify-between items-center h-full font-medium text-[1em] cursor-pointer bg-transparent min-w-[500px] z-0 text-white space-x-4 md:overflow-x-auto md:whitespace-nowrap px-5 overflowNone">
               <li
-                className={`${navigationTABS === 'Dashboard' ? 'font-bold sm:font-medium sm:text-black text-center' : 'text-center'
+                className={`${navigationTABS === 'Dashboard' ? 'font-bold  text-black text-center text-[.8em] sm:text-[1em]'
+                  : 'text-[.8em] sm:text-[1em]'
                   } `}
                 onClick={() => TabHAndler('Dashboard')}
               >
@@ -62,8 +63,8 @@ const ShowWalletDisconnected = () => {
               <li
                 className={
                   navigationTABS === 'Localtoken'
-                    ? 'font-bold sm:font-medium sm:text-black text-center'
-                    : 'text-center'
+                    ? 'font-bold  text-black text-center text-[.8em] sm:text-[1em]'
+                    : 'text-[.8em] sm:text-[1em]'
                 }
                 onClick={() => TabHAndler('Localtoken')}
               >
@@ -72,8 +73,8 @@ const ShowWalletDisconnected = () => {
               <li
                 className={
                   navigationTABS === 'CoinReward'
-                    ? 'font-bold sm:font-medium sm:text-black text-center'
-                    : 'text-center'
+                    ? 'font-bold  text-black text-center text-[.8em] sm:text-[1em]'
+                    : 'text-[.8em] sm:text-[1em]'
                 }
                 onClick={() => TabHAndler('CoinReward')}
               >
@@ -82,8 +83,8 @@ const ShowWalletDisconnected = () => {
               <li
                 className={
                   navigationTABS === 'Leaderboard'
-                    ? 'font-bold sm:font-medium sm:text-black text-center'
-                    : 'text-center'
+                    ? 'font-bold  text-black text-center text-[.8em] sm:text-[1em]'
+                    : 'text-[.8em] sm:text-[1em]'
                 }
                 onClick={() => TabHAndler('Leaderboard')}
               >
@@ -91,8 +92,8 @@ const ShowWalletDisconnected = () => {
               </li>
               <li
                 className={`${navigationTABS === 'trendingtoken'
-                    ? 'font-bold sm:font-medium sm:text-black text-center'
-                    : 'text-center'
+                  ? 'font-bold  text-black text-center text-[.8em] sm:text-[1em]'
+                  : 'text-[.8em] sm:text-[1em]'
                   } `}
                 onClick={() => TabHAndler('trendingtoken')}
               >
