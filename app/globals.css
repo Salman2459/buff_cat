@@ -44,7 +44,7 @@ input::placeholder {
 }
 
 .tableScroler::-webkit-scrollbar {
-  width: 15px; 
+  width: 12px; 
   height: 12px; 
 }
 
@@ -82,4 +82,27 @@ input::placeholder {
 
 .tableScroler2::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+
+
+
+.modelOverFlow::-webkit-scrollbar {
+  width: 10px; 
+  height: 30px; 
+}
+
+.modelOverFlow::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 0px; 
+}
+
+.modelOverFlow::-webkit-scrollbar-thumb {
+  background: #F1B371;
+  border-radius: 0px;
+  border: none;
+}
+
+.modelOverFlow::-webkit-scrollbar-thumb:hover {
+  background-color: #F1B371;
 }

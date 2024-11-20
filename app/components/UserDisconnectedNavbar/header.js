@@ -188,7 +188,7 @@ const ShowHeader = () => {
         </section>
 
       </nav>
-      {navopen ? <div className='w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] min-h-[390px] absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
+      {navopen ? <div className='w-[90%] md:w-[80%] bg-gradient-to-r from-[#EFCB97] to-[#F3933F] min-h-[390px] absolute z-10 top-[105px] left-1/2 -translate-x-1/2'>
         <ol className='cursor-pointer'>
           <li className={navigationTABS == 'Dashboard' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Dashboard')}>Dashboard</li>
           <li className={navigationTABS == 'Localtoken' ? 'text-center mt-10 font-medium text-[1.2em] text-black' : 'text-center mt-10 font-medium text-[1.2em] text-white'} onClick={() => ChangeTab('Localtoken')}>Lock Token</li>

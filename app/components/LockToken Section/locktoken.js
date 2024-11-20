@@ -1,35 +1,18 @@
 import React, { useState, useRef } from "react";
+import Modal from "../TokenModel/tokenModel";
 
 const LockToken = () => {
-  const [tokenBtn, settokenBtn] = useState([
-    {
-      img: "./eth.png",
-      name: "ETH",
-    },
-    {
-      img: "./fb.png",
-      name: "FB",
-    },
-    {
-      img: "./solana.png",
-      name: "SOLANA",
-    },
-    {
-      img: "./base.png",
-      name: "BASE",
-    },
-    {
-      img: "./ton.png",
-      name: "TON",
-    },
-  ]);
 
-  const [selectedToken, setSelectedToken] = useState("Select Chians");
+
+  const [selectedToken, setSelectedToken] = useState("Select Token");
+  const [selectedChain, setSelectedChain] = useState("Select Chians");
+
   let [imgSrc, setimgSrc] = useState(null)
   const [isOpen, setIsOpen] = useState(false);
   let lockDurInp = useRef();
   let [lockDur, setlockDur] = useState(0);
   const [locketChanis, setlocketChanis] = useState([])
+  const [showSlectToken, setshowSlectToken] = useState(false)
 
   const Chains = [
     {
@@ -56,9 +39,17 @@ const LockToken = () => {
 
 
   function LocketChain() {
-    if (selectedToken != "Select Chians") {
-      setlocketChanis([...locketChanis, { name: selectedToken }]);
+
+    if (selectedChain != "Select Chians") {
+      setlocketChanis([...locketChanis, { name: selectedChain }]);
     }
+  }
+
+  function ChainChager(token) {
+    setSelectedChain(token.name)
+    setimgSrc(token.img)
+    setIsOpen(!isOpen)
+    setshowSlectToken(true)
   }
 
   function increaseInp() {
@@ -79,42 +70,12 @@ const LockToken = () => {
           LOCK TOKEN
         </h1>
 
-        <div className="w-[80%] m-auto">
-          <div className="relative flex ">
-            <input
-              type="text"
-              className="w-full bg-[#F3933F30] rounded-3xl h-[50px] px-4 text-[.7em] sm:text-[1em] text-white"
-              placeholder="Enter Smart Contract Address"
-            />
-            <button className="absolute right-5 top-3 text-white text-[1.1em]">
-              <svg
-                width="23"
-                height="23"
-                viewBox="0 0 23 23"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.375 14.5H15.3875L15.0375 14.1625C16.3049 12.6926 17.0015 10.8159 17 8.875C17 7.26803 16.5235 5.69714 15.6307 4.361C14.7379 3.02485 13.469 1.98344 11.9843 1.36848C10.4997 0.75352 8.86599 0.592618 7.28989 0.906123C5.7138 1.21963 4.26606 1.99346 3.12976 3.12976C1.99346 4.26606 1.21963 5.7138 0.906123 7.28989C0.592618 8.86599 0.75352 10.4997 1.36848 11.9843C1.98344 13.469 3.02485 14.7379 4.361 15.6307C5.69714 16.5235 7.26803 17 8.875 17C10.8875 17 12.7375 16.2625 14.1625 15.0375L14.5 15.3875V16.375L20.75 22.6125L22.6125 20.75L16.375 14.5ZM8.875 14.5C5.7625 14.5 3.25 11.9875 3.25 8.875C3.25 5.7625 5.7625 3.25 8.875 3.25C11.9875 3.25 14.5 5.7625 14.5 8.875C14.5 11.9875 11.9875 14.5 8.875 14.5Z"
-                  fill="#EFCB97"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div className="w-[80%] m-auto mt-5]">
+        {/* Slect Chians  */}
+        <div className="px-5 sm:px-10 m-auto mt-5]">
           <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Chains</h1>
 
-          <div className="flex flex-wrap justify-center md:justify-between">
-            {/* {tokenBtn.map((item ,index) => {
-              return (
-                <button key={index} className="text-white text-[1.1em] w-[175px] h-[55px] bg-[#F3933F45] rounded-lg font-semibold flex items-center justify-center mt-4 ml-3 mr-3">
-                  <img src={item.img} alt="" width={30} height={30} />
-                  <p className="ml-3">{item.name}</p>
-                </button>
-              );
-            })} */}
+          <div className="sm:flex flex-wrap justify-center md:justify-between">
+
 
             {/* slector =============>>>>>>>>>> */}
             <div className="relative">
@@ -122,7 +83,7 @@ const LockToken = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="mt-4 ml-3 mr-3 flex p-0 justify-around items-center   min-w-[175px] h-[55px] text-white   bg-gradient-to-r from-[#EFCB97] to-[#F3933F] outline-none rounded-lg px-0 box-border"
               >
-                <div className="flex justify-center items-center px-2 pr-3">{imgSrc ? <img src={imgSrc} width={30} height={30} className="pr-2" /> : null}{selectedToken}</div>
+                <div className="flex justify-center items-center px-2 pr-3">{imgSrc ? <img src={imgSrc} width={30} height={30} className="pr-2" /> : null}{selectedChain}</div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -141,15 +102,11 @@ const LockToken = () => {
 
               {/* Dropdown menu */}
               {isOpen && (
-                <div className="absolute w-full mt-2  border border-[#1A0B06] bg-[#1A0B06] rounded-md shadow-lg z-10">
+                <div className="absolute  mt-2  border border-[#1A0B06] bg-[#1A0B06] w-[250px] rounded-md shadow-lg z-10">
                   {Chains.map((token, index) => (
                     <div
                       key={index}
-                      onClick={() => {
-                        setSelectedToken(token.name)
-                        setimgSrc(token.img)
-                        setIsOpen(!isOpen)
-                      }}
+                      onClick={() => ChainChager(token)}
                       className="flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors"
                     >
                       <img
@@ -163,6 +120,17 @@ const LockToken = () => {
                 </div>
               )}
             </div>
+
+            {/* Slect Token  */}
+
+            {showSlectToken ? <div className="flex flex-col w-full justify-center sn:items-center">
+              <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white  font-semibold">Token</h1>
+              <div className="relative flex mt-2">
+                <Modal />
+              </div>
+            </div> : null}
+
+            {/* Lock duration   */}
 
             <div className=" w-full">
               <h1 className="text-left mt-5 text-[1.1em] ml-3  text-white font-semibold">
@@ -254,12 +222,6 @@ const LockToken = () => {
           </p>
         </div>
 
-        <div className="flex w-[80%] m-auto  relative mt-6 tracking-wide items-center">
-          <p className="text-white text-[1em]">Withdrawal Fee</p>
-          <p className="absolute right-0 text-white text-[1.1em] font-bold">
-            2% to 10% fee
-          </p>
-        </div>
 
         <div className="bg-[#F3933F45] w-[80%] m-auto rounded-lg h-[15px] mt-5">
           <div className="bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[40%]  text-white text-[1.1em] font-semibold  rounded-lg h-[15px] mt-5"></div>

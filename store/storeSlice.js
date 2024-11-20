@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
     name:'navigationTab',
     initialState:{
         whichTab:"Dashboard",
-        userAddresss:''
+        userAddresss:'',
+        tokenSlected:null
     },
 
     reducers:{
@@ -14,11 +15,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
         userAddress:(oldData,newData) => {
             oldData.userAddresss = newData.payload
-            console.log(newData.payload)
+        },
+        tokenSlectedSet:(oldData,newData)=>{
+            oldData.tokenSlected = newData.payload
         }
     }
 })
 
 export default navigationTab
-export const {tabChanger,userAddress} = navigationTab.actions
+export const {tabChanger,userAddress,tokenSlectedSet} = navigationTab.actions
 
