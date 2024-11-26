@@ -100,7 +100,7 @@ const ShowHeader = () => {
     if (address) {
       dispatch(userAddress(address))
     }
-    setIsModalOpen(true)
+    setIsModalOpen(false)
   }, [address])
 
 
