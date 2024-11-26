@@ -27,6 +27,8 @@ const Modal = ({ onClose }) => {
   const dispatch = useDispatch()
 
 
+
+
   const handleConnect = async () => {
     try {
       const walletInfo = await connectWallet();
@@ -94,11 +96,19 @@ const ShowHeader = () => {
   function ChangeTab(Tab) {
     dispatch(tabChanger(Tab))
     setnavopen(false)
+
   }
 
   useEffect(() => {
+
     if (address) {
       dispatch(userAddress(address))
+    } else {
+      const handleConnect = async () => {
+        const walletInfo = await connectWallet();
+        dispatch(userAddress(walletInfo?.address))
+      };
+      handleConnect()
     }
     setIsModalOpen(false)
   }, [address])
@@ -106,8 +116,8 @@ const ShowHeader = () => {
 
 
   return (
-    <div >
-      <nav className="navbar w-[90%] md:w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg">
+    <div className=''>
+      <nav className="navbar w-[90%] md:w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg" >
         <section className="flex items-center  h-full w-full ">
           <div className='flex items-center'>
             <img
@@ -177,11 +187,8 @@ const ShowHeader = () => {
                 </svg>
               </div>
               {userLogin ?
-                <Link href='/Dashboard'>
-                  <button className="nav-wallet-btn !mt-5 py-3 !mb-5">DashBoard</button>
-                </Link> :
-                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5 flex items-center justify-center">Connect Wallet</button>
-              }
+                <button className="nav-wallet-btn"><Link href='/Dashboard'>Dashboard</Link></button> :
+                <button onClick={openModal} className="nav-wallet-btn">Connect Wallet</button>}
               {isModalOpen && <Modal onClose={closeModal} />}
             </div>
           </div>
@@ -223,11 +230,8 @@ const ShowHeader = () => {
                 </svg>
               </div>
               {userLogin ?
-                <Link href='/Dashboard'>
-                  <button className="nav-wallet-btn !mt-5 py-4 !mb-5">DashBoard</button>
-                </Link> :
-                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
-              }
+                <button className="nav-wallet-btn"><Link href='/Dashboard'>Dashboard</Link></button> :
+                <button onClick={openModal} className="nav-wallet-btn">Connect Wallet</button>}
             </div>
           </li>
 
