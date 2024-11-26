@@ -1,51 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { useAccount, useDisconnect } from 'wagmi';
-import { useRouter } from 'next/navigation';
-import { Provider } from 'react-redux';
-import buffCatStore from '@/store/store';
-import { useSelector } from 'react-redux';
-import { userAddress } from '@/store/storeSlice';
-import { useDispatch } from 'react-redux';
-import { disconnectWallet, isWalletConnected } from '@/app/bitcoinWallet';
+import Link from 'next/link'
+import React from 'react'
+
 
 const Navbar = () => {
-    return <Provider store={buffCatStore}>
-        <ShowNavbar />
-    </Provider>
-}
-
-
-const ShowNavbar = () => {
-    const { disconnect } = useDisconnect()
-    let router = useRouter()
-    const dispatch = useDispatch();
-    let userLogininfo = useSelector(store => store.userAddresss)
-
-    useEffect(() => {
-        if (!userLogininfo) {
-            router.push('/')
-        }
-    }, [userLogininfo])
-
-
-    const handeLogout = async () => {
-        dispatch(userAddress(''))
-        let WalletConnection = await isWalletConnected()
-        if (WalletConnection) {
-
-            await disconnectWallet()
-        } else {
-            disconnect()
-        }
-
-
-        setTimeout(() => {
-            location.reload()
-        }, 1000);
-    }
-
-
 
     return (
         <div className='  w-full'>
@@ -98,7 +56,9 @@ const ShowNavbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" onClick={handeLogout}>Logout</button>
+                        <Link href={'/'}>
+                            <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" >Logout</button>
+                        </Link>
                     </div>
                 </div>
             </div>

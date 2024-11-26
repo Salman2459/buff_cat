@@ -14,7 +14,6 @@ export const connectWallet = async () => {
     const network = await provider?.getNetwork();
 
     provider?.on('accountsChanged', (accounts) => {
-      console.log('Account changed:', accounts);
     });
 
     return {

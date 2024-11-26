@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { connectWallet, disconnectWallet, useBitcoinWallet } from '@/app/bitcoinWallet';
 import { useAccount } from 'wagmi';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
 const Header = () => {
@@ -22,7 +23,7 @@ const Header = () => {
 const Modal = ({ onClose }) => {
   const { open } = useAppKit()
   const modalRef = useRef(null);
-  let [error,setError] = useState('')
+  let [error, setError] = useState('')
   const dispatch = useDispatch()
 
 
@@ -94,7 +95,6 @@ const ShowHeader = () => {
   function ChangeTab(Tab) {
     dispatch(tabChanger(Tab))
     setnavopen(false)
-
   }
 
   useEffect(() => {
@@ -103,15 +103,10 @@ const ShowHeader = () => {
     }
   }, [address])
 
-  useEffect(() => {
-    if (userLogin) {
-      router.push('/Dashboard');
-      return
-    }
-  }, [userLogin]);
+
 
   return (
-    <div className=''>
+    <div >
       <nav className="navbar w-[90%] md:w-[80%]  h-[70px] m-auto flex relative top-[40px] z-20 rounded-lg">
         <section className="flex items-center  h-full w-full ">
           <div className='flex items-center'>
@@ -181,7 +176,12 @@ const ShowHeader = () => {
                   />
                 </svg>
               </div>
-              <button onClick={openModal} className="nav-wallet-btn">Connect Wallet</button>
+              {userLogin ?
+                <Link href='/Dashboard'>
+                  <button className="nav-wallet-btn !mt-5 py-3 !mb-5">DashBoard</button>
+                </Link> :
+                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
+              }
               {isModalOpen && <Modal onClose={closeModal} />}
             </div>
           </div>
@@ -222,7 +222,12 @@ const ShowHeader = () => {
                   />
                 </svg>
               </div>
-              <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
+              {userLogin ?
+                <Link href='/Dashboard'>
+                  <button className="nav-wallet-btn !mt-5 py-4 !mb-5">DashBoard</button>
+                </Link> :
+                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
+              }
             </div>
           </li>
 
