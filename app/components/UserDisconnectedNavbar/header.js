@@ -7,9 +7,8 @@ import { useDispatch } from 'react-redux';
 import { Provider } from 'react-redux';
 import { tabChanger, userAddress, } from '@/store/storeSlice';
 import { useSelector } from 'react-redux';
-import { connectWallet, disconnectWallet, useBitcoinWallet } from '@/app/bitcoinWallet';
+import { connectWallet, disconnectWallet, isWalletConnected, useBitcoinWallet } from '@/app/bitcoinWallet';
 import { useAccount } from 'wagmi';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 
@@ -100,16 +99,19 @@ const ShowHeader = () => {
   }
 
   useEffect(() => {
-
     if (address) {
       dispatch(userAddress(address))
-    } else {
-      const handleConnect = async () => {
+    }
+
+
+    const handleConnect = async () => {
+      let walletConection = await isWalletConnected()
+      if (walletConection) {
         const walletInfo = await connectWallet();
         dispatch(userAddress(walletInfo?.address))
-      };
-      handleConnect()
-    }
+      }
+    };
+    handleConnect()
     setIsModalOpen(false)
   }, [address])
 
