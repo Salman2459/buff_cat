@@ -67,7 +67,6 @@ const ShowHeader = () => {
   const [navopen, setnavopen] = useState(false)
   const dispatch = useDispatch()
   const { address } = useAccount()
-  const router = useRouter();
   const userLogin = useSelector(store => store.userAddresss)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -101,6 +100,7 @@ const ShowHeader = () => {
     if (address) {
       dispatch(userAddress(address))
     }
+    setIsModalOpen(true)
   }, [address])
 
 
@@ -180,7 +180,7 @@ const ShowHeader = () => {
                 <Link href='/Dashboard'>
                   <button className="nav-wallet-btn !mt-5 py-3 !mb-5">DashBoard</button>
                 </Link> :
-                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5">Connect Wallet</button>
+                <button onClick={openModal} className="nav-wallet-btn !mt-5 py-4 !mb-5 flex items-center justify-center">Connect Wallet</button>
               }
               {isModalOpen && <Modal onClose={closeModal} />}
             </div>
