@@ -14,11 +14,12 @@
 
 .main-Bg {
   width: 100%;
-  min-height: 110vh;
-  background-image: url(../public/mainBG.jpeg);
-  background-color: rgba(195, 89, 20, 0.84);
+  background-image: url(../public/mainBG.png);
+  /* background-color: rgba(195, 89, 20, 0.84); */
   background-blend-mode: multiply;
   padding-bottom: 30px;
+  /* border: none; */
+  background-repeat: repeat;
 }
 
 

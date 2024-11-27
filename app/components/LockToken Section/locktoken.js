@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from '../TokenModel/tokenModel';
 
 const LockToken = () => {
@@ -9,6 +9,10 @@ const LockToken = () => {
   let [lockDur, setlockDur] = useState(0);
   const [locketChanis, setlocketChanis] = useState([]);
   const [showSlectToken, setshowSlectToken] = useState(false);
+
+  useEffect(()=>{
+    lockDurInp.current.value = 0
+  },[])
 
   const Chains = [
     {
@@ -141,7 +145,6 @@ const LockToken = () => {
                 <input
                   ref={lockDurInp}
                   type='number'
-                  placeholder='0'
                   onChange={() => {
                     setlockDur(Number(lockDurInp.current.value));
                   }}
@@ -161,6 +164,11 @@ const LockToken = () => {
                 </div>
                 <p className='text-white text-[1.1]'>Days</p>
               </div>
+              <input
+                type='number'
+                placeholder='Amount'
+                className='number-stepper text-white w-[100%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em] mt-5'
+              />
               <button
                 className='bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold'
                 onClick={LocketChain}>
