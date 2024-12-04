@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 * {
   margin: 0;
@@ -30,7 +31,10 @@
 
 .openSan{
   font-family: "Open Sans", sans-serif;
+}
 
+.Dosis{
+  font-family: "Dosis", sans-serif;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -125,4 +129,35 @@ input::placeholder {
 .overflowNone {
   scrollbar-width: none; /* For Firefox, completely hides the scrollbar */
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.outlined-text {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  color: rgb(0, 0, 0); /* Text color */
+  -webkit-text-stroke: 1px #F3933F; /* Black border with 2px thickness */
+  text-stroke: 1px #F3933F; /* For non-webkit browsers (limited support) */
+}
+
+/* .hexagon {
+  clip-path: polygon(5% 0, 95% 0, 100% 22%, 100% 78%, 96% 100%, 4% 100%, 0 78%, 0 22%);
+} */
+
+.custom-timeline .ant-timeline-item-content {
+  color: white; 
+}
+
+.custom-timeline .ant-timeline-item-tail {
+  border-color: white; 
+  border: 2px solid #F39542;
+  display: flex;
+  margin-left: 4px;
+  min-height: 200px;
+}
+
+.custom-timeline .ant-timeline-item-head {
+  background-color: #000000; 
+  width: 20px;
+  height: 20px;
+  border-color:  #F39542;
 }
