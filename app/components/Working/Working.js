@@ -30,10 +30,10 @@ const Working = () => {
               <p className='ml-4 text-[.9em] mt-1'>Rewards include everything from meme coins to high-cap tokens.</p>
 
               <p className='text-[1.1em] font-extrabold mt-3'>3. Flexible Control</p>
-              <p className='ml-4 text-[.9em] mt-1'>Choose your bagging period and unlock your tokens when it's done, or whenever you want; we don’t penalize you.</p>
+              <p className='ml-4 text-[.9em] mt-1'>Choose your bagging period and unlock your tokens when its done, or whenever you want; we dont penalize you.</p>
 
               <p className='text-[1.1em] font-extrabold mt-3'>4. Grow Your Bags</p>
-              <p className='ml-4 text-[.9em] mt-1'>Lock more, reinvest your rewards, or withdraw it all. It’s your call!</p>
+              <p className='ml-4 text-[.9em] mt-1'>Lock more, reinvest your rewards, or withdraw it all. Its your call!</p>
 
               <p className='text-[1.1em] font-extrabold mt-3'>5. Stay Locked</p>
               <p className='ml-4 text-[.9em] mt-1'>Keep at least 3% value locked to continue to earn your redistributed monthly rewards.</p>
