@@ -1,5 +1,8 @@
 import { cookieStorage, createStorage, http } from "@wagmi/core";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { mainnet, bsc, polygon, optimism, base } from "wagmi/chains";
+
+
 
 
 export const projectId = "2edff17094e7d6ed686efa1e6aaa62f7";
@@ -25,7 +28,7 @@ const bscTestnet = {
   testnet: true,
 };
 
-export const networks = [bscTestnet];
+export const networks = [bscTestnet,mainnet, bsc, polygon, optimism,base];
 
 export const wagmiAdapter = new WagmiAdapter({
   storage: createStorage({

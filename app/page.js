@@ -1,10 +1,9 @@
-import WalletDisconnected from './components/WalletDisconnected/walletDisconnected'
-
+import TabsSection from './components/TabsSection/TabSection'
 
 const Home = () => {
 
    return <>
-      <WalletDisconnected />
+      <TabsSection />
    </>
 }
 

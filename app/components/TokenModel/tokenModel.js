@@ -1,12 +1,13 @@
 'use client';
+import { Token_abi, TokenAddress } from '@/ABI & ContractKeys/Abi';
 import buffCatStore from '@/store/store';
-import {tokenSlectedSet} from '@/store/storeSlice';
-import {readContract} from '@wagmi/core';
-import React, {useState, useRef, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import {useSelector} from 'react-redux';
-import {Provider} from 'react-redux';
-import {useAccount, useConfig} from 'wagmi';
+import { tokenSlectedSet } from '@/store/storeSlice';
+import { readContract } from '@wagmi/core';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
+import { useAccount, useConfig } from 'wagmi';
 
 const Modal = () => {
   return (
@@ -24,175 +25,16 @@ const ShowModal = () => {
   const modalRef = useRef(null);
   let tokenSlectedDetail = useSelector((store) => store.tokenSlected);
   const dispatch = useDispatch();
-  const abi = [
-    {inputs: [], stateMutability: 'nonpayable', type: 'constructor'},
-    {inputs: [], name: 'InvalidShortString', type: 'error'},
-    {inputs: [{internalType: 'string', name: 'str', type: 'string'}], name: 'StringTooLong', type: 'error'},
-    {
-      anonymous: false,
-      inputs: [
-        {indexed: true, internalType: 'address', name: 'owner', type: 'address'},
-        {indexed: true, internalType: 'address', name: 'spender', type: 'address'},
-        {indexed: false, internalType: 'uint256', name: 'value', type: 'uint256'},
-      ],
-      name: 'Approval',
-      type: 'event',
-    },
-    {anonymous: false, inputs: [], name: 'EIP712DomainChanged', type: 'event'},
-    {
-      anonymous: false,
-      inputs: [
-        {indexed: false, internalType: 'address', name: 'previousOwner', type: 'address'},
-        {indexed: false, internalType: 'address', name: 'newOwner', type: 'address'},
-      ],
-      name: 'OwnershipTransferred',
-      type: 'event',
-    },
-    {
-      anonymous: false,
-      inputs: [
-        {indexed: true, internalType: 'address', name: 'from', type: 'address'},
-        {indexed: true, internalType: 'address', name: 'to', type: 'address'},
-        {indexed: false, internalType: 'uint256', name: 'value', type: 'uint256'},
-      ],
-      name: 'Transfer',
-      type: 'event',
-    },
-    {inputs: [], name: 'DOMAIN_SEPARATOR', outputs: [{internalType: 'bytes32', name: '', type: 'bytes32'}], stateMutability: 'view', type: 'function'},
-    {
-      inputs: [
-        {internalType: 'address', name: 'owner', type: 'address'},
-        {internalType: 'address', name: 'spender', type: 'address'},
-      ],
-      name: 'allowance',
-      outputs: [{internalType: 'uint256', name: '', type: 'uint256'}],
-      stateMutability: 'view',
-      type: 'function',
-    },
-    {
-      inputs: [
-        {internalType: 'address', name: 'spender', type: 'address'},
-        {internalType: 'uint256', name: 'amount', type: 'uint256'},
-      ],
-      name: 'approve',
-      outputs: [{internalType: 'bool', name: '', type: 'bool'}],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {inputs: [{internalType: 'address', name: 'account', type: 'address'}], name: 'balanceOf', outputs: [{internalType: 'uint256', name: '', type: 'uint256'}], stateMutability: 'view', type: 'function'},
-    {inputs: [{internalType: 'uint256', name: 'amount', type: 'uint256'}], name: 'burn', outputs: [], stateMutability: 'nonpayable', type: 'function'},
-    {
-      inputs: [
-        {internalType: 'address', name: 'account', type: 'address'},
-        {internalType: 'uint256', name: 'amount', type: 'uint256'},
-      ],
-      name: 'burnFrom',
-      outputs: [],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {inputs: [], name: 'decimals', outputs: [{internalType: 'uint8', name: '', type: 'uint8'}], stateMutability: 'view', type: 'function'},
-    {
-      inputs: [
-        {internalType: 'address', name: 'spender', type: 'address'},
-        {internalType: 'uint256', name: 'subtractedValue', type: 'uint256'},
-      ],
-      name: 'decreaseAllowance',
-      outputs: [{internalType: 'bool', name: '', type: 'bool'}],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {
-      inputs: [],
-      name: 'eip712Domain',
-      outputs: [
-        {internalType: 'bytes1', name: 'fields', type: 'bytes1'},
-        {internalType: 'string', name: 'name', type: 'string'},
-        {internalType: 'string', name: 'version', type: 'string'},
-        {internalType: 'uint256', name: 'chainId', type: 'uint256'},
-        {internalType: 'address', name: 'verifyingContract', type: 'address'},
-        {internalType: 'bytes32', name: 'salt', type: 'bytes32'},
-        {internalType: 'uint256[]', name: 'extensions', type: 'uint256[]'},
-      ],
-      stateMutability: 'view',
-      type: 'function',
-    },
-    {
-      inputs: [
-        {internalType: 'address', name: 'spender', type: 'address'},
-        {internalType: 'uint256', name: 'addedValue', type: 'uint256'},
-      ],
-      name: 'increaseAllowance',
-      outputs: [{internalType: 'bool', name: '', type: 'bool'}],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {
-      inputs: [
-        {internalType: 'address', name: 'to', type: 'address'},
-        {internalType: 'uint256', name: 'amount', type: 'uint256'},
-      ],
-      name: 'mint',
-      outputs: [],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {inputs: [], name: 'name', outputs: [{internalType: 'string', name: '', type: 'string'}], stateMutability: 'view', type: 'function'},
-    {inputs: [{internalType: 'address', name: 'owner', type: 'address'}], name: 'nonces', outputs: [{internalType: 'uint256', name: '', type: 'uint256'}], stateMutability: 'view', type: 'function'},
-    {inputs: [], name: 'owner', outputs: [{internalType: 'address', name: '', type: 'address'}], stateMutability: 'view', type: 'function'},
-    {
-      inputs: [
-        {internalType: 'address', name: 'owner', type: 'address'},
-        {internalType: 'address', name: 'spender', type: 'address'},
-        {internalType: 'uint256', name: 'value', type: 'uint256'},
-        {internalType: 'uint256', name: 'deadline', type: 'uint256'},
-        {internalType: 'uint8', name: 'v', type: 'uint8'},
-        {internalType: 'bytes32', name: 'r', type: 'bytes32'},
-        {internalType: 'bytes32', name: 's', type: 'bytes32'},
-      ],
-      name: 'permit',
-      outputs: [],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {inputs: [], name: 'symbol', outputs: [{internalType: 'string', name: '', type: 'string'}], stateMutability: 'view', type: 'function'},
-    {inputs: [], name: 'totalSupply', outputs: [{internalType: 'uint256', name: '', type: 'uint256'}], stateMutability: 'view', type: 'function'},
-    {
-      inputs: [
-        {internalType: 'address', name: 'to', type: 'address'},
-        {internalType: 'uint256', name: 'amount', type: 'uint256'},
-      ],
-      name: 'transfer',
-      outputs: [{internalType: 'bool', name: '', type: 'bool'}],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {
-      inputs: [
-        {internalType: 'address', name: 'from', type: 'address'},
-        {internalType: 'address', name: 'to', type: 'address'},
-        {internalType: 'uint256', name: 'amount', type: 'uint256'},
-      ],
-      name: 'transferFrom',
-      outputs: [{internalType: 'bool', name: '', type: 'bool'}],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {inputs: [{internalType: 'address payable', name: 'newOwner', type: 'address'}], name: 'transferOwnership', outputs: [], stateMutability: 'nonpayable', type: 'function'},
-  ];
-  const tokenAddress = '0x35BD1509a00CE3D6a7969A97cB075e0086A943cB';
+  const tokenAddress = TokenAddress;
   const config = useConfig();
   const [newTokenName, setnewTokenName] = useState('');
   const [newTokensymbole, setnewTokensymbole] = useState('');
-  let [walletbalence, setwalletbalence] = useState('');
-  const userAddress = useSelector(store => store.userAddresss)
-
 
   useEffect(() => {
     async function fetchTokenName() {
       try {
         const name = await readContract(config, {
-          abi,
+          abi:Token_abi,
           address: tokenAddress,
           functionName: 'name',
           args: [],
@@ -206,7 +48,7 @@ const ShowModal = () => {
     async function fetchTokenSymbol() {
       try {
         const symbole = await readContract(config, {
-          abi,
+          abi:Token_abi,
           address: tokenAddress,
           functionName: 'symbol',
           args: [],
@@ -332,26 +174,9 @@ const ShowModal = () => {
     }
   };
 
-  const tokenSlected = (data) => {
+  const ApproveToken = (data) => {
     dispatch(tokenSlectedSet(data));
-    closeModal();
-    if (data.tokenAddress) {
-      async function fetchTokenBalence() {
-        try {
-          const amount = await readContract(config, {
-            abi,
-            address: tokenAddress,
-            functionName: 'balanceOf',
-            args: [walletAddress.address],
-          });
-          setwalletbalence(amount);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      fetchTokenBalence();
-    }
+    closeModal()
   };
   return (
     <div className='relative'>
@@ -361,19 +186,7 @@ const ShowModal = () => {
           onClick={openModal}
           className='bg-blue-500 text-white px-4 py-2 rounded-lg flex h-14 items-center bg-gradient-to-r from-[#EFCB97] to-[#F3933F] ml-3'>
           Select Token
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='w-5 h-5 ml-3 mt-[2px]'>
-            <path
-              strokeLinecap='round'
-              className='round'
-              d='M19.5 8.25l-7.5 7.5-7.5-7.5'
-            />
-          </svg>
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-5 h-5 ml-3 mt-[2px]'> <path strokeLinecap='round' className='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /> </svg>
         </button>
       ) : (
         <div>
@@ -401,7 +214,6 @@ const ShowModal = () => {
               />
             </svg>
           </button>
-          <p>Balence is {walletbalence}</p>
         </div>
       )}
 
@@ -437,35 +249,11 @@ const ShowModal = () => {
 
             {/* Search Bar */}
             <div className='mb-4 pr-5 flex relative items-center'>
-              <input
-                type='text'
-                placeholder='Search tokens'
-                className='w-full px-5 pr-14 py-2 rounded-3xl text-black bg-[#f3f3f3] placeholder-gray-400 focus:outline-none'
-                onChange={(e) => setserchIteam(e.target.value)}
-              />
-              <div
-                className=' absolute right-7 flex'
-                onClick={rotationHandler}>
-                <img
-                  className='mr-1'
-                  src={slectedNetwork}
-                  width={20}
-                  height={20}
-                />
+              <input type='text' placeholder='Search tokens' className='w-full px-5 pr-14 py-2 rounded-3xl text-black bg-[#f3f3f3] placeholder-gray-400 focus:outline-none' onChange={(e) => setserchIteam(e.target.value)} />
+              <div className=' absolute right-7 flex' onClick={rotationHandler}>
+                <img className='mr-1' src={slectedNetwork} width={20} height={20} />
                 <button>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth={1.5}
-                    stroke='currentColor'
-                    className={rotation ? `w-5 h-5  text-black rotate-[0deg]` : `w-5 h-5  text-black rotate-[180deg]`}>
-                    <path
-                      strokeLinecap='round'
-                      className='round'
-                      d='M19.5 8.25l-7.5 7.5-7.5-7.5'
-                    />
-                  </svg>
+                  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className={rotation ? `w-5 h-5  text-black rotate-[0deg]` : `w-5 h-5  text-black rotate-[180deg]`}> <path strokeLinecap='round' className='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /> </svg>
                 </button>
               </div>
             </div>
@@ -505,7 +293,7 @@ const ShowModal = () => {
                     <div
                       className='flex items-center justify-between cursor-pointer'
                       key={index}
-                      onClick={() => tokenSlected(data)}>
+                      onClick={() => ApproveToken(data)}>
                       <div className='flex items-center space-x-3 mt-4'>
                         <img
                           src={data.Img}

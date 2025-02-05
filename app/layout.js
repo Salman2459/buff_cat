@@ -2,6 +2,8 @@ import { headers } from "next/headers";
 import localFont from "next/font/local";
 import "./globals.css";
 import ContextProvider from "./context/wagmiProvider";
+import { ToastContainer } from "react-toastify";
+import { Bounce } from "react-toastify";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,6 +31,19 @@ export default async function RootLayout({ children }) {
         <ContextProvider cookies={cookies}>
           {children}
         </ContextProvider>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+        />
       </body>
     </html>
   );

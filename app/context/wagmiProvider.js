@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createAppKit } from '@reown/appkit/react';
 import React from 'react';
 import { cookieToInitialState, WagmiProvider } from 'wagmi';
+import { mainnet, bsc, polygon, optimism, base } from "wagmi/chains";
+
 
 // Set up queryClient
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const bscTestnet = {
   },
   testnet: true,
 };
+
+
 
 // Define metadata
 const metadata = {
@@ -62,7 +66,7 @@ const unisatWalletAdapter = {
 const modal = createAppKit({
   adapters: [wagmiAdapter, unisatWalletAdapter],
   projectId,
-  networks: [bscTestnet], // Available networks
+  networks: [bscTestnet,mainnet, bsc, polygon, optimism,base],
   defaultNetwork: bscTestnet, // Set default network
   metadata: metadata,
   features: {
