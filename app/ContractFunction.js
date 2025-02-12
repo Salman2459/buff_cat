@@ -64,6 +64,22 @@ export async function LockedPaticipants() {
   }
 }
 
+export async function USerDividence(address,index) {
+  try {
+    const TotalLocked = await readContract(config, {
+      address: ContractAddress, 
+      abi: Contract_abi,
+      functionName: "getUserDividends", 
+      args:[address,index]
+    });
+    console.log(TotalLocked,'=aa=a=a=a=a=a=a==a=a=a=a==a')
+    return TotalLocked;
+  } catch (error) {
+    console.error("Contract call error:", error);
+    throw error;
+  }
+}
+
 
 export async function GetLocketTokenNumber(userAddress) {
   const AllLockedTokens = [] 
