@@ -115,6 +115,7 @@ export const Coinreward = () => {
                   lockedTokens?.filter(data => {if(Number(data.amount != 0)){return data}}).map((token, index) => {
                     console.log(token)
                     // const amount = BigInt(token.dividence) / 10n ** BigInt(token.decimal || 18); 
+                    const dividence = String(Number(token.dividence) / 1e18).slice(0,6)
                     return (
                       <div
                         key={index}
@@ -122,7 +123,7 @@ export const Coinreward = () => {
                         className="flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors"
                       >
                         <span className="text-white">
-                          {token.dividence} {token.TokenSymbol}
+                          {dividence} {token.TokenSymbol}
                         </span>
                       </div>
                     );
