@@ -61,7 +61,7 @@ const Dashboard = () => {
 
                 <div className="flex  relative mt-4 tracking-wide items-center">
                     <p className="text-white text-[.7em] sm:text-[.8em]">Total Locked</p>
-                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] font-bold">${TotalUserLocked}</p>
+                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] font-bold">{TotalUserLocked}</p>
                 </div>
 
                 <div className="flex  relative mt-6 tracking-wide items-center">
@@ -82,12 +82,12 @@ const Dashboard = () => {
 
                 <div className="flex  relative mt-4 tracking-wide items-center">
                     <p className="text-white text-[.7em] sm:text-[.8em]">Total Reward Earned</p>
-                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] font-bold">${totalClaimableReward}</p>
+                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] font-bold">{totalClaimableReward}</p>
                 </div>
 
                 <div className="flex  relative mt-6 tracking-wide items-center">
                     <p className="text-white text-[.7em] sm:text-[.8em] ">Reward Clamied</p>
-                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] ">${totalRewardClaimed}</p>
+                    <p className="absolute right-0 text-white text-[.9em]  sm:text-[1.1em] ">{totalRewardClaimed}</p>
                 </div>
             </div>
 
