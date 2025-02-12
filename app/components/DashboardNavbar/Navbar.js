@@ -60,7 +60,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className='flex justify-center w-full'>
-                        <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" ><Link href={'/'}>Logout</Link></button>
+                    <Link href={'/'} className='w-full flex justify-center'>  <button className="lg:ml-5 bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-[80%] lg:w-[120px] lg:h-[45px] rounded-lg text-white text-lg font-semibold  py-2 relative -left-3 lg:left-0" >Logout</button></Link>
                     </div>
                 </div>
             </div>

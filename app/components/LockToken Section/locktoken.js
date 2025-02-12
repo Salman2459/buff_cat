@@ -52,7 +52,7 @@ const ShowLockToken = () => {
       async function Decimal() {
         const decimal = await getDecimal();
         settokenDecimal(decimal)
-        FetchUnlockToken()
+        FetchLockedToken()
     }
     Decimal();
     }
@@ -70,7 +70,7 @@ const ShowLockToken = () => {
       const LockToken = await  ApproveOrLockToken(tokenSlectedDetail?.tokenAddress,[ContractAddress, Number(Amount.current?.value + "0".repeat(tokenDecimal))], Number(Amount.current?.value + "0".repeat(tokenDecimal)),lockDurationInp.current?.value)
         if(LockToken){
           setTimeout(async() => {
-            FetchUnlockToken()
+            FetchLockedToken()
           }, 5000);
         }else{
           console.log('ERROR')
@@ -89,7 +89,7 @@ const ShowLockToken = () => {
     setshowSlectToken(true);
   }
 
-  async function FetchUnlockToken() {
+  async function FetchLockedToken() {
     const lockedToken = await GetLocketTokenNumber(address)
     const updatedTokens = await Promise.all(
       lockedToken.map(async (data,index) => {
@@ -125,7 +125,7 @@ const ShowLockToken = () => {
     if(unlockToken){
       toast.info( 'Unlocked Successfully', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
       setTimeout(() => {
-        FetchUnlockToken()
+        FetchLockedToken()
       }, 3000);
     }
   }
@@ -279,7 +279,7 @@ const ShowLockToken = () => {
           <div>
             <h1 className='text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5'>Currently Locked Chians</h1>
             <div className='flex justify-around flex-wrap'>
-              {locketChanis.map((data, index) => {           
+              {locketChanis.filter(data => {if(Number(data.amount != 0)){return data}}).map((data, index) => {           
                 return (
                   <div
                     key={index}

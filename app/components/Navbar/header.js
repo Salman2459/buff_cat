@@ -189,7 +189,7 @@ const ShowHeader = () => {
                 </svg>
               </div>
               {userLogin ?
-                <button className="nav-wallet-btn"><Link href='/Dashboard'>Dashboard</Link></button> :
+                <Link href='/Dashboard' style={{height:'100%',display:'flex',alignItems:'center'}}><button className="nav-wallet-btn">Dashboard</button></Link> :
                 <button onClick={openModal} className="nav-wallet-btn">Connect Wallet</button>}
               {isModalOpen && <Modal onClose={closeModal} />}
             </div>
@@ -232,7 +232,7 @@ const ShowHeader = () => {
                 </svg>
               </div>
               {userLogin ?
-                <button className="nav-wallet-btn py-[10px] !my-3"><Link href='/Dashboard'>Dashboard</Link></button> :
+                <Link href='/Dashboard' style={{height:'100%',display:'flex',alignItems:'center'}}><button className="nav-wallet-btn py-[10px] !my-3">Dashboard</button></Link> :
                 <button onClick={openModal} className="nav-wallet-btn py-[10px] !my-3">Connect Wallet</button>}
             </div>
           </li>

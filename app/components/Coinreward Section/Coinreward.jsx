@@ -111,7 +111,7 @@ export const Coinreward = () => {
               {isOpen && (
               <div className="absolute mt-2 border border-[#1A0B06] bg-[#1A0B06] min-w-[150px] ml-[25px] rounded-md shadow-lg z-10">
                 {!loadingss ? (
-                  lockedTokens?.map((token, index) => {
+                  lockedTokens?.filter(data => {if(Number(data.amount != 0)){return data}}).map((token, index) => {
                     const amount = BigInt(token.amount) / 10n ** BigInt(token.decimal || 18); 
                     return (
                       <div
