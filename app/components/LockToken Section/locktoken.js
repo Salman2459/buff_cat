@@ -90,6 +90,7 @@ const ShowLockToken = () => {
   }
 
   async function FetchLockedToken() {
+   if(address){
     const lockedToken = await GetLocketTokenNumber(address);
     
     const updatedTokens = await Promise.all(
@@ -107,6 +108,7 @@ const ShowLockToken = () => {
         setlocketChanis(prev => [...prev, data]);
       }
     });
+   }
   }
   
 

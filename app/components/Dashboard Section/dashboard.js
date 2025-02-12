@@ -26,7 +26,7 @@ const Dashboard = () => {
             setTotalUserLocked(String(Number(Locked[0]) / 1e18).slice(0,6))
             setExpectedReward(String(Number(Locked[1]) / 1e18).slice(0,6))
             settotalClaimableReward(String(Number(Locked[2]) / 1e18).slice(0,6))
-            settotalRewardClaimed(BigInt(String(Number(Locked[3]) / 1e18).slice(0,6)))
+            settotalRewardClaimed(String(Number(Locked[3]) / 1e18).slice(0,6))
           }
         }
 

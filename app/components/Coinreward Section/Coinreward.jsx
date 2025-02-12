@@ -20,13 +20,12 @@ export const Coinreward = () => {
       
         const GetLockToken = async () => {
           const lockedToken = await GetLocketTokenNumber(address);
-          console.log(lockedToken);
       
           const tokens = await Promise.all(
-            lockedToken.map(async (data) => {
+            lockedToken.map(async (data,index) => {
                 const TokenSymbol = await fetchTokenSymbol(data[7]);
                 const decimal = await getDecimal(data[7]);
-                return { amount: data[0], TokenSymbol,address:data[7],decimal };
+                return { amount: data[0], TokenSymbol,address:data[7],decimal,index };
             })
           );
           setlockedTokens(tokens);
@@ -40,7 +39,7 @@ export const Coinreward = () => {
          const GetUserLocked = async () =>{
             const Locked = await GetuserLocked(address)
             settotalClaimableReward(String(Number(Locked[2]) / 1e18).slice(0,6))
-            settotalRewardClaimed(BigInt(String(Number(Locked[3]) / 1e18).slice(0,6)))
+            settotalRewardClaimed(String(Number(Locked[3]) / 1e18).slice(0,6))
         }
         
         GetUserLocked()
@@ -51,11 +50,11 @@ export const Coinreward = () => {
         ClainInput.current.value = token.address
         setSelectedChain((token.amount / 10n ** BigInt(token?.decimal)).toString() + ' ' + token.TokenSymbol)
         setIsOpen(false)
-        setslectedindex(index)
+        setslectedindex(token.index)
       }
 
       async function ClaimingReward() {
-        console.log(address,'=s=s=s=s=s=s=s=s=')
+        console.log(slectedindex,'=s=s=s=s=s=s=s=s=')
         if (slectedindex != 'No Index') {
           const claimedReward = await ClaimReward(address,ClainInput.current.value,slectedindex)
           if(claimedReward){
@@ -113,6 +112,7 @@ export const Coinreward = () => {
               <div className="absolute mt-2 border border-[#1A0B06] bg-[#1A0B06] min-w-[150px] ml-[25px] rounded-md shadow-lg z-10">
                 {!loadingss ? (
                   lockedTokens?.filter(data => {if(Number(data.amount != 0)){return data}}).map((token, index) => {
+                    console.log(token)
                     const amount = BigInt(token.amount) / 10n ** BigInt(token.decimal || 18); 
                     return (
                       <div

@@ -16,7 +16,7 @@ export async function getDecimal(LokedTokenDecimal) {
     });
     return decimal;
   } catch (error) {
-    console.error("Contract call error:", error);
+    console.error("Contract call error Decimal:", error);
     throw error;
   }
 }
@@ -155,6 +155,7 @@ export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArgumen
   }
 
   export async function ClaimReward(address,TokenAddress,index) {
+    console.log(index)
     try {
 
       const LockingTokens = await writeContract(config, {
