@@ -54,9 +54,9 @@ export const Coinreward = () => {
       },[])
 
 
-      async function ClameToken (token) {
+      async function ClameToken (token,index,formattedDividence) {
         ClainInput.current.value = token.address
-        setSelectedChain((token.amount / 10n ** BigInt(token?.decimal)).toString() + ' ' + token.TokenSymbol)
+        setSelectedChain(formattedDividence + ' ' + token.tokenSymbol)
         setIsOpen(false)
         setslectedindex(token.index)
       }
@@ -136,7 +136,7 @@ export const Coinreward = () => {
                     return (
                       <div
                         key={index}
-                        onClick={() => ClameToken(token, index)}
+                        onClick={() => ClameToken(token, index,formattedDividence)}
                         className="flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors"
                       >
                         <span className="text-white" onClick={() => console.log(wholePart)}>
