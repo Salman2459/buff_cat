@@ -50,20 +50,20 @@ export async function GetTotalLocked() {
   }
 }
 
-export async function GetLockProgress(tokenAddress,index) {
+export async function LockedPaticipants() {
   try {
-    const LockProgress = await readContract(config, {
+    const TotalLocked = await readContract(config, {
       address: ContractAddress, 
       abi: Contract_abi,
-      functionName: "userLocks", 
-      args:[tokenAddress,index]
+      functionName: "totalParticipants", 
     });
-    return LockProgress;
+    return TotalLocked;
   } catch (error) {
     console.error("Contract call error:", error);
     throw error;
   }
 }
+
 
 export async function GetLocketTokenNumber(userAddress) {
   const AllLockedTokens = [] 
@@ -154,14 +154,14 @@ export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArgumen
     }
   }
 
-  export async function ClaimReward(TokenAddress,index) {
+  export async function ClaimReward(address,TokenAddress,index) {
     try {
 
       const LockingTokens = await writeContract(config, {
         address: ContractAddress,
         abi: Contract_abi,
         functionName: "claimRewards",
-        args: [TokenAddress, index],
+        args: [address,TokenAddress, index],
       });
 
       return LockingTokens

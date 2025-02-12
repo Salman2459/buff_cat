@@ -1,4 +1,4 @@
-import { GetTotalLocked, GetuserLocked } from '@/app/ContractFunction'
+import { GetTotalLocked, GetuserLocked, LockedPaticipants } from '@/app/ContractFunction'
 import React, { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 
@@ -9,18 +9,25 @@ const Dashboard = () => {
     const [ExpectedReward,setExpectedReward] = useState(0)
     const [totalClaimableReward,settotalClaimableReward] = useState(0)
     const [totalRewardClaimed,settotalRewardClaimed] = useState(0)
+    const [TotalLockParticpants,setTotalLockParticpants] = useState(0)
 
 
 
     useEffect(()=>{
         const GetUserLocked = async () =>{
-          const Locked = await GetuserLocked(address)
           const TotalLocked = await GetTotalLocked()
+          const TotalLockedPaticipants = await LockedPaticipants()
+          console.log(TotalLocked,'=s=s=s=s=s=')
           setTotalLocked(String(Number(TotalLocked) / 1e18).slice(0,6))
-          setTotalUserLocked(String(Number(Locked[0]) / 1e18).slice(0,6))
-          setExpectedReward(String(Number(Locked[1]) / 1e18).slice(0,6))
-          settotalClaimableReward(String(Number(Locked[2]) / 1e18).slice(0,6))
-          settotalRewardClaimed(BigInt(String(Number(Locked[3]) / 1e18).slice(0,6)))
+          setTotalLockParticpants(TotalLockedPaticipants)
+
+          if(address){
+            const Locked = await GetuserLocked(address)
+            setTotalUserLocked(String(Number(Locked[0]) / 1e18).slice(0,6))
+            setExpectedReward(String(Number(Locked[1]) / 1e18).slice(0,6))
+            settotalClaimableReward(String(Number(Locked[2]) / 1e18).slice(0,6))
+            settotalRewardClaimed(BigInt(String(Number(Locked[3]) / 1e18).slice(0,6)))
+          }
         }
 
         GetUserLocked()
@@ -33,12 +40,12 @@ const Dashboard = () => {
 
                 <div className="flex  relative mt-4 tracking-wide items-center">
                     <p className="text-white text-[.7em] sm:text-[.8em]">Total Value Locked</p>
-                    <p className="absolute right-0 text-white text-[.9em] sm:text-[1.1em] font-bold">${TotalLocked} M</p>
+                    <p className="absolute right-0 text-white text-[.9em] sm:text-[1.1em] font-bold">{TotalLocked}</p>
                 </div>
 
                 <div className="flex  relative mt-6 tracking-wide items-center">
                     <p className="text-white text-[.7em] sm:text-[.8em]">Total Participants</p>
-                    <p className="absolute right-0 text-white  text-[.9em] sm:text-[1.1em] font-bold">1500</p>
+                    <p className="absolute right-0 text-white  text-[.9em] sm:text-[1.1em] font-bold">{TotalLockParticpants}</p>
                 </div>
 
                 <div className="flex  relative mt-6 tracking-wide items-center">

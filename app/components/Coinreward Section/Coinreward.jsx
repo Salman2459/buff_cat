@@ -55,8 +55,9 @@ export const Coinreward = () => {
       }
 
       async function ClaimingReward() {
+        console.log(address,'=s=s=s=s=s=s=s=s=')
         if (slectedindex != 'No Index') {
-          const claimedReward = await ClaimReward(ClainInput.current.value,slectedindex)
+          const claimedReward = await ClaimReward(address,ClainInput.current.value,slectedindex)
           if(claimedReward){
           toast.info('Reward Claimed Successfully...', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
           }
@@ -73,12 +74,12 @@ export const Coinreward = () => {
         </h1>
         <div className="flex  relative mt-4 tracking-wide items-center w-[80%] m-auto">
           <p className="text-white text-[.7em] sm:text-[.9em]">Total Claim Rewards</p>
-          <p className="absolute right-0 text-white text-[1em]  sm:text-[1.1em] font-bold">${totalClaimableReward}</p>
+          <p className="absolute right-0 text-white text-[1em]  sm:text-[1.1em] font-bold">{totalClaimableReward}</p>
         </div>
 
         <div className="flex  relative mt-4 tracking-wide items-center w-[80%] m-auto">
           <p className="text-white text-[.7em] sm:text-[.9em]">Rewards Claimed</p>
-          <p className="absolute right-0 text-white text-[1em]  sm:text-[1.1em] font-bold">${totalRewardClaimed}</p>
+          <p className="absolute right-0 text-white text-[1em]  sm:text-[1.1em] font-bold">{totalRewardClaimed}</p>
         </div>
 
         {/* Slector  */}

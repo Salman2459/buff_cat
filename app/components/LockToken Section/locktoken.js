@@ -66,7 +66,7 @@ const ShowLockToken = () => {
   
 
   async function LocketChain () {
-    if (selectedChain != 'Select Chians' && lockDurationInp.current.value > 0 && tokenSlectedDetail?.tokenAddress && Number(Amount.current?.value + "0".repeat(tokenDecimal)) > 0) {
+    if (selectedChain != 'Select Chians' && lockDurationInp.current.value > 0 && tokenSlectedDetail?.tokenAddress && Number(Amount.current?.value + "0".repeat(tokenDecimal)) > 0 && address) {
       const LockToken = await  ApproveOrLockToken(tokenSlectedDetail?.tokenAddress,[ContractAddress, Number(Amount.current?.value + "0".repeat(tokenDecimal))], Number(Amount.current?.value + "0".repeat(tokenDecimal)),lockDurationInp.current?.value)
         if(LockToken){
           setTimeout(async() => {
@@ -76,7 +76,7 @@ const ShowLockToken = () => {
           console.log('ERROR')
         }
     }else{
-      toast.info( selectedChain === 'Select Chains' ? 'Please Select Chain First' : !tokenSlectedDetail?.tokenAddress ? 'Please Select Token First' : lockDurationInp.current.value < 0 ? 'Please add valid Duration' : Number(Amount.current?.value + "0".repeat(tokenDecimal)) < 0 ? 'Please add valid Amount' : 'Transaction Failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
+      toast.info( selectedChain === 'Select Chains' ? 'Please Select Chain First' : !address ? 'Wallet is not connected': !tokenSlectedDetail?.tokenAddress ? 'Please Select Token First' : lockDurationInp.current.value < 0 ? 'Please add valid Duration' : Number(Amount.current?.value + "0".repeat(tokenDecimal)) < 0 ? 'Please add valid Amount' : 'Transaction Failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
       }
 
   }
@@ -90,17 +90,25 @@ const ShowLockToken = () => {
   }
 
   async function FetchLockedToken() {
-    const lockedToken = await GetLocketTokenNumber(address)
+    const lockedToken = await GetLocketTokenNumber(address);
+    
     const updatedTokens = await Promise.all(
-      lockedToken.map(async (data,index) => {
+      lockedToken.map(async (data, index) => {
         const LockedTokenDecimal = await getDecimal(data[7]);
-        const tokenSymbol = await fetchTokenSymbol(data[7])
-        const GetLockPercent = await GetLockProgress(address,index)
-        return { amount: data[0], LockedTokenDecimal,tokenSymbol,totalAmount:GetLockPercent[0],withdrawlAmount:GetLockPercent[4],tokenAddress:data[7] };
+        const tokenSymbol = await fetchTokenSymbol(data[7]);
+        return { amount: data[0], LockedTokenDecimal, tokenSymbol, tokenAddress: data[7],index };
       })
     );
-    setlocketChanis(updatedTokens);
+  
+    setlocketChanis([]);
+    console.log(updatedTokens)
+    updatedTokens.forEach(data => {
+      if (Number(data.amount) != 0) {
+        setlocketChanis(prev => [...prev, data]);
+      }
+    });
   }
+  
 
   function increaseInp() {
     setlockDur((lockDur += 1));
@@ -114,13 +122,14 @@ const ShowLockToken = () => {
 
   function handelUnlock(token,index) {
     setIsOpenUnlock(true)
-    setunlockSlectedToken({...token,index})
+    setunlockSlectedToken(token)
     
   }
   
   async function handelUnlockToken() {
-    const amount = unlockAmount.current.value + '0'.repeat(unlockSlectedToken.LockedTokenDecimal)
-    const unlockToken = await UnlockToken(unlockSlectedToken.tokenAddress,unlockSlectedToken.index,amount)
+    const amount = BigInt(Math.floor(parseFloat(unlockAmount.current.value) * 10 ** unlockSlectedToken.LockedTokenDecimal));
+    console.log(amount)
+    const unlockToken = await UnlockToken(unlockSlectedToken.tokenAddress,unlockSlectedToken.index,Number(amount))
     setIsOpenUnlock(false)
     if(unlockToken){
       toast.info( 'Unlocked Successfully', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
@@ -282,10 +291,11 @@ const ShowLockToken = () => {
               {locketChanis.filter(data => {if(Number(data.amount != 0)){return data}}).map((data, index) => {           
                 return (
                   <div
+                  onClick={()=>console.log(data)}
                     key={index}
                     className='w-[250px] min-h-[230px] bg-[#5e3916] rounded-md mx-3 mt-3 pb-2'>
                     <h1 className='text-center mt-3 font-semibold text-2xl text-[white]'>{walletSlectedChain.title} ({walletSlectedChain.nativeToken})</h1>
-                    <p className='text-center mt-2 font-medium text-md text-[white]'>Amount:{(data.amount / 10n ** BigInt(data.LockedTokenDecimal)).toString()} {data.tokenSymbol}</p>
+                    <p className='text-center mt-2 font-medium text-md text-[white]'>Amount: {(Number(data.amount) / Number(10n ** BigInt(data.LockedTokenDecimal))).toFixed(3)} {data.tokenSymbol}</p>
                     <div className='flex justify-between mt-4 items-center'>
                       <span className=' ml-2 p-3 bg-[#F39745] rounded-xl text-white text-[.5em]'>LOCK PROGRESS</span>
                       <p className='text-white mr-2'>30%</p>
