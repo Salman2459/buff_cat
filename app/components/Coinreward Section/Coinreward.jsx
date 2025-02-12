@@ -15,25 +15,32 @@ export const Coinreward = () => {
       const [totalClaimableReward,settotalClaimableReward] = useState(0)
       const [totalRewardClaimed,settotalRewardClaimed] = useState(0)
 
-      useEffect(() => {
-        setlockedTokens([]); 
-      
-        const GetLockToken = async () => {
-          const lockedToken = await GetLocketTokenNumber(address);
+      const GetLockToken = async () => {
+        try {
+          const lockedTokens = await GetLocketTokenNumber(address);
       
           const tokens = await Promise.all(
-            lockedToken.map(async (data,index) => {
-                const TokenSymbol = await fetchTokenSymbol(data[7]);
-                const decimal = await getDecimal(data[7]);
-                const dividence = await USerDividence(data[7],index)
-                return { amount: data[0], TokenSymbol,address:data[7],decimal,index,dividence };
+            lockedTokens.map(async (data, index) => {
+              const [amount, , , , , , , tokenAddress] = data;
+              const tokenSymbol = await fetchTokenSymbol(tokenAddress);
+              const decimal = await getDecimal(tokenAddress);
+              const dividend = await USerDividence(address, index);
+              return { amount, tokenSymbol, address: tokenAddress, decimal, index, dividend, };
             })
           );
-          setlockedTokens(tokens);
-        };
       
-        GetLockToken();
-        setloadingss(false)
+          setlockedTokens(tokens);
+        } catch (error) {
+          console.error("Error fetching locked tokens:", error);
+        }
+      };
+
+      useEffect(() => {
+        if(address){
+          setlockedTokens([]); 
+          GetLockToken();
+          setloadingss(false)
+        }
       }, [address]); 
 
       useEffect(()=>{
@@ -47,7 +54,7 @@ export const Coinreward = () => {
       },[])
 
 
-      async function ClameToken (token,index) {
+      async function ClameToken (token) {
         ClainInput.current.value = token.address
         setSelectedChain((token.amount / 10n ** BigInt(token?.decimal)).toString() + ' ' + token.TokenSymbol)
         setIsOpen(false)
@@ -55,7 +62,6 @@ export const Coinreward = () => {
       }
 
       async function ClaimingReward() {
-        console.log(slectedindex,'=s=s=s=s=s=s=s=s=')
         if (slectedindex != 'No Index') {
           const claimedReward = await ClaimReward(address,ClainInput.current.value,slectedindex)
           if(claimedReward){
@@ -68,7 +74,7 @@ export const Coinreward = () => {
   
   return (
     <>
-      <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6" onClick={()=>console.log(lockedTokens)}>
+      <div className="bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6">
         <h1 className="text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em]">
           Claim Rewards
         </h1>
@@ -112,22 +118,38 @@ export const Coinreward = () => {
               {isOpen && (
               <div className="absolute mt-2 border border-[#1A0B06] bg-[#1A0B06] min-w-[150px] ml-[25px] rounded-md shadow-lg z-10">
                 {!loadingss ? (
-                  lockedTokens?.filter(data => {if(Number(data.amount != 0)){return data}}).map((token, index) => {
-                    console.log(token)
-                    // const amount = BigInt(token.dividence) / 10n ** BigInt(token.decimal || 18); 
-                    const dividence = String(Number(token.dividence) / 1e18).slice(0,6)
+                lockedTokens
+                ?.filter((data) => Number(data.amount) !== 0) // Fix filter logic
+                .map((token, index) => {
+                  try {
+                    // Ensure token.dividence is a valid BigInt, default to 0n if undefined
+                    const dividence = BigInt(token.dividend || 0); 
+                    const decimalPlaces = BigInt(1e18); 
+              
+                    // Perform division using BigInt
+                    const wholePart = dividence / decimalPlaces; 
+                    const remainder = dividence % decimalPlaces; 
+              
+                    // Format to 6 decimal places
+                    const formattedDividence = `${wholePart.toString()}.${remainder.toString().padStart(18, '0').slice(0, 6)}`;
+              
                     return (
                       <div
                         key={index}
-                        onClick={() => ClameToken(token,index)}
+                        onClick={() => ClameToken(token, index)}
                         className="flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors"
                       >
-                        <span className="text-white">
-                          {dividence} {token.TokenSymbol}
+                        <span className="text-white" onClick={() => console.log(wholePart)}>
+                          {formattedDividence} {token.tokenSymbol}
                         </span>
                       </div>
                     );
-                  })
+                  } catch (error) {
+                    console.error("Error processing BigInt:", error, token);
+                    return null; // Skip this entry if an error occurs
+                  }
+                })
+              
                 ) : (
                   <div className="text-white px-4 py-3">Loading...</div> // Fixed text color
                 )}

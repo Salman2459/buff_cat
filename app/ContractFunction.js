@@ -10,7 +10,7 @@ import { Bounce } from "react-toastify";
 export async function getDecimal(LokedTokenDecimal) {
   try {
     const decimal = await readContract(config, {
-      address: LokedTokenDecimal || TokenAddress, 
+      address:  TokenAddress, 
       abi: Token_abi,
       functionName: "decimals", 
     });
