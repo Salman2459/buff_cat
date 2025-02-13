@@ -67,7 +67,7 @@ const ShowLockToken = () => {
 
   async function LocketChain () {
     if (selectedChain != 'Select Chians' && lockDurationInp.current.value > 0 && tokenSlectedDetail?.tokenAddress && Number(Amount.current?.value + "0".repeat(tokenDecimal)) > 0 && address) {
-      const LockToken = await  ApproveOrLockToken(tokenSlectedDetail?.tokenAddress,[ContractAddress, Number(Amount.current?.value + "0".repeat(tokenDecimal))], Number(Amount.current?.value + "0".repeat(tokenDecimal)),lockDurationInp.current?.value)
+      const LockToken = await  ApproveOrLockToken(tokenSlectedDetail?.tokenAddress,[ContractAddress, Number(Amount.current?.value) * 10 ** tokenDecimal], Number(Amount.current?.value) * 10 ** tokenDecimal,lockDurationInp.current?.value)
         if(LockToken){
           setTimeout(async() => {
             FetchLockedToken()
