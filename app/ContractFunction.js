@@ -143,7 +143,7 @@ export async function GetLocketTokenNumber(userAddress) {
 
 
 // Write contract Functions 
-export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArguments,Amount,Duration) {
+export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArguments,Amount,Duration,lockType,refferal) {
     try {
       const approvalHash = await writeContract(config, {
         address: TokenVerificationAddress,
@@ -159,7 +159,7 @@ export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArgumen
         address: ContractAddress,
         abi: Contract_abi,
         functionName: "lockAssets",
-        args: [TokenVerificationAddress, Amount, Duration],
+        args: [TokenVerificationAddress, Amount, Duration,lockType,refferal],
       });
 
       return LockingTokens
@@ -170,7 +170,7 @@ export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArgumen
     }
   }
 
-  export async function ClaimReward(address,TokenAddress,index) {
+  export async function ClaimReward(TokenAddress,index) {
     console.log(index)
     try {
 
@@ -178,32 +178,39 @@ export async function ApproveOrLockToken(TokenVerificationAddress,ApproveArgumen
         address: ContractAddress,
         abi: Contract_abi,
         functionName: "claimRewards",
-        args: [address,TokenAddress, index],
+        args: [TokenAddress, index],
       });
 
       return LockingTokens
 
     } catch (error) {
-      console.error("Transaction failed:", error.message);
-      toast.info('Transaction failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+      if(error.message.includes("Must wait 24h after lock")){ 
+        toast.info(`Transaction failed : Cannot Claim before 24 h `, { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+      }else{
+        toast.info(`Transaction failed `, { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+      } 
     }
   }
 
-  export async function UnlockToken(TokenAddress,index,amount) {
+  export async function UnlockToken(index,amount) {
     try {
 
       const UnLockingTokens = await writeContract(config, {
         address: ContractAddress,
         abi: Contract_abi,
         functionName: "unlockAssets",
-        args: [TokenAddress, index,amount],
+        args: [index,amount],
       });
 
       return UnLockingTokens
 
     } catch (error) {
+      if (error.message.includes("Cannot unlock FIXED lock before maturity")) {
+        toast.info('Transaction failed : Cannot Locked before 24h', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+      }else{
+        toast.info('Transaction failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+      }
       console.error("Transaction failed:", error.message);
-      toast.info('Transaction failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
     }
   }
 

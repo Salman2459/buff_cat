@@ -63,7 +63,7 @@ export const Coinreward = () => {
 
       async function ClaimingReward() {
         if (slectedindex != 'No Index') {
-          const claimedReward = await ClaimReward(address,ClainInput.current.value,slectedindex)
+          const claimedReward = await ClaimReward(ClainInput.current.value,slectedindex)
           if(claimedReward){
           toast.info('Reward Claimed Successfully...', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
           }

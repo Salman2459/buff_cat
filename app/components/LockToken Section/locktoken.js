@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import { useSwitchChain } from "wagmi";
 import { NetworkData } from '@/app/context/networks';
-import { ContractAddress } from '@/ABI & ContractKeys/Abi';
+import { ContractAddress, TokenAddress } from '@/ABI & ContractKeys/Abi';
 
 
 const Chains = NetworkData;
@@ -33,12 +33,13 @@ const ShowLockToken = () => {
   const [tokenDecimal, settokenDecimal] = useState(0)
   const Amount = useRef(0)
   const { chains, switchChain } = useSwitchChain()
-  const [walletSlectedChain,setwalletSlectedChain] = useState(null)
-  const {address} = useAccount()
+  const [walletSlectedChain, setwalletSlectedChain] = useState(null)
+  const { address } = useAccount()
   const [isOpenUnlock, setIsOpenUnlock] = useState(false);
-  const [unlockSlectedToken,setunlockSlectedToken] = useState({})
+  const [unlockSlectedToken, setunlockSlectedToken] = useState({})
   const unlockAmount = useRef(null)
-
+  const [selectedType, setselectedType] = useState(0)
+  const [refferal, setrefferal] = useState("")
   const closeModal = (e) => {
     if (e.target.id === "modal-overlay") {
       setIsOpenUnlock(false);
@@ -50,39 +51,61 @@ const ShowLockToken = () => {
     lockDurationInp.current.value = 0
     if (address) {
       async function Decimal() {
-        const decimal = await getDecimal();
+        const decimal = await getDecimal(TokenAddress);
         settokenDecimal(decimal)
         FetchLockedToken()
-    }
-    Decimal();
+      }
+      Decimal();
     }
 
   }, [])
-  
-  useEffect(()=>{
-        const SlectedChainDetail = Chains.find(data => { if(chains[0].name.includes(data.title)){ return data } })
-        setwalletSlectedChain(SlectedChainDetail)
-    },[])
-  
 
-  async function LocketChain () {
-    if (selectedChain != 'Select Chians' && lockDurationInp.current.value > 0 && tokenSlectedDetail?.tokenAddress && Number(Amount.current?.value + "0".repeat(tokenDecimal)) > 0 && address) {
-      const LockToken = await  ApproveOrLockToken(tokenSlectedDetail?.tokenAddress,[ContractAddress, Number(Amount.current?.value) * 10 ** tokenDecimal], Number(Amount.current?.value) * 10 ** tokenDecimal,lockDurationInp.current?.value)
-        if(LockToken){
-          setTimeout(async() => {
-            FetchLockedToken()
-          }, 5000);
-        }else{
-          console.log('ERROR')
-        }
-    }else{
-      toast.info( selectedChain === 'Select Chains' ? 'Please Select Chain First' : !address ? 'Wallet is not connected': !tokenSlectedDetail?.tokenAddress ? 'Please Select Token First' : lockDurationInp.current.value < 0 ? 'Please add valid Duration' : Number(Amount.current?.value + "0".repeat(tokenDecimal)) < 0 ? 'Please add valid Amount' : 'Transaction Failed', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
+  useEffect(() => {
+    const SlectedChainDetail = Chains.find(data => { if (chains[0].name.includes(data.title)) { return data } })
+    setwalletSlectedChain(SlectedChainDetail)
+  }, [])
+
+
+  async function LocketChain() {
+    const durationValue = Number(lockDurationInp.current?.value);
+    const amountValue = Number(Amount.current?.value);
+    const fullAmount = amountValue * 10 ** tokenDecimal;
+
+    if (selectedChain !== 'Select Chains' && durationValue > 0 && tokenSlectedDetail?.tokenAddress && amountValue > 0 && address && lockDur > 0 && refferal.length > 40 && refferal != '0x0000000000000000000000000000000000000000' ) {
+      const LockToken = await ApproveOrLockToken(tokenSlectedDetail?.tokenAddress, [ContractAddress, fullAmount], fullAmount, durationValue,selectedType, refferal);
+      if (LockToken) {
+        setTimeout(async () => {
+          FetchLockedToken();
+        }, 5000);
+      } else {
+        console.log('ERROR');
+      }
+    } else {
+      let message = '';
+
+      if (selectedChain === 'Select Chains') {
+        message = 'Please Select Chain First';
+      } else if (!address) {
+        message = 'Wallet is not connected';
+      } else if (!tokenSlectedDetail?.tokenAddress) {
+        message = 'Please Select Token First';
+      } else if (isNaN(durationValue) || durationValue <= 0 || lockDur <= 0) {
+        message = 'Please add valid Duration';
+      } else if (isNaN(amountValue) || amountValue <= 0) {
+        message = 'Please add valid Amount';
+      }else if (refferal.length < 40 || refferal == '0x0000000000000000000000000000000000000000') {
+        message = 'Enter Valid Address';
+      } else {
+        message = 'Transaction Failed';
       }
 
+      toast.info(message, { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
+    }
   }
 
-  async function ChainChager (token) {
-    await switchChain({ chainId: token.networkId})
+
+  async function ChainChager(token) {
+    await switchChain({ chainId: token.networkId })
     setSelectedChain(token.title);
     setimgSrc(token.networkIcon);
     setIsOpen(!isOpen);
@@ -90,27 +113,27 @@ const ShowLockToken = () => {
   }
 
   async function FetchLockedToken() {
-   if(address){
-    const lockedToken = await GetLocketTokenNumber(address);
-    
-    const updatedTokens = await Promise.all(
-      lockedToken.map(async (data, index) => {
-        const LockedTokenDecimal = await getDecimal(data[7]);
-        const tokenSymbol = await fetchTokenSymbol(data[7]);
-        return { amount: data[0], LockedTokenDecimal, tokenSymbol, tokenAddress: data[7],index };
-      })
-    );
-  
-    setlocketChanis([]);
-    console.log(updatedTokens)
-    updatedTokens.forEach(data => {
-      if (Number(data.amount) != 0) {
-        setlocketChanis(prev => [...prev, data]);
-      }
-    });
-   }
+    if (address) {
+      const lockedToken = await GetLocketTokenNumber(address);
+
+      const updatedTokens = await Promise.all(
+        lockedToken.map(async (data, index) => {
+          const LockedTokenDecimal = await getDecimal(data[7]);
+          const tokenSymbol = await fetchTokenSymbol(data[7]);
+          return { amount: data[0], LockedTokenDecimal, tokenSymbol, tokenAddress: data[7], index };
+        })
+      );
+
+      setlocketChanis([]);
+      console.log(updatedTokens)
+      updatedTokens.forEach(data => {
+        if (Number(data.amount) != 0) {
+          setlocketChanis(prev => [...prev, data]);
+        }
+      });
+    }
   }
-  
+
 
   function increaseInp() {
     setlockDur((lockDur += 1));
@@ -122,19 +145,19 @@ const ShowLockToken = () => {
     lockDurationInp.current.value = lockDur;
   }
 
-  function handelUnlock(token,index) {
+  function handelUnlock(token, index) {
     setIsOpenUnlock(true)
     setunlockSlectedToken(token)
-    
+
   }
-  
+
   async function handelUnlockToken() {
     const amount = BigInt(Math.floor(parseFloat(unlockAmount.current.value) * 10 ** unlockSlectedToken.LockedTokenDecimal));
     console.log(amount)
-    const unlockToken = await UnlockToken(unlockSlectedToken.tokenAddress,unlockSlectedToken.index,Number(amount))
+    const unlockToken = await UnlockToken( unlockSlectedToken.index, Number(amount))
     setIsOpenUnlock(false)
-    if(unlockToken){
-      toast.info( 'Unlocked Successfully', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, } );
+    if (unlockToken) {
+      toast.info('Unlocked Successfully', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: false, pauseOnHover: true, draggable: true, progress: undefined, theme: "colored", transition: Bounce, });
       setTimeout(() => {
         FetchLockedToken()
       }, 3000);
@@ -145,7 +168,7 @@ const ShowLockToken = () => {
 
   return (
     <div>
-      
+
       <div className='bg-[#FFFFFF0F] border border-[#FFFFFF29] w-[95%] h-auto pb-10 m-auto rounded-lg mt-6'>
         <h1 className='text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5'>LOCK</h1>
 
@@ -188,8 +211,8 @@ const ShowLockToken = () => {
               {/* Dropdown menu */}
               {isOpen && (
                 <div className='absolute  mt-2  border border-[#1A0B06] bg-[#1A0B06] w-[250px] rounded-md shadow-lg z-10'>
-                  {Chains.map((token, index) =>{ 
-                   return <div
+                  {Chains.map((token, index) => {
+                    return <div
                       key={index}
                       onClick={() => ChainChager(token)}
                       className='flex items-center px-4 py-3 cursor-pointer hover:bg-black hover:text-white transition-colors'>
@@ -248,40 +271,69 @@ const ShowLockToken = () => {
                 placeholder='Amount'
                 className='number-stepper text-white w-[100%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em] mt-5' ref={Amount}
               />
+
+              {/* Flexible OR Fixed  */}
+              <div className='flex justify-center my-7'>
+                <button
+                  className='px-5 py-3 rounded-md mx-2 text-white'
+                  style={{ backgroundColor: selectedType === 0 ?  '#F39541' :'#623F1E' }}
+                  onClick={() => setselectedType(0)}
+                >
+                  FLEXIBLE
+                </button>
+
+                <button
+                  className='px-5 py-3 rounded-md mx-2 text-white'
+                  style={{ backgroundColor: selectedType === 1 ?  '#F39541' :'#623F1E' }}
+                  onClick={() => setselectedType(1)}
+                >
+                  FIXED
+                </button>
+
+              </div>
+              <input
+                type='text'
+                placeholder='Refferal'
+                className='number-stepper text-white w-[100%] bg-[#F3933F45] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em] ' 
+                value={refferal}
+                onChange={(e) => { setrefferal(e.target.value); }}
+              />
               <button
                 className='bg-gradient-to-r from-[#EFCB97] to-[#F3933F] w-full h-[50px] rounded-md mt-7  text-white text-[1.1em] font-semibold'
                 onClick={LocketChain}>
                 Lock
               </button>
             </div>
+
+
           </div>
         </div>
       </div>
 
-     { isOpenUnlock && (
-      <div
-        id="modal-overlay"
-        className="fixed inset-0 flex justify-center items-center bg-[#00000070] z-[999]"
-        onClick={closeModal}
-      >
-        <div className="w-[90%] sm:w-[60%] min-h-[250px] bg-[#56371D] rounded-md p-4" onClick={(e) => e.stopPropagation()}>
-          <p className="text-white text-center text-2xl font-semibold mt-3">Enter the amount that you want to unlocked</p>
-          <input
-                type='number'
-                placeholder='Amount'
-                className='number-stepper  text-white w-[100%] bg-[#F29543] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em] mt-7' ref={unlockAmount}
-          />
-          <div className='flex justify-end mt-5'>
-          <button className="w-[150px] mr-2 bg-[#f2954377] h-[50px] rounded-[8px] mt-2  text-white text-[1.1em] font-semibold " onClick={()=> setIsOpenUnlock(false)}>
-            Cancel
-          </button>
-           <button className="w-[150px] bg-[#F29543] h-[50px] rounded-[8px] mt-2  text-white text-[1.1em] font-semibold" onClick={handelUnlockToken}>
-            Unlock
-          </button>
+      {isOpenUnlock && (
+        <div
+          id="modal-overlay"
+          className="fixed inset-0 flex justify-center items-center bg-[#00000070] z-[999]"
+          onClick={closeModal}
+        >
+          <div className="w-[90%] sm:w-[60%] min-h-[250px] bg-[#56371D] rounded-md p-4" onClick={(e) => e.stopPropagation()}>
+            <p className="text-white text-center text-2xl font-semibold mt-3">Enter the amount that you want to unlocked</p>
+            <input
+              type='number'
+              placeholder='Amount'
+              className='number-stepper  text-white w-[100%] bg-[#F29543] h-[50px] border-0 outline-none rounded-md px-4 box-border text-[1.3em] mt-7' ref={unlockAmount}
+            />
+            <div className='flex justify-end mt-5'>
+              <button className="w-[150px] mr-2 bg-[#f2954377] h-[50px] rounded-[8px] mt-2  text-white text-[1.1em] font-semibold " onClick={() => setIsOpenUnlock(false)}>
+                Cancel
+              </button>
+              <button className="w-[150px] bg-[#F29543] h-[50px] rounded-[8px] mt-2  text-white text-[1.1em] font-semibold" onClick={handelUnlockToken}>
+                Unlock
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    )}
+      )}
 
 
       {/* section 2  */}
@@ -290,10 +342,10 @@ const ShowLockToken = () => {
           <div>
             <h1 className='text-center text-[#EFCB97] font-bold mt-5 text-[1.3em] sm:text-[1.8em] pb-5'>Currently Locked Chians</h1>
             <div className='flex justify-around flex-wrap'>
-              {locketChanis.filter(data => {if(Number(data.amount != 0)){return data}}).map((data, index) => {           
+              {locketChanis.filter(data => { if (Number(data.amount != 0)) { return data } }).map((data, index) => {
                 return (
                   <div
-                  onClick={()=>console.log(data)}
+                    onClick={() => console.log(data)}
                     key={index}
                     className='w-[250px] min-h-[230px] bg-[#5e3916] rounded-md mx-3 mt-3 pb-2'>
                     <h1 className='text-center mt-3 font-semibold text-2xl text-[white]'>{walletSlectedChain.title} ({walletSlectedChain.nativeToken})</h1>
@@ -304,11 +356,11 @@ const ShowLockToken = () => {
                     </div>
                     <div className='px-2 mt-3'>
                       <div className='bg-[#AAAAAA] h-3 rounded-xl'>
-                        <div className='bg-[#F39745] h-full  rounded-xl' style={{width:'30%'}}></div>
+                        <div className='bg-[#F39745] h-full  rounded-xl' style={{ width: '30%' }}></div>
                       </div>
                     </div>
                     <div className='flex justify-center mt-5'>
-                      <button className='p-3 px-5 m-auto d-block rounded-md bg-[#F39745] text-white' onClick={()=>handelUnlock(data,index)}>UNLOCK</button>
+                      <button className='p-3 px-5 m-auto d-block rounded-md bg-[#F39745] text-white' onClick={() => handelUnlock(data, index)}>UNLOCK</button>
                     </div>
                   </div>
                 );
@@ -347,3 +399,4 @@ const ShowLockToken = () => {
 };
 
 export default LockToken;
+
